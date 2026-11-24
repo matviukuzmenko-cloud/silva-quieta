@@ -1,12 +1,11 @@
 {
-  "version": "1.2.0",
-  "releaseDate": "24 ноября 2026",
-  "title": "Silva Quieta 1.2.0",
+  "version": "1.3.0",
+  "title": "Silva Quieta 1.3.0",
+  "downloadURL": "https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg",
   "changelog": [
-    "Добавлена встроенная система проверки обновлений с окном списка изменений",
-    "Оптимизация кэша видео и миниатюр для MacBook Air M1 (8 ГБ ОЗУ)",
-    "Поддержка фонового звука и загрузки собственных аудиодорожек",
-    "Открытие окна галереи и настроек на активном рабочем столе Spaces"
-  ],
-  "downloadURL": "https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.2.0/Silva_Quieta_Installer.dmg"
+    "Встроенный онлайн-каталог на миллионы 4K и FullHD видео-сцен с загрузкой в один клик",
+    "Генератор 2.5D-обоев в высоком Retina-разрешении из любого фото или скриншота",
+    "Интерактивные GPU-частицы («Светлячки», «Снег», «Звёзды»), реагирующие на курсор мыши",
+    "Улучшенная плавность воспроизведения и автопауза эффектов в фоновом режиме"
+  ]
 }
