@@ -1,4 +1,3 @@
-
 {
   "version": "1.2.0",
   "releaseDate": "24 ноября 2026",
@@ -9,5 +8,5 @@
     "Поддержка фонового звука и загрузки собственных аудиодорожек",
     "Открытие окна галереи и настроек на активном рабочем столе Spaces"
   ],
-  "downloadURL": "https://silvaquieta.com/Silva_Quieta_Installer.dmg"
+  "downloadURL": "https://github.com"
 }
