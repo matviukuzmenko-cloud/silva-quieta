@@ -505,27 +505,22 @@ body {
 }
 
 .faq-item summary::after {
-  content: "+";
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--muted);
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg);
   flex-shrink: 0;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, color 0.4s ease;
+  margin-right: 6px;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease;
 }
 
 .faq-item[open] summary::after {
-  transform: rotate(45deg);
-  color: var(--text);
-  border-color: var(--muted);
+  transform: rotate(225deg);
+  border-color: var(--text);
 }
+
 
 .faq-item p {
   margin-top: 16px;
