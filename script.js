@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       m_faq: 'Вопросы',
       m_updates: 'Обновления',
       btn_get: 'Скачать',
-      kicker: 'macOS 13.0+ • Apple Silicon (M1–M5) и Intel • v1.2.0',
+     kicker: 'macOS 13.0+ • Apple Silicon (M1–M5) и Intel • v1.3.0',
       h1: 'Живые видео-обои,\nсозданные для Mac.',
       lead: 'Нативный видеодвижок на Swift и AVFoundation без аккаунтов, подписок и фоновых серверов. Плавные сцены, фоновый звук и бережное отношение к батарее вашего MacBook.',
       dl_mac: 'Скачать для macOS',
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
       s5_t: 'Тонкая настройка\nзатемнения и скорости.',
       s5_p: 'Приглушите яркие сцены ползунком затемнения до 75%, чтобы иконки и виджеты на рабочем столе всегда оставались читаемыми, или замедлите движение видео до медитативных 0.25x.',
       s6_t: 'Встроенная коллекция\nи импорт перетаскиванием.',
-      s6_p: 'Сразу после установки доступна коллекция бесшовных сцен. Чтобы добавить свои обои, просто перетащите любые .mp4, .mov или .m4v файлы прямо в окно галереи.',
+s6_p: 'Скачивайте новые 4K и FullHD видео прямо из встроенного каталога в один клик, превращайте любые фотографии в живые 2.5D-обои и добавляйте интерактивные GPU-частицы, реагирующие на курсор мыши.',
       keys_head: 'Управление с клавиатуры',
       keys_sub: 'Глобальные горячие клавиши работают из любого приложения. Вы можете изменить их или отключить в настройках Silva Quieta.',
       k_pause: 'Пауза / продолжить воспроизведение',
@@ -232,11 +232,11 @@ document.addEventListener('DOMContentLoaded', () => {
       a3: 'At launch (or via "Check for Updates…" in the menu bar), the app checks silvaquieta.com. When a new version is available, a window displays release notes and downloads the updated installer.',
       q4: 'Can I set live wallpapers on just one display?',
       a4: 'Yes. When multiple monitors are connected, a display selector appears in the gallery toolbar so you can target all screens or individual displays.',
-      rel_badge: 'Version 1.2.0',
-      cl_1: 'Added built-in update checker with detailed release notes window',
-      cl_2: 'Optimized video and thumbnail cache for 8 GB MacBook Air M1',
-      cl_3: 'Added ambient sound support and custom audio track import',
-      cl_4: 'Gallery and settings windows now open on the active macOS Space'
+ rel_badge: 'Version 1.3.0',
+    cl_1: 'Built-in online catalog with millions of 4K & FullHD scenes in one click',
+cl_2: 'Retina 2.5D parallax wallpaper generator from any photo or screenshot',
+cl_3: 'Interactive GPU particles (Fireflies, Snow, Stars) reacting to mouse cursor',
+cl_4: 'Improved playback smoothness and background effect auto-pause'
     }
   };
 
