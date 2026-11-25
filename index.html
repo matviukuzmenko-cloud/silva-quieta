@@ -4,17 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Silva Quieta 1.3.0: живые видео-обои для macOS</title>
-  <meta name="description" content="Silva Quieta 1.3.0, нативные живые 4K видео-обои для macOS на Apple Silicon (M1–M5) и Intel. Онлайн-каталог сцен, 2.5D-генератор из фото, интерактивные частицы, фоновый звук и пауза при работе от батареи." />
+  <meta name="description" content="Silva Quieta 1.3.0 ставит на рабочий стол Mac живые 4K видео-обои. Работает на Apple Silicon (M1–M5) и Intel. Есть онлайн-каталог сцен, 2.5D из фотографий, интерактивные частицы, звук и пауза на батарее." />
   <meta name="application-name" content="Silva Quieta" />
   <link rel="canonical" href="https://silvaquieta.com" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/favicon.svg" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <meta property="og:site_name" content="Silva Quieta" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://silvaquieta.com" />
   <meta property="og:title" content="Silva Quieta 1.3.0: живые видео-обои для macOS" />
-  <meta property="og:description" content="Живые обои для Mac: онлайн-каталог сцен, 2.5D из фото, интерактивные частицы и оптимизация под Apple Silicon." />
+  <meta property="og:description" content="Живые обои для Mac: каталог сцен, 2.5D из фото, интерактивные частицы и оптимизация под Apple Silicon." />
+  <meta property="og:image" content="https://silvaquieta.com/logo.png" />
 
   <script type="application/ld+json">
   {
@@ -31,6 +36,7 @@
         "operatingSystem": "macOS 13.0 or later",
         "applicationCategory": "DesktopEnhancementApplication",
         "softwareVersion": "1.3.0",
+        "image": "https://silvaquieta.com/logo.png",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -46,13 +52,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .logo { display: inline-flex; align-items: center; gap: 10px; }
+    .logo img { width: 26px; height: 26px; display: block; }
+    [data-theme="dark"] .logo img { filter: brightness(0) invert(1); }
+  </style>
 </head>
 
 <body>
 
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a href="#" class="logo">Silva Quieta</a>
+      <a href="#" class="logo">
+        <img src="logo.png" alt="" width="26" height="26" />
+        <span>Silva Quieta</span>
+      </a>
 
       <nav class="menu">
         <a href="#features" data-i18n="m_features">Возможности</a>
@@ -78,10 +92,10 @@
   </header>
 
   <section class="hero wrap">
-    <p class="hero-eyebrow reveal" data-i18n="kicker">macOS 13.0+, Apple Silicon (M1–M5) и Intel, v1.3.0</p>
-    <h1 class="hero-heading reveal" data-i18n="h1">Живые видео-обои<br>для вашего Mac.</h1>
+    <p class="hero-eyebrow reveal" data-i18n="kicker">macOS 13.0+, Apple Silicon (M1–M5) и Intel, версия 1.3.0</p>
+    <h1 class="hero-heading reveal" data-i18n="h1">Живые обои<br>для вашего Mac</h1>
     <p class="hero-lead reveal" data-i18n="lead">
-      Нативный видеодвижок на Swift и AVFoundation без аккаунтов, подписок и фоновых серверов. Онлайн-каталог 4K-сцен, 2.5D из фото, интерактивные частицы и экономный расход заряда MacBook.
+      Программа написана на Swift и AVFoundation. Аккаунт и подписка не нужны, серверов у неё нет. В комплекте онлайн-каталог 4K-сцен, 2.5D из фотографий и интерактивные частицы. Заряд MacBook расходуется экономно.
     </p>
 
     <div class="hero-cta-row reveal">
@@ -90,7 +104,7 @@
         <span data-i18n="dl_mac">Скачать для macOS</span>
         <span class="ver-tag" id="hero-ver">v1.3.0</span>
       </a>
-      <a href="#install" class="cta-ghost" data-i18n="explore">Инструкция по установке</a>
+      <a href="#install" class="cta-ghost" data-i18n="explore">Как установить</a>
     </div>
 
     <div class="screenshot-wrap reveal" id="screenshot-wrap">
@@ -100,72 +114,72 @@
 
   <section id="features" class="wrap editorial-section">
     <div class="section-intro reveal">
-      <h2 data-i18n="feat_head">Что умеет приложение</h2>
-      <p data-i18n="feat_sub">Silva Quieta работает в строке меню macOS, не занимает место в Dock и подстраивается под ваш стиль работы.</p>
+      <h2 data-i18n="feat_head">Возможности</h2>
+      <p data-i18n="feat_sub">Silva Quieta живёт в строке меню. В Dock значка нет, все настройки открываются из меню или горячими клавишами.</p>
     </div>
 
     <div class="ed-row reveal">
       <div class="ed-left">
-        <h3 data-i18n="s1_t">Аппаратное ускорение<br>на Apple Silicon</h3>
+        <h3 data-i18n="s1_t">Работа на<br>Apple Silicon</h3>
       </div>
       <div class="ed-right">
         <p data-i18n="s1_p">
-          Видео декодируется напрямую через встроенный Media Engine чипов M1–M5, поэтому нагрузка на процессор небольшая. На базовых MacBook Air с 8 ГБ памяти кэш автоматически ограничивается тремя сценами, и система остаётся быстрой.
+          Видео декодирует встроенный Media Engine чипов M1–M5, поэтому процессор почти не занят. На MacBook Air с 8 ГБ памяти в кэше держатся только три сцены, чтобы остальные программы не тормозили.
         </p>
       </div>
     </div>
 
     <div class="ed-row reveal">
       <div class="ed-left">
-        <h3 data-i18n="s2_t">Умная пауза<br>и экономия заряда</h3>
+        <h3 data-i18n="s2_t">Пауза и<br>экономия заряда</h3>
       </div>
       <div class="ed-right">
         <p data-i18n="s2_p">
-          Видео и звук встают на паузу, когда вы разворачиваете любое приложение на весь экран, переходите на работу от батареи, включаете режим энергосбережения, запускаете заставку или блокируете Mac.
+          Видео и звук останавливаются, если приложение открыто на весь экран, Mac работает от батареи или в режиме энергосбережения, включилась заставка или заблокирован экран.
         </p>
       </div>
     </div>
 
     <div class="ed-row reveal">
       <div class="ed-left">
-        <h3 data-i18n="s3_t">Отдельный фон для<br>каждого рабочего стола</h3>
+        <h3 data-i18n="s3_t">Свои обои на<br>каждом рабочем столе</h3>
       </div>
       <div class="ed-right">
         <p data-i18n="s3_p">
-          Назначайте разные живые обои для каждого внешнего монитора и каждого виртуального пространства Spaces. Переключайтесь трекпадом между работой и отдыхом, и обои сменятся автоматически.
+          Для каждого монитора и каждого пространства Spaces можно выбрать свои живые обои. Перелистнули трекпадом с рабочего стола на отдыхательный, и фон сменился.
         </p>
       </div>
     </div>
 
     <div class="ed-row reveal">
       <div class="ed-left">
-        <h3 data-i18n="s4_t">Фоновый звук<br>и собственные треки</h3>
+        <h3 data-i18n="s4_t">Звук и<br>свои треки</h3>
       </div>
       <div class="ed-right">
         <p data-i18n="s4_p">
-          Включите оригинальную звуковую дорожку выбранных обоев или загрузите свой аудиофайл в формате MP3, WAV, M4A или AIFF. Громкость плавно регулируется в настройках.
+          Можно слушать дорожку из самих обоев или подключить свой файл: MP3, WAV, M4A или AIFF. Громкость меняется в настройках.
         </p>
       </div>
     </div>
 
     <div class="ed-row reveal">
       <div class="ed-left">
-        <h3 data-i18n="s5_t">Настройка затемнения<br>и скорости</h3>
+        <h3 data-i18n="s5_t">Затемнение<br>и скорость</h3>
       </div>
       <div class="ed-right">
         <p data-i18n="s5_p">
-          Приглушите яркие сцены ползунком затемнения до 75%, чтобы иконки и виджеты на рабочем столе оставались читаемыми, или замедлите видео до 0.25x.
+          Затемнение до 75% нужно, чтобы иконки и виджеты читались на яркой сцене. Скорость можно снизить до 0.25x, если хочется, чтобы всё двигалось медленнее.
         </p>
       </div>
     </div>
 
     <div class="ed-row reveal">
       <div class="ed-left">
-        <h3 data-i18n="s6_t">Онлайн-каталог сцен,<br>2.5D из фото и частицы</h3>
+        <h3 data-i18n="s6_t">Каталог сцен,<br>2.5D и частицы</h3>
       </div>
       <div class="ed-right">
         <p data-i18n="s6_p">
-          Скачивайте новые 4K и FullHD видео из встроенного каталога в один клик, превращайте любые фотографии в живые 2.5D-обои и добавляйте интерактивные GPU-частицы, которые реагируют на курсор мыши. Свои файлы добавляются перетаскиванием в окно галереи.
+          Новые 4K и FullHD видео скачиваются из каталога одним нажатием. Любую фотографию можно превратить в 2.5D-обои. Поверх можно добавить GPU-частицы, которые следуют за курсором. Свои ролики перетаскиваются прямо в окно галереи.
         </p>
       </div>
     </div>
@@ -174,24 +188,24 @@
   <section id="shortcuts" class="wrap specs-section">
     <div class="section-intro reveal">
       <h2 data-i18n="keys_head">Горячие клавиши</h2>
-      <p data-i18n="keys_sub">Глобальные сочетания работают из любого приложения. В настройках Silva Quieta их можно отключить.</p>
+      <p data-i18n="keys_sub">Работают в любом приложении. Если мешают, отключите их в настройках Silva Quieta.</p>
     </div>
 
     <div class="table-list reveal">
       <div class="t-row">
-        <span data-i18n="k_pause">Пауза и продолжение воспроизведения</span>
+        <span data-i18n="k_pause">Пауза и продолжение</span>
         <span class="keys"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>P</kbd></span>
       </div>
       <div class="t-row">
-        <span data-i18n="k_next">Следующие обои в коллекции</span>
+        <span data-i18n="k_next">Следующие обои</span>
         <span class="keys"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>→</kbd></span>
       </div>
       <div class="t-row">
-        <span data-i18n="k_prev">Предыдущие обои в коллекции</span>
+        <span data-i18n="k_prev">Предыдущие обои</span>
         <span class="keys"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>←</kbd></span>
       </div>
       <div class="t-row">
-        <span data-i18n="k_gal">Открыть галерею обоев</span>
+        <span data-i18n="k_gal">Открыть галерею</span>
         <span class="keys"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>G</kbd></span>
       </div>
       <div class="t-row">
@@ -203,34 +217,34 @@
 
   <section id="install" class="wrap install-section">
     <div class="section-intro reveal">
-      <h2 data-i18n="inst_title">Установка на macOS</h2>
-      <p data-i18n="inst_sub">Приложение распространяется напрямую с сайта, без App Store. Если система заблокирует первый запуск, воспользуйтесь шагами 2 и 3.</p>
+      <h2 data-i18n="inst_title">Установка</h2>
+      <p data-i18n="inst_sub">Программа раздаётся с этого сайта, в App Store её нет. Если macOS остановит первый запуск, откройте шаги 2 и 3.</p>
     </div>
 
     <div class="install-steps">
       <div class="step-row reveal">
-        <div class="step-title" data-i18n="st1_t">1. Стандартная установка</div>
+        <div class="step-title" data-i18n="st1_t">1. Обычная установка</div>
         <div class="step-desc" data-i18n-html="st1_d">
-          Откройте скачанный образ <strong>Silva_Quieta_Installer.dmg</strong> и перетащите <strong>Silva Quieta</strong> в папку <strong>Applications (Программы)</strong>. Запустите программу оттуда или через Spotlight.
+          Откройте <strong>Silva_Quieta_Installer.dmg</strong> и перетащите <strong>Silva Quieta</strong> в папку <strong>Программы</strong>. Запускайте оттуда или через Spotlight.
         </div>
       </div>
 
       <div class="step-row reveal">
-        <div class="step-title" data-i18n="st2_t">2. macOS пишет «Не удалось проверить разработчика»</div>
+        <div class="step-title" data-i18n="st2_t">2. «Не удалось проверить разработчика»</div>
         <div class="step-desc" data-i18n-html="st2_d">
-          Откройте приложение один раз и нажмите «ОК». Затем зайдите в <strong>Системные настройки → Конфиденциальность и безопасность</strong>, прокрутите страницу вниз и нажмите <strong>«Всё равно открыть»</strong> напротив Silva Quieta.
+          Откройте приложение один раз и нажмите «ОК». Затем зайдите в <strong>Системные настройки → Конфиденциальность и безопасность</strong>, прокрутите вниз и нажмите <strong>«Всё равно открыть»</strong> рядом с Silva Quieta.
         </div>
       </div>
 
       <div class="step-row reveal">
-        <div class="step-title" data-i18n="st3_t">3. macOS пишет «Приложение повреждено и не может быть открыто»</div>
+        <div class="step-title" data-i18n="st3_t">3. «Приложение повреждено и не может быть открыто»</div>
         <div class="step-desc">
-          <p data-i18n-html="st3_d">На macOS Sequoia и Sonoma так Gatekeeper реагирует на приложения без платной нотаризации Apple. Откройте <strong>Терминал (Terminal)</strong>, вставьте команду и нажмите Enter:</p>
+          <p data-i18n-html="st3_d">На macOS Sequoia и Sonoma так Gatekeeper реагирует на программы без платной нотаризации Apple. Откройте <strong>Терминал</strong>, вставьте команду и нажмите Enter:</p>
           <div class="cmd-box">
             <code id="xattr-cmd">xattr -cr "/Applications/Silva Quieta.app"</code>
             <button type="button" class="copy-btn" id="copy-cmd-btn" data-i18n="copy_btn">Копировать</button>
           </div>
-          <p class="cmd-note" data-i18n="st3_note">Если система всё равно не запускает программу, можно временно разрешить установку из любых источников. Эта команда отключает проверку Gatekeeper для всей системы. Вернуть защиту можно командой sudo spctl --master-enable.</p>
+          <p class="cmd-note" data-i18n="st3_note">Если не помогло, можно на время отключить проверку Gatekeeper для всей системы. Вернуть её обратно: sudo spctl --master-enable.</p>
           <div class="cmd-box">
             <code id="spctl-cmd">sudo spctl --master-disable</code>
             <button type="button" class="copy-btn" id="copy-spctl-btn" data-i18n="copy_btn">Копировать</button>
@@ -243,7 +257,7 @@
   <section class="wrap specs-section">
     <div class="section-intro reveal">
       <h2 data-i18n="sys_head">Совместимость и приватность</h2>
-      <p data-i18n="sys_sub">Все видеофайлы, превью и настройки хранятся только на вашем компьютере.</p>
+      <p data-i18n="sys_sub">Видео, превью и настройки лежат только на вашем компьютере.</p>
     </div>
 
     <div class="table-list reveal">
@@ -256,40 +270,40 @@
         <span class="t-val">Apple Silicon (M1, M2, M3, M4, M5) и Intel</span>
       </div>
       <div class="t-row">
-        <span data-i18n="sys_3_k">Поддерживаемые форматы</span>
+        <span data-i18n="sys_3_k">Форматы</span>
         <span class="t-val" data-i18n="sys_3_v">Видео: MP4, MOV, M4V. Аудио: MP3, WAV, M4A, AIFF</span>
       </div>
       <div class="t-row">
-        <span data-i18n="sys_4_k">Сбор данных и реклама</span>
-        <span class="t-val" data-i18n="sys_4_v">Отсутствуют. Сеть используется только для проверки update.json и загрузки сцен</span>
+        <span data-i18n="sys_4_k">Данные и реклама</span>
+        <span class="t-val" data-i18n="sys_4_v">Ничего не собирается, рекламы нет. Интернет нужен для update.json и загрузки сцен</span>
       </div>
     </div>
   </section>
 
   <section id="faq" class="wrap faq-section">
     <div class="section-intro reveal">
-      <h2 data-i18n="faq_head">Частые вопросы</h2>
+      <h2 data-i18n="faq_head">Вопросы</h2>
     </div>
 
     <div class="faq-list reveal">
       <details class="faq-item">
-        <summary data-i18n="q1">Приложение сажает батарею MacBook?</summary>
-        <p data-i18n="a1">При воспроизведении используется аппаратный видеодекодер Apple Silicon, который потребляет мало энергии. Кроме того, в настройках включена автоматическая пауза при работе от аккумулятора и при открытии окон на весь экран.</p>
+        <summary data-i18n="q1">Приложение сажает батарею?</summary>
+        <p data-i18n="a1">Видео декодируется аппаратно, и энергии на это уходит немного. К тому же по умолчанию включена пауза при работе от аккумулятора и при окнах на весь экран.</p>
       </details>
 
       <details class="faq-item">
-        <summary data-i18n="q2">Где хранятся добавленные видео?</summary>
-        <p data-i18n="a2">Все скопированные видео лежат в папке приложения в Application Support. Открыть её можно в любой момент кнопкой «Открыть папку» в окне галереи или из меню в строке меню.</p>
+        <summary data-i18n="q2">Где лежат добавленные видео?</summary>
+        <p data-i18n="a2">В папке Application Support. Открыть её можно кнопкой «Открыть папку» в окне галереи или из меню в строке меню.</p>
       </details>
 
       <details class="faq-item">
-        <summary data-i18n="q3">Как работают обновления?</summary>
-        <p data-i18n="a3">При запуске, а также по кнопке «Проверить обновления…» в строке меню, программа сверяет версию с silvaquieta.com. Если вышла новая версия, откроется окно со списком улучшений и кнопкой скачивания свежего установщика.</p>
+        <summary data-i18n="q3">Как приходят обновления?</summary>
+        <p data-i18n="a3">При запуске и по пункту «Проверить обновления…» программа сверяет версию с silvaquieta.com. Если есть новая, откроется окно со списком изменений и кнопкой загрузки.</p>
       </details>
 
       <details class="faq-item">
         <summary data-i18n="q4">Можно ли поставить обои только на один монитор?</summary>
-        <p data-i18n="a4">Да. Если к Mac подключено два или больше дисплеев, в верхней панели галереи появляется переключатель экранов. Выберите «Все экраны» или задайте отдельные обои для каждого монитора.</p>
+        <p data-i18n="a4">Да. Если мониторов два или больше, в галерее появляется переключатель экранов: «Все экраны» или конкретный монитор.</p>
       </details>
     </div>
   </section>
@@ -300,10 +314,10 @@
       <span class="ver-pill" id="release-badge" data-i18n="rel_badge">Версия 1.3.0</span>
     </div>
     <ul class="release-notes" id="changelog-list">
-      <li data-i18n="cl_1">Встроенный онлайн-каталог на миллионы 4K и FullHD видео-сцен с загрузкой в один клик</li>
-      <li data-i18n="cl_2">Генератор 2.5D-обоев в высоком Retina-разрешении из любого фото или скриншота</li>
-      <li data-i18n="cl_3">Интерактивные GPU-частицы («Светлячки», «Снег», «Звёзды»), реагирующие на курсор мыши</li>
-      <li data-i18n="cl_4">Улучшенная плавность воспроизведения и автопауза эффектов в фоновом режиме</li>
+      <li data-i18n="cl_1">Онлайн-каталог на миллионы 4K и FullHD сцен, загрузка в один клик</li>
+      <li data-i18n="cl_2">Генератор 2.5D-обоев из любого фото или скриншота в Retina-разрешении</li>
+      <li data-i18n="cl_3">GPU-частицы «Светлячки», «Снег» и «Звёзды», реагирующие на курсор</li>
+      <li data-i18n="cl_4">Воспроизведение стало ровнее, а эффекты в фоне ставятся на паузу</li>
     </ul>
   </section>
 
