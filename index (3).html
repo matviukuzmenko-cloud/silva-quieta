@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Silva Quieta 1.3.0: живые видео-обои для macOS</title>
+  <meta name="description" content="Silva Quieta 1.3.0: живые 4K видео-обои для macOS. Apple Silicon (M1–M5) и Intel, каталог сцен, 2.5D из фотографий, частицы, звук и пауза на батарее. Бесплатно, без аккаунта." />
+  <meta name="application-name" content="Silva Quieta" />
+  <meta name="theme-color" content="#0b100e" />
+  <link rel="canonical" href="https://silvaquieta.com/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <meta property="og:site_name" content="Silva Quieta" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://silvaquieta.com/" />
+  <meta property="og:title" content="Silva Quieta 1.3.0: живые видео-обои для macOS" />
+  <meta property="og:description" content="Живые обои для Mac: каталог сцен, 2.5D из фото, частицы и аппаратное декодирование на Apple Silicon." />
+  <meta property="og:image" content="https://silvaquieta.com/preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "WebSite", "name": "Silva Quieta", "url": "https://silvaquieta.com", "inLanguage": ["ru", "en"] },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Silva Quieta",
+        "operatingSystem": "macOS 13.0 or later",
+        "applicationCategory": "DesktopEnhancementApplication",
+        "softwareVersion": "1.3.0",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "downloadUrl": "https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg"
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    try {
+      var sl = localStorage.getItem('sq-lang'), st = localStorage.getItem('sq-theme');
+      if (sl === 'ru' || sl === 'en') document.documentElement.lang = sl;
+      if (st === 'dark' || st === 'light') document.documentElement.dataset.theme = st;
+    } catch (e) {}
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="extra.css" />
+  <noscript><style>.reveal{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="#top" class="logo">
+        <img src="/favicon.svg" alt="" width="26" height="26" />
+        <span>Silva Quieta</span>
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Main">
+        <a href="#top"><span class="ru">Главная</span><span class="en">Home</span></a>
+        <a href="#catalog"><span class="ru">Каталог</span><span class="en">Catalog</span></a>
+        <a href="#lab"><span class="ru">Песочница</span><span class="en">Playground</span></a>
+        <a href="#calc"><span class="ru">Батарея</span><span class="en">Battery</span></a>
+        <a href="#sounds"><span class="ru">Звуки</span><span class="en">Sounds</span></a>
+        <a href="#guides"><span class="ru">Гайды</span><span class="en">Guides</span></a>
+        <a href="#releases"><span class="ru">Версии</span><span class="en">Versions</span></a>
+      </nav>
+
+      <div class="controls">
+        <button id="lang-btn" class="chip-btn" type="button" aria-label="Language">EN</button>
+        <button id="theme-btn" class="chip-btn icon-only" type="button" aria-label="Theme">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg" id="top-dl" class="cta-pill">
+          <span class="ru">Скачать</span><span class="en">Download</span>
+        </a>
+        <button id="menu-btn" class="chip-btn icon-only burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="hero-eyebrow reveal">
+          <span class="ru">macOS 13+ · Apple Silicon (M1–M5) и Intel · </span><span class="en">macOS 13+ · Apple Silicon (M1–M5) and Intel · </span><span id="hero-ver">v1.3.0</span>
+        </p>
+        <h1 class="hero-heading reveal">
+          <span class="ru">Живые обои<br>для вашего Mac</span>
+          <span class="en">Live wallpapers<br>for your Mac</span>
+        </h1>
+        <p class="hero-lead reveal ru">Видео-обои на Swift и AVFoundation. Аккаунт и подписка не нужны, серверов у программы нет. Ролик декодирует встроенный Media Engine, поэтому процессор почти свободен, а MacBook дольше держит заряд.</p>
+        <p class="hero-lead reveal en">Video wallpapers written in Swift and AVFoundation. No account, no subscription, no servers. The built-in Media Engine decodes the clip, so the CPU stays almost idle and the MacBook keeps its charge longer.</p>
+        <div class="hero-cta-row reveal">
+          <a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg" id="hero-dl" class="cta-main">
+            <span class="ru">Скачать для macOS</span><span class="en">Download for macOS</span>
+          </a>
+          <a href="#install" class="cta-ghost"><span class="ru">Как установить</span><span class="en">How to install</span></a>
+        </div>
+      </div>
+
+      <dl class="hero-facts reveal">
+        <div><dt>45–90 <small>MB</small></dt><dd><span class="ru">памяти на Apple Silicon</span><span class="en">of RAM on Apple Silicon</span></dd></div>
+        <div><dt>&lt; 2<small>%</small></dt><dd><span class="ru">процессора при воспроизведении</span><span class="en">CPU during playback</span></dd></div>
+        <div><dt>3 <small><span class="ru">сцены</span><span class="en">scenes</span></small></dt><dd><span class="ru">в кэше на Mac с 8 ГБ памяти</span><span class="en">cached on an 8 GB Mac</span></dd></div>
+      </dl>
+    </div>
+
+    <div class="screenshot-wrap reveal" id="screenshot-wrap">
+      <img src="preview.png" alt="Silva Quieta: окно галереи / gallery window" class="app-screenshot" onerror="document.getElementById('screenshot-wrap').style.display='none'" />
+    </div>
+  </section>
+
+  <section id="features" class="wrap editorial-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Как это устроено</span><span class="en">How it works</span></h2>
+      <p class="ru">Silva Quieta живёт в строке меню. Значка в Dock нет, всё открывается из меню или горячими клавишами.</p>
+      <p class="en">Silva Quieta lives in the menu bar. There is no Dock icon; everything opens from the menu or with shortcuts.</p>
+    </div>
+
+    <div class="feat-lead reveal">
+      <h3><span class="ru">Аппаратное декодирование<br>и петля без шва</span><span class="en">Hardware decoding<br>and a seamless loop</span></h3>
+      <div>
+        <p class="ru">Ролик играет через <code>AVPlayerLooper</code>: следующий проход готовится заранее, поэтому на стыке нет паузы. Сам кадр декодирует Media Engine чипов M1–M5, а не процессор. На MacBook Air с 8 ГБ памяти в кэше остаются три сцены, чтобы остальные программы не тормозили.</p>
+        <p class="en">The clip plays through <code>AVPlayerLooper</code>, which prepares the next pass ahead of time, so there is no gap at the join. The frames are decoded by the M1–M5 Media Engine, not by the CPU. On a MacBook Air with 8 GB of memory only three scenes stay cached, so other apps keep running smoothly.</p>
+      </div>
+    </div>
+
+    <div class="feat-list">
+      <div class="feat reveal">
+        <h3><span class="ru">Пауза и заряд</span><span class="en">Pause and battery</span></h3>
+        <p class="ru">Видео и звук останавливаются, если приложение открыто на весь экран, Mac работает от батареи или в режиме энергосбережения, включилась заставка или экран заблокирован.</p>
+        <p class="en">Video and audio stop when an app goes full screen, the Mac runs on battery or in Low Power Mode, the screensaver starts, or the screen is locked.</p>
+      </div>
+      <div class="feat reveal">
+        <h3><span class="ru">Мониторы и Spaces</span><span class="en">Displays and Spaces</span></h3>
+        <p class="ru">Для каждого монитора и каждого рабочего стола Spaces можно выбрать свои обои. Листаете трекпадом на другой стол, и фон меняется.</p>
+        <p class="en">Every display and every Spaces desktop can have its own wallpaper. Swipe to another desktop and the background changes with you.</p>
+      </div>
+      <div class="feat reveal">
+        <h3><span class="ru">Звук</span><span class="en">Sound</span></h3>
+        <p class="ru">Можно слушать дорожку из самих обоев или подключить свой файл: MP3, WAV, M4A или AIFF. Громкость меняется в настройках.</p>
+        <p class="en">Play the track baked into a wallpaper or load your own MP3, WAV, M4A or AIFF file. Volume is set in preferences.</p>
+      </div>
+      <div class="feat reveal">
+        <h3><span class="ru">Затемнение и скорость</span><span class="en">Dimming and speed</span></h3>
+        <p class="ru">Затемнение до 75% нужно, чтобы иконки и виджеты читались на яркой сцене. Скорость можно снизить до 0.25x.</p>
+        <p class="en">Dimming up to 75% keeps icons and widgets readable over a bright scene. Playback speed goes down to 0.25x.</p>
+      </div>
+      <div class="feat reveal">
+        <h3><span class="ru">Каталог, 2.5D и частицы</span><span class="en">Catalog, 2.5D and particles</span></h3>
+        <p class="ru">Новые 4K и FullHD ролики скачиваются из каталога одним нажатием. Любое фото превращается в 2.5D-обои, а поверх можно добавить GPU-частицы, следующие за курсором. Свои ролики перетаскиваются в окно галереи.</p>
+        <p class="en">New 4K and FullHD clips download from the catalog in one click. Any photo turns into a 2.5D wallpaper, with GPU particles following the cursor on top. Drag your own clips into the gallery window.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="shortcuts" class="wrap specs-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Горячие клавиши</span><span class="en">Shortcuts</span></h2>
+      <p class="ru">Работают в любом приложении. Если мешают, отключите их в настройках Silva Quieta.</p>
+      <p class="en">They work in any app. If they get in the way, turn them off in Silva Quieta preferences.</p>
+    </div>
+    <div class="table-list reveal">
+      <div class="t-row"><span><span class="ru">Пауза и продолжение</span><span class="en">Pause and resume</span></span><span class="keys"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>P</kbd></span></div>
+      <div class="t-row"><span><span class="ru">Следующие обои</span><span class="en">Next wallpaper</span></span><span class="keys"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>→</kbd></span></div>
+      <div class="t-row"><span><span class="ru">Предыдущие обои</span><span class="en">Previous wallpaper</span></span><span class="keys"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>←</kbd></span></div>
+      <div class="t-row"><span><span class="ru">Открыть галерею</span><span class="en">Open gallery</span></span><span class="keys"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>G</kbd></span></div>
+      <div class="t-row"><span><span class="ru">Открыть настройки</span><span class="en">Open preferences</span></span><span class="keys"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>S</kbd></span></div>
+    </div>
+  </section>
+
+  <section id="catalog" class="wrap tool-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Каталог сцен</span><span class="en">Scene catalog</span></h2>
+      <p class="ru">Фильтруйте по теме и открывайте любую сцену на весь экран: превью движется, а при наведении курсора слои смещаются так же, как в приложении.</p>
+      <p class="en">Filter by theme and open any scene fullscreen: the preview moves, and layers shift under your cursor the way they do in the app.</p>
+    </div>
+    <div class="filters reveal" id="cat-filters">
+      <input id="scene-q" type="search" placeholder="Поиск / Search" aria-label="Search scenes" />
+    </div>
+    <div class="scene-grid" id="scene-grid"></div>
+  </section>
+
+  <section id="lab" class="wrap tool-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Песочница эффектов</span><span class="en">Effects playground</span></h2>
+      <p class="ru">Двигайте курсор над картинкой, и слои сдвигаются с разной скоростью, как в 2.5D-режиме приложения. Можно загрузить своё фото: оно обрабатывается прямо в браузере и никуда не отправляется.</p>
+      <p class="en">Move the cursor over the image and the layers shift at different speeds, like the app's 2.5D mode. You can load your own photo: it is processed in the browser and never uploaded.</p>
+    </div>
+    <div class="lab reveal">
+      <div class="lab-view" id="lab-view"><canvas id="lab-cv" width="960" height="600"></canvas></div>
+      <div class="panel ctrl">
+        <label><span><em class="ru">Фото</em><em class="en">Photo</em></span><input type="file" id="lab-file" accept="image/*" /></label>
+        <label><span><em class="ru">Сцена</em><em class="en">Scene</em></span><select id="lab-scene"></select></label>
+        <label><span><em class="ru">Параллакс</em><em class="en">Parallax</em><output id="o-par">60</output></span><input type="range" id="lab-par" min="0" max="100" value="60" /></label>
+        <label><span><em class="ru">Затемнение, %</em><em class="en">Dimming, %</em><output id="o-dim">20</output></span><input type="range" id="lab-dim" min="0" max="75" value="20" /></label>
+        <label><span><em class="ru">Скорость</em><em class="en">Speed</em><output id="o-spd">1.00x</output></span><input type="range" id="lab-spd" min="25" max="200" value="100" /></label>
+        <label><span><em class="ru">Частицы</em><em class="en">Particles</em></span>
+          <select id="lab-pt"><option value="fire">Светлячки / Fireflies</option><option value="snow">Снег / Snow</option><option value="star">Звёзды / Stars</option><option value="none">Нет / None</option></select></label>
+      </div>
+    </div>
+    <p class="fine ru">В приложении слои строятся по карте глубины. Здесь они просто сдвигаются, чтобы показать принцип.</p>
+    <p class="fine en">The app builds layers from a depth map. Here they are simply offset to show the idea.</p>
+  </section>
+
+  <section id="calc" class="wrap tool-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Нагрузка и батарея</span><span class="en">Load and battery</span></h2>
+      <p class="ru">Выберите Mac и режим. На Apple Silicon приложение занимает 45–90 МБ памяти и меньше 2% процессора. Для Intel значения грубее. Это оценка, точные цифры покажет Activity Monitor.</p>
+      <p class="en">Pick a Mac and a mode. On Apple Silicon the app uses 45–90 MB of memory and under 2% CPU. Intel values are rougher. This is an estimate; Activity Monitor gives exact numbers.</p>
+    </div>
+    <div class="calc reveal">
+      <div class="panel ctrl">
+        <label><span>Mac</span><select id="c-model">
+          <option value="a">MacBook Air M1, 8 GB</option><option value="a">MacBook Air M2, 8 GB</option><option value="a">MacBook Air M3, 8 GB</option>
+          <option value="a">MacBook Pro (Apple Silicon)</option><option value="i">Intel Mac</option></select></label>
+        <div><span class="fine"><span class="ru">Разрешение</span><span class="en">Resolution</span></span>
+          <div class="seg" id="c-res"><button type="button" class="chip-btn on" data-v="1">1080p</button><button type="button" class="chip-btn" data-v="2">4K</button></div></div>
+        <div><span class="fine"><span class="ru">Автопауза</span><span class="en">Auto-pause</span></span>
+          <div class="seg" id="c-ap"><button type="button" class="chip-btn on" data-v="1"><span class="ru">Включена</span><span class="en">On</span></button><button type="button" class="chip-btn" data-v="0"><span class="ru">Выключена</span><span class="en">Off</span></button></div></div>
+      </div>
+      <div class="results">
+        <div class="res"><small><span class="ru">Память</span><span class="en">Memory</span></small><b id="r-ram"></b><div class="meter"><i id="m-ram"></i></div></div>
+        <div class="res"><small>CPU</small><b id="r-cpu"></b><div class="meter"><i id="m-cpu"></i></div></div>
+        <div class="res"><small><span class="ru">Влияние на автономность</span><span class="en">Battery impact</span></small><b id="r-bat"></b><div class="meter"><i id="m-bat"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sounds" class="wrap tool-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Фоновые звуки</span><span class="en">Ambient sounds</span></h2>
+      <p class="ru">Дождь, ночной ветер и костёр звучат прямо в браузере. Включайте несколько сразу и подбирайте громкость, чтобы услышать, как будет звучать фон за работой.</p>
+      <p class="en">Rain, night wind and a campfire play right in the browser. Turn on several at once and set the volume to hear how a background sounds while you work.</p>
+    </div>
+    <div class="sounds reveal" id="sounds-list"></div>
+    <div class="vol reveal"><span class="ru">Громкость</span><span class="en">Volume</span><input type="range" id="vol" min="0" max="100" value="60" aria-label="Volume" /></div>
+  </section>
+
+  <section id="install" class="wrap install-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Установка</span><span class="en">Installation</span></h2>
+      <p class="ru">Программа раздаётся с этого сайта, в App Store её нет. Платной нотаризации Apple у неё тоже нет, поэтому macOS может остановить первый запуск. Ниже по шагам, что делать.</p>
+      <p class="en">The app is distributed from this site, not the App Store. It has no paid Apple notarization, so macOS may stop the first launch. Steps below.</p>
+    </div>
+
+    <div class="install-steps">
+      <div class="step-row reveal">
+        <div class="step-title"><span class="ru">1. Обычная установка</span><span class="en">1. Standard install</span></div>
+        <div class="step-desc">
+          <p class="ru">Откройте <strong>Silva_Quieta_Installer.dmg</strong> и перетащите <strong>Silva Quieta</strong> в папку <strong>Программы</strong>. Запускайте оттуда или через Spotlight.</p>
+          <p class="en">Open <strong>Silva_Quieta_Installer.dmg</strong> and drag <strong>Silva Quieta</strong> into <strong>Applications</strong>. Launch it from there or through Spotlight.</p>
+        </div>
+      </div>
+
+      <div class="step-row reveal">
+        <div class="step-title"><span class="ru">2. Если macOS не открывает приложение</span><span class="en">2. If macOS won't open the app</span></div>
+        <div class="step-desc">
+          <p class="fine"><span class="ru">Что написала система:</span><span class="en">What macOS says:</span></p>
+          <div class="seg" id="err-tabs">
+            <button type="button" class="chip-btn on" data-e="e1"><span class="ru">Не удалось проверить разработчика</span><span class="en">Developer cannot be verified</span></button>
+            <button type="button" class="chip-btn" data-e="e2"><span class="ru">Приложение повреждено</span><span class="en">App is damaged</span></button>
+            <button type="button" class="chip-btn" data-e="e3"><span class="ru">Ничего не помогает</span><span class="en">Nothing helps</span></button>
+          </div>
+
+          <div class="err-panel on" id="e1">
+            <p class="ru">Откройте приложение один раз и нажмите «ОК». Затем зайдите в <strong>Системные настройки → Конфиденциальность и безопасность</strong>, прокрутите вниз и нажмите <strong>«Всё равно открыть»</strong> рядом с Silva Quieta. Кнопка появляется только после первой неудачной попытки. Названия пунктов немного отличаются в Ventura, Sonoma, Sequoia и Tahoe.</p>
+            <p class="en">Open the app once and click OK. Then go to <strong>System Settings → Privacy &amp; Security</strong>, scroll down and click <strong>Open Anyway</strong> next to Silva Quieta. The button only appears after a first failed attempt. Wording differs slightly across Ventura, Sonoma, Sequoia and Tahoe.</p>
+          </div>
+          <div class="err-panel" id="e2">
+            <p class="ru">Так Gatekeeper реагирует на программы без нотаризации: на файле остаётся карантинный атрибут. Откройте <strong>Терминал</strong>, вставьте команду и нажмите Enter:</p>
+            <p class="en">This is how Gatekeeper treats apps without notarization: the file still carries the quarantine attribute. Open <strong>Terminal</strong>, paste the command and press Enter:</p>
+            <div class="cmd-box"><code id="xattr-cmd">xattr -cr "/Applications/Silva Quieta.app"</code><button type="button" class="copy-btn" data-copy="xattr-cmd"><span class="ru">Копировать</span><span class="en">Copy</span></button></div>
+          </div>
+          <div class="err-panel" id="e3">
+            <p class="ru">Крайний случай: на время отключите проверку Gatekeeper для всей системы, запустите приложение один раз и включите проверку обратно.</p>
+            <p class="en">Last resort: turn Gatekeeper off system-wide for a moment, launch the app once, then turn it back on.</p>
+            <div class="cmd-box"><code id="spctl-cmd">sudo spctl --master-disable</code><button type="button" class="copy-btn" data-copy="spctl-cmd"><span class="ru">Копировать</span><span class="en">Copy</span></button></div>
+            <div class="cmd-box"><code id="spctl-on">sudo spctl --master-enable</code><button type="button" class="copy-btn" data-copy="spctl-on"><span class="ru">Копировать</span><span class="en">Copy</span></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guides" class="wrap tool-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Гайды</span><span class="en">Guides</span></h2>
+    </div>
+
+    <div class="guide-block reveal">
+      <h3><span class="ru">Разные обои для мониторов и Spaces</span><span class="en">Different wallpapers per display and Space</span></h3>
+      <ol class="ru"><li>Перейдите на нужный рабочий стол Spaces.</li><li>Откройте галерею: <strong>⌃⌥⌘G</strong> или значок в строке меню.</li><li>Если мониторов несколько, выберите экран в переключателе сверху: «Все экраны» или конкретный.</li><li>Выберите сцену, и она применится к текущему рабочему столу.</li></ol>
+      <ol class="en"><li>Switch to the Space you want.</li><li>Open the gallery: <strong>⌃⌥⌘G</strong> or the menu bar icon.</li><li>With several displays, pick the screen in the switcher at the top: All displays or a specific one.</li><li>Choose a scene and it is applied to the current desktop.</li></ol>
+    </div>
+
+    <div class="guide-block reveal">
+      <h3><span class="ru">Свои бесшовные лупы</span><span class="en">Making your own seamless loops</span></h3>
+      <p class="ru">Стык в петле прячет <code>AVPlayerLooper</code>, но шов внутри самого видео он не уберёт. Поэтому первый и последний кадры должны совпадать: плавный кроссфейд в последнюю секунду и никакого дрейфа камеры.</p>
+      <p class="en"><code>AVPlayerLooper</code> hides the join between passes, but it cannot remove a seam inside the video itself. So the first and last frames must match: a smooth crossfade over the last second and no camera drift.</p>
+      <div class="scroll-x"><table class="mini-table"><tr><th>Codec</th><th><span class="ru">Декодирование</span><span class="en">Decoding</span></th><th><span class="ru">Когда брать</span><span class="en">When to use</span></th></tr>
+        <tr><td>HEVC (H.265)</td><td><span class="ru">Аппаратное на Apple Silicon</span><span class="en">Hardware on Apple Silicon</span></td><td><span class="ru">4K, когда важен размер файла</span><span class="en">4K when file size matters</span></td></tr>
+        <tr><td>H.264</td><td><span class="ru">Аппаратное на всех Mac</span><span class="en">Hardware on every Mac</span></td><td><span class="ru">Запасной вариант и Intel</span><span class="en">Fallback and Intel Macs</span></td></tr></table></div>
+      <p class="fine ru">С такой команды можно начать сжатие в HEVC. Значение CRF подберите на глаз: меньше число, больше файл.</p>
+      <p class="fine en">Start HEVC encoding with this command. Tune CRF by eye: a lower number means a bigger file.</p>
+      <div class="cmd-box"><code id="g-ff">ffmpeg -i in.mov -c:v libx265 -tag:v hvc1 -crf 23 -preset slow -an loop.mp4</code><button type="button" class="copy-btn" data-copy="g-ff"><span class="ru">Копировать</span><span class="en">Copy</span></button></div>
+    </div>
+  </section>
+
+  <section id="compat" class="wrap specs-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Совместимость и приватность</span><span class="en">Compatibility and privacy</span></h2>
+      <p class="ru">Видео, превью и настройки лежат только на вашем компьютере.</p>
+      <p class="en">Videos, thumbnails and preferences stay on your computer only.</p>
+    </div>
+    <div class="table-list reveal">
+      <div class="t-row"><span><span class="ru">Система</span><span class="en">System</span></span><span class="t-val">macOS 13 Ventura, Sonoma, Sequoia, Tahoe</span></div>
+      <div class="t-row"><span><span class="ru">Процессоры</span><span class="en">Processors</span></span><span class="t-val">Apple Silicon (M1–M5), Intel</span></div>
+      <div class="t-row"><span><span class="ru">Форматы</span><span class="en">Formats</span></span><span class="t-val"><span class="ru">Видео: MP4, MOV, M4V. Аудио: MP3, WAV, M4A, AIFF</span><span class="en">Video: MP4, MOV, M4V. Audio: MP3, WAV, M4A, AIFF</span></span></div>
+      <div class="t-row"><span><span class="ru">Данные и реклама</span><span class="en">Data and ads</span></span><span class="t-val"><span class="ru">Ничего не собирается, рекламы нет. Интернет нужен для update.json и загрузки сцен</span><span class="en">Nothing is collected, no ads. The network is used for update.json and scene downloads</span></span></div>
+    </div>
+  </section>
+
+  <section id="faq" class="wrap faq-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Вопросы</span><span class="en">FAQ</span></h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary><span class="ru">Приложение сажает батарею?</span><span class="en">Does it drain the battery?</span></summary>
+        <p class="ru">Видео декодируется аппаратно, на это уходит немного энергии. Кроме того, по умолчанию включена пауза при работе от аккумулятора и при окнах на весь экран.</p>
+        <p class="en">Decoding is done in hardware, which costs little energy. On top of that, pausing on battery power and behind full-screen windows is on by default.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="ru">Сколько памяти занимает приложение?</span><span class="en">How much memory does it use?</span></summary>
+        <p class="ru">На Apple Silicon 45–90 МБ, в зависимости от сцены и разрешения. На Mac с 8 ГБ в кэше держатся три сцены.</p>
+        <p class="en">On Apple Silicon, 45–90 MB depending on the scene and resolution. On a Mac with 8 GB, three scenes stay cached.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="ru">Где лежат добавленные видео?</span><span class="en">Where are my imported videos stored?</span></summary>
+        <p class="ru">В папке Application Support. Открыть её можно кнопкой «Открыть папку» в окне галереи или из меню в строке меню.</p>
+        <p class="en">In the Application Support folder. Open it with the Open Folder button in the gallery window or from the menu bar menu.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="ru">Как приходят обновления?</span><span class="en">How do updates work?</span></summary>
+        <p class="ru">При запуске и по пункту «Проверить обновления…» программа сверяет версию с silvaquieta.com. Если есть новая, откроется окно со списком изменений и кнопкой загрузки.</p>
+        <p class="en">At launch and through Check for Updates… the app compares its version with silvaquieta.com. If a newer one exists, a window shows the release notes and a download button.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="ru">Можно ли поставить обои только на один монитор?</span><span class="en">Can I set a wallpaper on just one display?</span></summary>
+        <p class="ru">Да. Если мониторов два или больше, в галерее появляется переключатель экранов: «Все экраны» или конкретный монитор.</p>
+        <p class="en">Yes. With two or more displays, a screen switcher appears in the gallery: All displays or a specific one.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="ru">Почему macOS ругается при первом запуске?</span><span class="en">Why does macOS complain on first launch?</span></summary>
+        <p class="ru">У приложения нет платной нотаризации Apple, а Gatekeeper проверяет её у всех программ вне App Store. Что нажать и какую команду выполнить, написано в разделе «Установка».</p>
+        <p class="en">The app has no paid Apple notarization, and Gatekeeper checks for it on every app from outside the App Store. What to click and which command to run is in the Installation section.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="releases" class="wrap tool-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Версии</span><span class="en">Versions</span></h2>
+    </div>
+    <div class="road-col reveal">
+      <div>
+        <h4><span id="rm-title">Silva Quieta 1.3.0</span><time id="rm-ver">1.3.0</time></h4>
+        <ul class="release-notes" id="rm-list">
+          <li class="ru">Онлайн-каталог на миллионы 4K и FullHD сцен, загрузка в один клик</li><li class="en">Online catalog of millions of 4K and FullHD scenes, one-click download</li>
+          <li class="ru">Генератор 2.5D-обоев из любого фото или скриншота в Retina-разрешении</li><li class="en">2.5D wallpaper generator from any photo or screenshot in Retina resolution</li>
+          <li class="ru">GPU-частицы «Светлячки», «Снег» и «Звёзды», реагирующие на курсор</li><li class="en">GPU particles (Fireflies, Snow, Stars) that react to the cursor</li>
+          <li class="ru">Воспроизведение стало ровнее, а эффекты в фоне ставятся на паузу</li><li class="en">Smoother playback, and effects pause in the background</li>
+        </ul>
+        <h4 style="margin-top:32px">1.2.0</h4>
+        <ul class="release-notes">
+          <li class="ru">Проверка обновлений и окно со списком изменений</li><li class="en">Update check and release notes window</li>
+          <li class="ru">Кэш видео и миниатюр под MacBook Air M1 (8 ГБ)</li><li class="en">Video and thumbnail cache tuned for MacBook Air M1 (8 GB)</li>
+          <li class="ru">Фоновый звук и свои аудиодорожки</li><li class="en">Ambient audio and custom tracks</li>
+          <li class="ru">Галерея и настройки открываются на активном Spaces</li><li class="en">Gallery and preferences open on the active Space</li>
+        </ul>
+      </div>
+      <div>
+        <h4><span class="ru">Что дальше</span><span class="en">What's next</span></h4>
+        <p class="ru">Идеи и ошибки лучше всего писать в Issues на GitHub: там видно, что уже обсуждается и что в работе.</p>
+        <p class="en">Ideas and bug reports are best posted in GitHub Issues, where you can see what is already being discussed or worked on.</p>
+        <p class="fine"><a href="https://github.com/matviukuzmenko-cloud/silva-quieta/issues">GitHub Issues</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="submit" class="wrap tool-section">
+    <div class="section-intro reveal">
+      <h2><span class="ru">Авторам сцен</span><span class="en">For scene authors</span></h2>
+      <p class="ru">Если вы снимаете или рисуете свои видео-лупы и хотите увидеть их в каталоге, пришлите ссылку через Issues на GitHub. Вот что мы смотрим.</p>
+      <p class="en">If you shoot or render your own video loops and would like them in the catalog, send a link through GitHub Issues. Here is what we look at.</p>
+    </div>
+    <div class="table-list reveal">
+      <div class="t-row"><span><span class="ru">Формат</span><span class="en">Format</span></span><span class="t-val">HEVC / H.264, .mp4 / .mov</span></div>
+      <div class="t-row"><span><span class="ru">Разрешение</span><span class="en">Resolution</span></span><span class="t-val">3840×2160 (1920×1080 <span class="ru">тоже подходит</span><span class="en">is fine too</span>)</span></div>
+      <div class="t-row"><span><span class="ru">Петля</span><span class="en">Loop</span></span><span class="t-val"><span class="ru">Бесшовная, без звука или со своим треком</span><span class="en">Seamless, silent or with its own track</span></span></div>
+      <div class="t-row"><span><span class="ru">Права</span><span class="en">Rights</span></span><span class="t-val"><span class="ru">Ваш материал или понятная лицензия</span><span class="en">Your own footage or a clear license</span></span></div>
+      <div class="t-row"><span><span class="ru">Куда отправить</span><span class="en">Where to send</span></span><span class="t-val"><a href="https://github.com/matviukuzmenko-cloud/silva-quieta/issues/new">GitHub Issues</a></span></div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <span>Silva Quieta <span id="foot-ver">1.3.0</span> · silvaquieta.com</span>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/download.html"><span class="ru">Скачать</span><span class="en">Download</span></a>
+        <a href="/install.html"><span class="ru">Установка</span><span class="en">Install</span></a>
+        <a href="/changelog.html"><span class="ru">Обновления</span><span class="en">Changelog</span></a>
+        <a href="/faq.html"><span class="ru">Вопросы</span><span class="en">FAQ</span></a>
+        <a href="#submit"><span class="ru">Авторам</span><span class="en">Authors</span></a>
+        <a href="/privacy.html"><span class="ru">Приватность</span><span class="en">Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="portal.js"></script>
+</body>
+</html>
