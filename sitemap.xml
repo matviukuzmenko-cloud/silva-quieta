@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://sitemaps.org">
-  <url>
-    <loc>https://silvaquieta.com</loc>
-    <lastmod>2026-11-24</lastmod>
-    <priority>1.0</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://silvaquieta.com/</loc></url>
+  <url><loc>https://silvaquieta.com/download.html</loc></url>
+  <url><loc>https://silvaquieta.com/install.html</loc></url>
+  <url><loc>https://silvaquieta.com/faq.html</loc></url>
+  <url><loc>https://silvaquieta.com/changelog.html</loc></url>
+  <url><loc>https://silvaquieta.com/privacy.html</loc></url>
 </urlset>
