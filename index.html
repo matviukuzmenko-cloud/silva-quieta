@@ -46,10 +46,9 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
       <a href="#top" class="logo"><svg width="18" height="21" viewBox="0 0 22 26" fill="currentColor" aria-hidden="true"><path d="M11 1 5 9h3l-5 7h4l-5 7h18l-5-7h4l-5-7h3z"/><rect x="10" y="23" width="2" height="3"/></svg><span>Silva Quieta</span></a>
       <nav class="menu" id="menu" aria-label="Main">
         <a href="#features"><span class="ru">Возможности</span><span class="en">Features</span></a>
-        <a href="#catalog"><span class="ru">Каталог</span><span class="en">Catalog</span></a>
-        <a href="#playground"><span class="ru">Песочница</span><span class="en">Playground</span></a>
-        <a href="install.html"><span class="ru">Установка</span><span class="en">Install</span></a>
-        <a href="faq.html"><span class="ru">Вопросы</span><span class="en">FAQ</span></a>
+        <a href="#install"><span class="ru">Установка</span><span class="en">Install</span></a>
+        <a href="#updates"><span class="ru">Обновления</span><span class="en">Updates</span></a>
+        <a href="#faq"><span class="ru">Вопросы</span><span class="en">FAQ</span></a>
       </nav>
       <div class="controls">
         <button id="lang-btn" class="icon-btn text" type="button" aria-label="Language"><span class="ru">EN</span><span class="en">RU</span></button>
@@ -69,7 +68,7 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
 <p class="en lead reveal">Video wallpapers written in Swift and AVFoundation. No account, no subscription, no servers. The Media Engine decodes the clip, so the CPU stays almost idle and your MacBook keeps its charge longer.</p>
       <div class="cta-row reveal">
         <a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg" class="btn" data-dl><span class="ru">Скачать для macOS</span><span class="en">Download for macOS</span></a>
-        <a href="install.html" class="btn-ghost"><span class="ru">Как установить</span><span class="en">How to install</span></a>
+        <a href="#install" class="btn-ghost"><span class="ru">Как установить</span><span class="en">How to install</span></a>
       </div>
       <p class="note reveal"><span class="ru">Бесплатно · Apple Silicon (M1–M5) и Intel</span><span class="en">Free · Apple Silicon (M1–M5) and Intel</span></p>
 
@@ -122,74 +121,57 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
       </div>
     </section>
 
-    <section id="catalog" class="section wrap">
+    <section id="install" class="section wrap">
       <div class="section-head reveal">
-        <h2><span class="ru">Каталог сцен</span><span class="en">Scene catalog</span></h2>
-        <p class="ru">Выберите тему и откройте сцену на весь экран. Подвигайте курсор: картинка смещается так же, как в приложении.</p>
-<p class="en">Pick a theme and open a scene full screen. Move the cursor and the image shifts the way it does in the app.</p>
+        <h2><span class="ru">Скачать и установить</span><span class="en">Download and install</span></h2>
+        <p class="ru">Программа раздаётся с этого сайта, в App Store её нет. Платной нотаризации Apple у неё тоже нет, поэтому macOS может остановить первый запуск. Ниже по шагам, что делать.</p>
+<p class="en">The app is distributed from this site, not the App Store. It has no paid Apple notarization, so macOS may stop the first launch. Steps below.</p>
       </div>
-      <div class="filters reveal" id="cat-filters">
-      <button type="button" class="chip on" data-cat=""><span class="ru">Все</span><span class="en">All</span></button>
-      <button type="button" class="chip" data-cat="nature"><span class="ru">Природа</span><span class="en">Nature</span></button>
-      <button type="button" class="chip" data-cat="night"><span class="ru">Ночь</span><span class="en">Night</span></button>
-      <button type="button" class="chip" data-cat="rain"><span class="ru">Дождь</span><span class="en">Rain</span></button>
-      <button type="button" class="chip" data-cat="space"><span class="ru">Космос</span><span class="en">Space</span></button>
-      <button type="button" class="chip" data-cat="minimal"><span class="ru">Минимализм</span><span class="en">Minimal</span></button>
-      </div>
-      <div class="scene-grid reveal" id="scene-grid">
-      <button type="button" class="scene" data-cat="nature" data-ru="Туманный лес" data-en="Misty forest" data-full="https://images.unsplash.com/photo-1760772481955-dcb947cb2d3f?auto=format&fit=crop&w=1800&q=72" style="--c1:#10201a;--c2:#050908"><span class="cover"><img src="https://images.unsplash.com/photo-1760772481955-dcb947cb2d3f?auto=format&fit=crop&w=800&q=72" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="meta"><b><span class="ru">Туманный лес</span><span class="en">Misty forest</span></b><span><span class="ru">Природа</span><span class="en">Nature</span></span></span></button>
-      <button type="button" class="scene" data-cat="nature" data-ru="Горы в тумане" data-en="Misty peak" data-full="https://images.unsplash.com/photo-1767486463574-6414a6d974dc?auto=format&fit=crop&w=1800&q=72" style="--c1:#1a2428;--c2:#080b0c"><span class="cover"><img src="https://images.unsplash.com/photo-1767486463574-6414a6d974dc?auto=format&fit=crop&w=800&q=72" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="meta"><b><span class="ru">Горы в тумане</span><span class="en">Misty peak</span></b><span><span class="ru">Природа</span><span class="en">Nature</span></span></span></button>
-      <button type="button" class="scene" data-cat="rain" data-ru="Дождь за стеклом" data-en="Rain on glass" data-full="https://images.unsplash.com/photo-1627145397828-3e471bd1a603?auto=format&fit=crop&w=1800&q=72" style="--c1:#1c2630;--c2:#0a0e12"><span class="cover"><img src="https://images.unsplash.com/photo-1627145397828-3e471bd1a603?auto=format&fit=crop&w=800&q=72" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="meta"><b><span class="ru">Дождь за стеклом</span><span class="en">Rain on glass</span></b><span><span class="ru">Дождь</span><span class="en">Rain</span></span></span></button>
-      <button type="button" class="scene" data-cat="night" data-ru="Ночной город" data-en="Night city" data-full="https://images.unsplash.com/photo-1601619933635-023753974a65?auto=format&fit=crop&w=1800&q=72" style="--c1:#101a33;--c2:#05070e"><span class="cover"><img src="https://images.unsplash.com/photo-1601619933635-023753974a65?auto=format&fit=crop&w=800&q=72" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="meta"><b><span class="ru">Ночной город</span><span class="en">Night city</span></b><span><span class="ru">Ночь</span><span class="en">Night</span></span></span></button>
-      <button type="button" class="scene" data-cat="space" data-ru="Млечный Путь" data-en="Milky Way" data-full="https://images.unsplash.com/photo-1667667515578-bab41f093e40?auto=format&fit=crop&w=1800&q=72" style="--c1:#0c1030;--c2:#030409"><span class="cover"><img src="https://images.unsplash.com/photo-1667667515578-bab41f093e40?auto=format&fit=crop&w=800&q=72" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="meta"><b><span class="ru">Млечный Путь</span><span class="en">Milky Way</span></b><span><span class="ru">Космос</span><span class="en">Space</span></span></span></button>
-      <button type="button" class="scene" data-cat="minimal" data-ru="Дюны" data-en="Dunes" data-full="https://images.unsplash.com/photo-1572072393749-3ca9c8ea0831?auto=format&fit=crop&w=1800&q=72" style="--c1:#2a2118;--c2:#0d0a07"><span class="cover"><img src="https://images.unsplash.com/photo-1572072393749-3ca9c8ea0831?auto=format&fit=crop&w=800&q=72" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="meta"><b><span class="ru">Дюны</span><span class="en">Dunes</span></b><span><span class="ru">Минимализм</span><span class="en">Minimal</span></span></span></button>
+      <div class="steps reveal">
+        <div class="step">
+          <h3><span class="ru">1. Установка</span><span class="en">1. Install</span></h3>
+          <div>
+            <p class="ru">Скачайте <strong>Silva_Quieta_Installer.dmg</strong>, откройте его и перетащите <strong>Silva Quieta</strong> в папку <strong>Программы</strong>. Запускайте оттуда или через Spotlight.</p>
+<p class="en">Download <strong>Silva_Quieta_Installer.dmg</strong>, open it and drag <strong>Silva Quieta</strong> into <strong>Applications</strong>. Launch it from there or through Spotlight.</p>
+            <div class="cta-row"><a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg" class="btn sm" data-dl><span class="ru">Скачать .dmg</span><span class="en">Download .dmg</span></a></div>
+          </div>
+        </div>
+        <div class="step">
+          <h3><span class="ru">2. «Не удалось проверить разработчика»</span><span class="en">2. “Developer cannot be verified”</span></h3>
+          <div>
+            <p class="ru">Откройте приложение один раз и нажмите «ОК». Затем зайдите в <strong>Системные настройки → Конфиденциальность и безопасность</strong>, прокрутите вниз и нажмите <strong>«Всё равно открыть»</strong> рядом с Silva Quieta. Кнопка появляется только после первой неудачной попытки.</p>
+<p class="en">Open the app once and click OK. Then go to <strong>System Settings → Privacy &amp; Security</strong>, scroll down and click <strong>Open Anyway</strong> next to Silva Quieta. The button only appears after a first failed attempt.</p>
+          </div>
+        </div>
+        <div class="step">
+          <h3><span class="ru">3. «Приложение повреждено» (обход Gatekeeper)</span><span class="en">3. “App is damaged” (Gatekeeper bypass)</span></h3>
+          <div>
+            <p class="ru">Так Gatekeeper реагирует на программы без нотаризации: на файле остаётся карантинный атрибут. Откройте <strong>Терминал</strong>, вставьте команду и нажмите Enter:</p>
+<p class="en">This is how Gatekeeper treats apps without notarization: the file still carries the quarantine attribute. Open <strong>Terminal</strong>, paste the command and press Enter:</p>
+            <div class="cmd"><code id="c1">xattr -cr "/Applications/Silva Quieta.app"</code><button type="button" class="chip" data-copy="c1"><span class="ru">Копировать</span><span class="en">Copy</span></button></div>
+          </div>
+        </div>
+        <div class="step">
+          <h3><span class="ru">4. Если ничего не помогает</span><span class="en">4. If nothing helps</span></h3>
+          <div>
+            <p class="ru">Крайний случай: на время отключите проверку Gatekeeper для всей системы, запустите приложение один раз и сразу включите проверку обратно.</p>
+<p class="en">Last resort: turn Gatekeeper off system-wide for a moment, launch the app once, then turn it back on right away.</p>
+            <div class="cmd"><code id="c2">sudo spctl --master-disable</code><button type="button" class="chip" data-copy="c2"><span class="ru">Копировать</span><span class="en">Copy</span></button></div>
+            <div class="cmd"><code id="c3">sudo spctl --master-enable</code><button type="button" class="chip" data-copy="c3"><span class="ru">Копировать</span><span class="en">Copy</span></button></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="playground" class="section wrap">
+    <section id="updates" class="section wrap">
       <div class="section-head reveal">
-        <h2><span class="ru">Песочница эффектов</span><span class="en">Effects playground</span></h2>
-        <p class="ru">Двигайте курсор над картинкой: фон и частицы смещаются с разной скоростью, как в 2.5D-режиме приложения. Можно загрузить своё фото или перетащить его на превью.</p>
-<p class="en">Move the cursor over the image: the background and particles shift at different speeds, like the app's 2.5D mode. Load your own photo or drop it onto the preview.</p>
+        <h2><span class="ru">Обновления</span><span class="en">Updates</span></h2>
+        <p class="ru">Программа сама проверяет версию при запуске и по пункту «Проверить обновления…» в строке меню.</p>
+<p class="en">The app checks for a new version at launch and through Check for Updates… in the menu bar.</p>
       </div>
-      <div class="lab reveal">
-        <div class="lab-view" id="lab-view">
-          <img class="lab-img" id="lab-img" alt="" decoding="async">
-          <canvas class="lab-fx" id="lab-fx"></canvas>
-          <div class="lab-dim" id="lab-dim"></div>
-          <div class="lab-vignette"></div>
-        </div>
-        <div class="panel">
-          <div class="field">
-            <div class="label"><span class="ru">Фон</span><span class="en">Background</span></div>
-            <div class="thumbs" id="lab-thumbs">
-            <button type="button" class="thumb on" data-full="https://images.unsplash.com/photo-1760772481955-dcb947cb2d3f?auto=format&fit=crop&w=1600&q=72" data-ru="Туманный лес" data-en="Misty forest" style="--c1:#10201a;--c2:#050908" aria-pressed="true" title="Туманный лес / Misty forest"><img src="https://images.unsplash.com/photo-1760772481955-dcb947cb2d3f?auto=format&fit=crop&w=360&q=72" alt="" loading="lazy" decoding="async" onerror="this.remove()"></button>
-            <button type="button" class="thumb" data-full="https://images.unsplash.com/photo-1627145397828-3e471bd1a603?auto=format&fit=crop&w=1600&q=72" data-ru="Дождь за стеклом" data-en="Rain on glass" style="--c1:#1c2630;--c2:#0a0e12" aria-pressed="false" title="Дождь за стеклом / Rain on glass"><img src="https://images.unsplash.com/photo-1627145397828-3e471bd1a603?auto=format&fit=crop&w=360&q=72" alt="" loading="lazy" decoding="async" onerror="this.remove()"></button>
-            <button type="button" class="thumb" data-full="https://images.unsplash.com/photo-1601619933635-023753974a65?auto=format&fit=crop&w=1600&q=72" data-ru="Ночной город" data-en="Night city" style="--c1:#101a33;--c2:#05070e" aria-pressed="false" title="Ночной город / Night city"><img src="https://images.unsplash.com/photo-1601619933635-023753974a65?auto=format&fit=crop&w=360&q=72" alt="" loading="lazy" decoding="async" onerror="this.remove()"></button>
-            </div>
-            <input type="file" id="lab-file" class="file-input" accept="image/*">
-            <label for="lab-file" class="btn-ghost sm"><span class="ru">Загрузить своё фото</span><span class="en">Upload your photo</span></label>
-          </div>
-          <div class="field">
-            <div class="label"><span><span class="ru">Параллакс</span><span class="en">Parallax</span></span><output id="o-par">60</output></div>
-            <input type="range" id="lab-par" min="0" max="100" value="60" aria-label="Parallax">
-          </div>
-          <div class="field">
-            <div class="label"><span><span class="ru">Затемнение, %</span><span class="en">Dimming, %</span></span><output id="o-dim">20</output></div>
-            <input type="range" id="lab-dim-range" min="0" max="75" value="20" aria-label="Dimming">
-          </div>
-          <div class="field">
-            <div class="label"><span class="ru">Частицы</span><span class="en">Particles</span></div>
-            <div class="seg" id="lab-fx-seg">
-              <button type="button" class="chip on" data-fx="fire"><span class="ru">Светлячки</span><span class="en">Fireflies</span></button>
-              <button type="button" class="chip" data-fx="snow"><span class="ru">Снег</span><span class="en">Snow</span></button>
-              <button type="button" class="chip" data-fx="star"><span class="ru">Звёзды</span><span class="en">Stars</span></button>
-              <button type="button" class="chip" data-fx="none"><span class="ru">Нет</span><span class="en">None</span></button>
-            </div>
-          </div>
-          <p class="ru hint">Фото обрабатывается в браузере и никуда не отправляется. В приложении слои строятся по карте глубины, здесь изображение просто смещается.</p>
-<p class="en hint">Your photo is processed in the browser and never uploaded. The app builds layers from a depth map; here the image is simply offset.</p>
-        </div>
+      <div class="steps reveal">
+        <div class="step"><h3>1.3.0<time>2026-11-24</time></h3><ul class="plain"><li><span class="ru">Онлайн-каталог 4K и FullHD сцен, загрузка в один клик</span><span class="en">Online catalog of 4K and FullHD scenes, one-click download</span></li><li><span class="ru">2.5D-обои из любого фото или скриншота в Retina-разрешении</span><span class="en">2.5D wallpapers from any photo or screenshot in Retina resolution</span></li><li><span class="ru">GPU-частицы «Светлячки», «Снег» и «Звёзды», реагирующие на курсор</span><span class="en">GPU particles (Fireflies, Snow, Stars) that react to the cursor</span></li><li><span class="ru">Воспроизведение стало ровнее, эффекты в фоне ставятся на паузу</span><span class="en">Smoother playback; effects pause in the background</span></li></ul></div>
+        <div class="step"><h3>1.2.0</h3><ul class="plain"><li><span class="ru">Проверка обновлений и окно со списком изменений</span><span class="en">Update check and release notes window</span></li><li><span class="ru">Кэш видео и миниатюр под MacBook Air M1 (8 ГБ)</span><span class="en">Video and thumbnail cache tuned for MacBook Air M1 (8 GB)</span></li><li><span class="ru">Фоновый звук и свои аудиодорожки</span><span class="en">Ambient audio and custom tracks</span></li><li><span class="ru">Галерея и настройки открываются на активном Spaces</span><span class="en">Gallery and preferences open on the active Space</span></li></ul></div>
       </div>
     </section>
 
@@ -217,41 +199,74 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
       </div>
     </section>
 
+    <section id="faq" class="section wrap">
+      <div class="section-head reveal"><h2><span class="ru">Вопросы</span><span class="en">FAQ</span></h2></div>
+      <div class="faq-list reveal">
+        <details><summary><span class="ru">Приложение сажает батарею?</span><span class="en">Does it drain the battery?</span></summary><p class="ru">Видео декодируется аппаратно, и энергии на это уходит немного. К тому же по умолчанию включена пауза при работе от аккумулятора и при окнах на весь экран.</p>
+<p class="en">Decoding is done in hardware, which costs little energy. On top of that, pausing on battery power and behind full-screen windows is on by default.</p></details>
+        <details><summary><span class="ru">Сколько памяти занимает приложение?</span><span class="en">How much memory does it use?</span></summary><p class="ru">На Apple Silicon 45–90 МБ, в зависимости от сцены и разрешения. На Mac с 8 ГБ в кэше держатся три сцены.</p>
+<p class="en">On Apple Silicon, 45–90 MB depending on the scene and resolution. On a Mac with 8 GB, three scenes stay cached.</p></details>
+        <details><summary><span class="ru">Где лежат добавленные видео?</span><span class="en">Where are my imported videos stored?</span></summary><p class="ru">В папке Application Support. Открыть её можно кнопкой «Открыть папку» в окне галереи или из меню в строке меню.</p>
+<p class="en">In the Application Support folder. Open it with the Open Folder button in the gallery window or from the menu bar menu.</p></details>
+        <details><summary><span class="ru">Как приходят обновления?</span><span class="en">How do updates work?</span></summary><p class="ru">При запуске и по пункту «Проверить обновления…» программа сверяет версию с silvaquieta.com. Если есть новая, откроется окно со списком изменений и кнопкой загрузки.</p>
+<p class="en">At launch and through Check for Updates… the app compares its version with silvaquieta.com. If a newer one exists, a window shows the release notes and a download button.</p></details>
+        <details><summary><span class="ru">Можно ли поставить обои только на один монитор?</span><span class="en">Can I set a wallpaper on just one display?</span></summary><p class="ru">Да. Если мониторов два или больше, в галерее появляется переключатель экранов: «Все экраны» или конкретный монитор.</p>
+<p class="en">Yes. With two or more displays, a screen switcher appears in the gallery: All displays or a specific one.</p></details>
+        <details><summary><span class="ru">Почему macOS ругается при первом запуске?</span><span class="en">Why does macOS complain on first launch?</span></summary><p class="ru">У приложения нет платной нотаризации Apple, а Gatekeeper проверяет её у всех программ вне App Store. Что нажать и какую команду выполнить, описано в разделе <a href="install.html">«Установка»</a>.</p>
+<p class="en">The app has no paid Apple notarization, and Gatekeeper checks for it on every app from outside the App Store. What to click and which command to run is in <a href="install.html">Install</a>.</p></details>
+        <details><summary><span class="ru">Какие форматы поддерживаются?</span><span class="en">Which formats are supported?</span></summary><p class="ru">Видео: MP4, MOV, M4V. Аудио: MP3, WAV, M4A, AIFF.</p>
+<p class="en">Video: MP4, MOV, M4V. Audio: MP3, WAV, M4A, AIFF.</p></details>
+      </div>
+    </section>
+
     <section class="section wrap cta-band">
       <div class="reveal">
         <h2><span class="ru">Бесплатно, без аккаунта</span><span class="en">Free, no account</span></h2>
-        <p class="ru">Программа раздаётся с этого сайта, не из App Store. Если macOS остановит первый запуск, в инструкции написано, что нажать.</p>
-<p class="en">The app is distributed from this site, not the App Store. If macOS stops the first launch, the guide shows what to click.</p>
+        <p class="ru">Версия 1.3.0 для macOS 13 и новее. Если macOS остановит первый запуск, обход Gatekeeper описан выше.</p>
+<p class="en">Version 1.3.0 for macOS 13 and later. If macOS stops the first launch, the Gatekeeper bypass is described above.</p>
         <div class="cta-row">
           <a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg" class="btn" data-dl><span class="ru">Скачать для macOS</span><span class="en">Download for macOS</span></a>
-          <a href="install.html" class="btn-ghost"><span class="ru">Инструкция по установке</span><span class="en">Installation guide</span></a>
+          <a href="#install" class="btn-ghost"><span class="ru">Как установить</span><span class="en">How to install</span></a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <dialog class="lb" id="lb" aria-label="Scene preview">
-    <button type="button" class="lb-close" id="lb-close" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
-    <div class="lb-view" id="lb-view"><img id="lb-img" alt=""></div>
-    <div class="lb-bar"><b id="lb-title"></b><span><span class="ru">Подвигайте курсор</span><span class="en">Move the cursor</span></span></div>
-  </dialog>
 
   <footer class="site-footer">
-    <div class="wrap footer-row">
-      <span>Silva Quieta <span data-ver>1.3.0</span> · silvaquieta.com</span>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="download.html"><span class="ru">Скачать</span><span class="en">Download</span></a>
-        <a href="install.html"><span class="ru">Установка</span><span class="en">Install</span></a>
-        <a href="changelog.html"><span class="ru">Обновления</span><span class="en">Changelog</span></a>
-        <a href="faq.html"><span class="ru">Вопросы</span><span class="en">FAQ</span></a>
-        <a href="privacy.html"><span class="ru">Приватность</span><span class="en">Privacy</span></a>
-        <a href="https://github.com/matviukuzmenko-cloud/silva-quieta">GitHub</a>
-      </nav>
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="index.html" class="logo"><svg width="18" height="21" viewBox="0 0 22 26" fill="currentColor" aria-hidden="true"><path d="M11 1 5 9h3l-5 7h4l-5 7h18l-5-7h4l-5-7h3z"/><rect x="10" y="23" width="2" height="3"/></svg><span>Silva Quieta</span></a>
+          <p class="ru">Бесплатное приложение для macOS 13 и новее, которое ставит на рабочий стол видео вместо статичных обоев. Написано на Swift и AVFoundation, живёт в строке меню, поддерживает несколько мониторов и рабочие столы Spaces, ставится на паузу на батарее и в полноэкранных окнах и ничего не собирает о вас. Распространяется с этого сайта, а не из App Store, поэтому при первом запуске может понадобиться обход Gatekeeper: шаги описаны в разделе «Установка».</p>
+<p class="en">A free app for macOS 13 and later that puts video on your desktop instead of a still wallpaper. Written in Swift and AVFoundation, it lives in the menu bar, supports multiple displays and Spaces desktops, pauses on battery and behind full-screen windows, and collects nothing about you. It is distributed from this site rather than the App Store, so the first launch may need a Gatekeeper bypass: the steps are in the Install section.</p>
+        </div>
+        <nav class="footer-cols" aria-label="Footer">
+          <div>
+            <h4><span class="ru">Приложение</span><span class="en">App</span></h4>
+            <a href="index.html#features"><span class="ru">Возможности</span><span class="en">Features</span></a>
+            <a href="index.html#install"><span class="ru">Установка</span><span class="en">Install</span></a>
+            <a href="index.html#updates"><span class="ru">Обновления</span><span class="en">Updates</span></a>
+            <a href="index.html#faq"><span class="ru">Вопросы</span><span class="en">FAQ</span></a>
+          </div>
+          <div>
+            <h4><span class="ru">Страницы</span><span class="en">Pages</span></h4>
+            <a href="download.html"><span class="ru">Скачать</span><span class="en">Download</span></a>
+            <a href="changelog.html"><span class="ru">Список изменений</span><span class="en">Changelog</span></a>
+            <a href="privacy.html"><span class="ru">Приватность</span><span class="en">Privacy</span></a>
+          </div>
+          <div>
+            <h4><span class="ru">Проект</span><span class="en">Project</span></h4>
+            <a href="https://github.com/matviukuzmenko-cloud/silva-quieta">GitHub</a>
+            <a href="https://github.com/matviukuzmenko-cloud/silva-quieta/issues">Issues</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">Silva Quieta <span data-ver>1.3.0</span> · silvaquieta.com</div>
     </div>
   </footer>
 
   <script src="script.js"></script>
-  <script src="portal.js"></script>
 </body>
 </html>
