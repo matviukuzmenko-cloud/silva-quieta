@@ -33,11 +33,29 @@
     applyLang(next);
   });
 
-  /* ---------- Тема ---------- */
-  $('#theme-btn')?.addEventListener('click', () => {
+  /* ---------- Тема (круговое раскрытие из кнопки) ---------- */
+  $('#theme-btn')?.addEventListener('click', (e) => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    root.dataset.theme = next;
-    store.set('sq-theme', next);
+    const apply = () => { root.dataset.theme = next; store.set('sq-theme', next); };
+    const calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (calm) { apply(); return; }
+    if (!document.startViewTransition) {
+      root.classList.add('theme-fade');
+      apply();
+      setTimeout(() => root.classList.remove('theme-fade'), 700);
+      return;
+    }
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = r.left + r.width / 2;
+    const y = r.top + r.height / 2;
+    const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const vt = document.startViewTransition(apply);
+    vt.ready.then(() => {
+      root.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${end}px at ${x}px ${y}px)`] },
+        { duration: 900, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', pseudoElement: '::view-transition-new(root)' }
+      );
+    }).catch(() => {});
   });
 
   /* ---------- Мобильное меню ---------- */
@@ -103,17 +121,59 @@
     try { history.pushState(null, '', u.hash); } catch (err) {}
   });
 
+  /* ---------- Заголовок hero: слова выезжают из-под маски ---------- */
+  const heroTitle = $('.hero h1');
+  if (heroTitle && !reduced) {
+    $$('.ru, .en', heroTitle).forEach((span) => {
+      let idx = 0;
+      const frag = document.createDocumentFragment();
+      [...span.childNodes].forEach((n) => {
+        if (n.nodeType !== 3) { frag.appendChild(n.cloneNode(true)); return; }
+        n.nodeValue.split(/(\s+)/).forEach((tok) => {
+          if (!tok) return;
+          if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(' ')); return; }
+          const w = document.createElement('span');
+          const wi = document.createElement('span');
+          w.className = 'w';
+          wi.className = 'wi';
+          wi.style.setProperty('--i', idx++);
+          wi.textContent = tok;
+          w.appendChild(wi);
+          frag.appendChild(w);
+        });
+      });
+      span.textContent = '';
+      span.appendChild(frag);
+    });
+  }
+  heroTitle?.classList.add('split');
+
   /* ---------- Появление блоков ---------- */
+  /* Крупные контейнеры не двигаем целиком: каскадом появляются их части. */
+  const SPLIT = {
+    '.grid-3': '.feature > *',
+    '.steps': '.step',
+    '.faq-list': 'details',
+    '.facts': ':scope > div',
+    '.two-col': ':scope > *'
+  };
+  Object.entries(SPLIT).forEach(([box, kids]) => {
+    $$(box + '.reveal').forEach((el) => {
+      el.classList.remove('reveal');
+      $$(kids, el).forEach((k) => k.classList.add('reveal'));
+    });
+  });
   /* На внутренних страницах помечаем элементы статьи автоматически. */
   if (!$('.reveal')) $$('main.prose > *:not(.back)').forEach((el) => el.classList.add('reveal'));
   const reveals = $$('.reveal');
   const finish = (el, delay) => setTimeout(() => {
     el.classList.remove('reveal', 'in');
     el.style.transitionDelay = '';
-  }, delay + 1500);
+  }, delay + 1700);
   let io = null;
+  let firstBatch = true;
   const showAll = () => {
-    reveals.forEach((el, i) => {
+    reveals.forEach((el) => {
       if (!el.classList.contains('reveal') || el.classList.contains('in')) return;
       io?.unobserve(el);
       el.classList.add('in');
@@ -123,17 +183,19 @@
   if ('IntersectionObserver' in window && !reduced) {
     io = new IntersectionObserver((entries) => {
       /* соседние блоки, появившиеся одновременно, всплывают каскадом */
-      entries
+      const base = firstBatch ? 300 : 0; /* на первом экране ждём слова заголовка */
+      const vis = entries
         .filter((en) => en.isIntersecting)
-        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left)
-        .forEach((en, i) => {
-          const el = en.target;
-          const delay = Math.min(i, 6) * 100;
-          io.unobserve(el);
-          el.style.transitionDelay = delay + 'ms';
-          el.classList.add('in');
-          finish(el, delay);
-        });
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left);
+      if (vis.length) firstBatch = false;
+      vis.forEach((en, i) => {
+        const el = en.target;
+        const delay = base + Math.min(i, 7) * 90;
+        io.unobserve(el);
+        el.style.transitionDelay = delay + 'ms';
+        el.classList.add('in');
+        finish(el, delay);
+      });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach((el) => io.observe(el));
     /* низ страницы: блоки, до которых порог уже не дотянуться, не остаются невидимыми */
@@ -146,6 +208,125 @@
   } else {
     showAll();
   }
+
+  /* ---------- Шапка, прогресс чтения, параллакс скриншота ---------- */
+  const topbar = $('.topbar');
+  let progress = null;
+  if (topbar) {
+    progress = document.createElement('div');
+    progress.className = 'progress';
+    progress.setAttribute('aria-hidden', 'true');
+    topbar.appendChild(progress);
+  }
+  const shotBox = $('.shot');
+  const shotImg = $('.shot img');
+  let ticking = false;
+  const frame = () => {
+    ticking = false;
+    const y = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    topbar?.classList.toggle('scrolled', y > 8);
+    if (progress) progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+    if (shotImg && shotBox && !shotBox.hidden && !reduced) {
+      const r = shotBox.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < window.innerHeight) {
+        const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight));
+        const s = 1 + (1 - Math.abs(p)) * 0.018;
+        shotImg.style.transform = 'translate3d(0,' + (p * -30).toFixed(1) + 'px,0) scale(' + s.toFixed(4) + ')';
+      }
+    }
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  frame();
+
+  /* ---------- Подсветка карточек за курсором ---------- */
+  if (window.matchMedia && matchMedia('(hover: hover)').matches) {
+    $$('.feature').forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+
+  /* ---------- Плавное раскрытие вопросов (FAQ) ---------- */
+  $$('details').forEach((d) => {
+    const sum = d.querySelector('summary');
+    if (!sum || !d.animate) return;
+    sum.addEventListener('click', (e) => {
+      if (reduced) return;
+      e.preventDefault();
+      const from = d.getBoundingClientRect().height;
+      d._anim?.cancel();
+      const opening = !d.open || d._closing;
+      d._closing = !opening;
+      if (opening) d.open = true;
+      const border = d.offsetHeight - d.clientHeight;
+      const to = opening ? d.scrollHeight + border : sum.offsetHeight + border;
+      d.style.overflow = 'hidden';
+      const anim = d._anim = d.animate(
+        { height: [from + 'px', to + 'px'] },
+        { duration: opening ? 700 : 480, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+      );
+      anim.onfinish = () => {
+        if (d._anim !== anim) return;
+        d._anim = null;
+        d._closing = false;
+        d.style.overflow = '';
+        if (!opening) d.open = false;
+      };
+    });
+  });
+
+  /* ---------- Счётчики в блоке фактов ---------- */
+  const countUp = (dt) => {
+    [...dt.childNodes].filter((n) => n.nodeType === 3 && /\d/.test(n.nodeValue)).forEach((node) => {
+      const tpl = node.nodeValue;
+      const nums = (tpl.match(/\d+/g) || []).map(Number);
+      const t0 = performance.now();
+      const tick = (now) => {
+        const p = Math.min(1, (now - t0) / 1800);
+        const k = 1 - Math.pow(1 - p, 4);
+        let i = 0;
+        node.nodeValue = tpl.replace(/\d+/g, () => Math.round(nums[i++] * k));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      node.nodeValue = tpl.replace(/\d+/g, '0');
+      requestAnimationFrame(tick);
+    });
+  };
+  if (!reduced && 'IntersectionObserver' in window) {
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        cio.unobserve(en.target);
+        countUp(en.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    $$('.facts dt').forEach((dt) => cio.observe(dt));
+  }
+
+  /* ---------- Мягкий уход со страницы при переходе по ссылке ---------- */
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented || reduced || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+    const a = e.target.closest('a[href]');
+    if (!a || a.target || a.hasAttribute('download')) return;
+    let u;
+    try { u = new URL(a.href, location.href); } catch (err) { return; }
+    if (u.origin !== location.origin || /\.(dmg|zip|pdf|png|jpe?g|svg|json|xml|txt)$/i.test(u.pathname)) return;
+    if (samePage(u)) {
+      if (!u.hash) { e.preventDefault(); glideTo(0); }
+      return;
+    }
+    e.preventDefault();
+    root.classList.add('leaving');
+    setTimeout(() => { location.href = u.href; }, 260);
+  });
+  /* возврат кнопкой «назад» (bfcache) не должен оставлять страницу прозрачной */
+  window.addEventListener('pageshow', () => root.classList.remove('leaving'));
 
   /* ---------- Подсветка пункта меню по разделу ---------- */
   const spyLinks = $$('.menu a[href^="#"]');
