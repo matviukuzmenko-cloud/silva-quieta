@@ -241,6 +241,31 @@
   window.addEventListener('resize', onScroll);
   frame();
 
+  /* ---------- Туманности hero следуют за курсором ---------- */
+  const heroBox = $('.hero');
+  if (heroBox && !reduced) {
+    const mist = { tx: 0, ty: 0, x: 0, y: 0, raf: 0 };
+    const mistStep = () => {
+      mist.x += (mist.tx - mist.x) * 0.045; /* чем меньше коэффициент, тем «тягучее» движение */
+      mist.y += (mist.ty - mist.y) * 0.045;
+      /* первое пятно идёт за курсором, второе — навстречу: получается глубина */
+      heroBox.style.setProperty('--gx1', (mist.x * 170).toFixed(1) + 'px');
+      heroBox.style.setProperty('--gy1', (mist.y * 110).toFixed(1) + 'px');
+      heroBox.style.setProperty('--gx2', (mist.x * -120).toFixed(1) + 'px');
+      heroBox.style.setProperty('--gy2', (mist.y * -80).toFixed(1) + 'px');
+      const moving = Math.abs(mist.tx - mist.x) > 0.002 || Math.abs(mist.ty - mist.y) > 0.002;
+      mist.raf = moving ? requestAnimationFrame(mistStep) : 0;
+    };
+    const wake = () => { if (!mist.raf) mist.raf = requestAnimationFrame(mistStep); };
+    window.addEventListener('pointermove', (e) => {
+      if (heroBox.getBoundingClientRect().bottom < 0) return; /* hero уже прокручен */
+      mist.tx = (e.clientX / window.innerWidth - 0.5) * 2;
+      mist.ty = (e.clientY / window.innerHeight - 0.5) * 2;
+      wake();
+    }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', () => { mist.tx = 0; mist.ty = 0; wake(); });
+  }
+
   /* ---------- Подсветка карточек за курсором ---------- */
   if (window.matchMedia && matchMedia('(hover: hover)').matches) {
     $$('.feature').forEach((card) => {

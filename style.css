@@ -244,12 +244,13 @@ code, kbd { font-family: var(--mono); }
   border-radius: 50%;
   filter: blur(72px);
   pointer-events: none;
-  will-change: transform;
+  will-change: transform, translate;
 }
 .hero::before {
   width: min(560px, 80vw); height: 340px;
   left: 50%; top: -30px; margin-left: -360px;
   background: color-mix(in srgb, var(--accent) 26%, transparent);
+  translate: var(--gx1, 0px) var(--gy1, 0px); /* смещение от курсора, отдельно от анимации */
   animation: sq-drift-a 22s ease-in-out infinite alternate;
 }
 .hero::after {
@@ -257,6 +258,7 @@ code, kbd { font-family: var(--mono); }
   left: 50%; top: 90px; margin-left: -40px;
   background: color-mix(in srgb, var(--accent) 45%, #3a7bd5);
   opacity: 0.55;
+  translate: var(--gx2, 0px) var(--gy2, 0px);
   animation: sq-drift-b 27s ease-in-out infinite alternate;
 }
 :root[data-theme="light"] .hero::before { opacity: 0.45; }
