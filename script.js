@@ -91,8 +91,28 @@
     });
   });
 
+  /* ---------- Защита от устаревшей версии страницы (кеш / кнопка «назад») ---------- */
+  const BUILD = $('meta[name="sq-build"]')?.content;
+  const checkFresh = () => {
+    if (!BUILD || !window.fetch) return;
+    fetch(location.pathname + location.search, { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.text() : ''))
+      .then((html) => {
+        const m = html.match(/<meta name="sq-build" content="([^"]+)"/);
+        if (!m || m[1] === BUILD) return;
+        let tried = null;
+        try { tried = sessionStorage.getItem('sq-reloaded'); } catch (e) {}
+        if (tried === m[1]) return; /* уже перезагружали — без циклов */
+        try { sessionStorage.setItem('sq-reloaded', m[1]); } catch (e) {}
+        location.reload();
+      })
+      .catch(() => {});
+  };
+  checkFresh();
+  window.addEventListener('pageshow', (e) => { if (e.persisted) checkFresh(); });
+
   /* ---------- Версия и ссылка на скачивание из update.json ---------- */
-  fetch('update.json', { cache: 'no-store' })
+  fetch('update.json?t=' + Date.now(), { cache: 'no-store' })
     .then((r) => (r.ok ? r.json() : null))
     .then((d) => {
       if (!d) return;

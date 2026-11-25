@@ -2,12 +2,13 @@
 <html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8">
+  <meta name="sq-build" content="20261125">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="dark light">
   <title data-ru="Вопросы и ответы о Silva Quieta" data-en="Silva Quieta FAQ">Вопросы и ответы о Silva Quieta</title>
   <meta name="description" content="Ответы на частые вопросы о Silva Quieta: батарея, память, обновления, мониторы, форматы." data-ru="Ответы на частые вопросы о Silva Quieta: батарея, память, обновления, мониторы, форматы." data-en="Answers to common questions about Silva Quieta: battery, memory, updates, displays, formats.">
   <link rel="canonical" href="https://silvaquieta.com/faq.html">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261125">
   <meta property="og:site_name" content="Silva Quieta">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://silvaquieta.com/faq.html">
@@ -19,7 +20,7 @@ if(l!=='ru'&&l!=='en'){l=/^en/i.test(navigator.language||'')?'en':'ru'}
 if(t!=='dark'&&t!=='light'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
 d.lang=l;d.setAttribute('data-theme',t);d.classList.add('js');
 var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))document.title=el.getAttribute('data-'+l);})();</script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261125">
 </head>
 <body>
   <header class="topbar">
@@ -83,43 +84,22 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
-     <div class="footer-card">
-      <div class="footer-top">
-        <div class="footer-about">
-          <a href="index.html" class="logo"><svg width="18" height="21" viewBox="0 0 22 26" fill="currentColor" aria-hidden="true"><path d="M11 1 5 9h3l-5 7h4l-5 7h18l-5-7h4l-5-7h3z"/><rect x="10" y="23" width="2" height="3"/></svg><span>Silva Quieta</span></a>
-          <p class="ru">Бесплатное приложение для macOS 13 и новее, которое ставит на рабочий стол видео вместо статичных обоев. Написано на Swift и AVFoundation, живёт в строке меню, поддерживает несколько мониторов и рабочие столы Spaces, ставится на паузу на батарее и в полноэкранных окнах и ничего не собирает о вас. Распространяется с этого сайта, а не из App Store, поэтому при первом запуске может понадобиться обход Gatekeeper: шаги описаны в разделе «Установка».</p>
-<p class="en">A free app for macOS 13 and later that puts video on your desktop instead of a still wallpaper. Written in Swift and AVFoundation, it lives in the menu bar, supports multiple displays and Spaces desktops, pauses on battery and behind full-screen windows, and collects nothing about you. It is distributed from this site rather than the App Store, so the first launch may need a Gatekeeper bypass: the steps are in the Install section.</p>
-        </div>
-        <nav class="footer-cols" aria-label="Footer">
-          <div>
-            <h4><span class="ru">Приложение</span><span class="en">App</span></h4>
-            <a href="index.html#features"><span class="ru">Возможности</span><span class="en">Features</span></a>
-            <a href="index.html#install"><span class="ru">Установка</span><span class="en">Install</span></a>
-            <a href="index.html#updates"><span class="ru">Обновления</span><span class="en">Updates</span></a>
-            <a href="index.html#faq"><span class="ru">Вопросы</span><span class="en">FAQ</span></a>
-          </div>
-          <div>
-            <h4><span class="ru">Страницы</span><span class="en">Pages</span></h4>
-            <a href="download.html"><span class="ru">Скачать</span><span class="en">Download</span></a>
-            <a href="changelog.html"><span class="ru">Список изменений</span><span class="en">Changelog</span></a>
-            <a href="privacy.html"><span class="ru">Приватность</span><span class="en">Privacy</span></a>
-          </div>
-          <div>
-            <h4><span class="ru">Проект</span><span class="en">Project</span></h4>
-            <a href="https://github.com/matviukuzmenko-cloud/silva-quieta">GitHub</a>
-            <a href="https://github.com/matviukuzmenko-cloud/silva-quieta/issues">Issues</a>
-          </div>
-        </nav>
-      </div>
-      <div class="footer-bottom">
-        <span>Silva Quieta <span data-ver>1.3.0</span> · silvaquieta.com · <span class="ru">Бесплатно, без аккаунта</span><span class="en">Free, no account</span></span>
-        <a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg" class="btn sm" data-dl><span class="ru">Скачать для macOS</span><span class="en">Download for macOS</span></a>
-      </div>
-     </div>
+    <div class="wrap foot">
+      <a href="index.html" class="logo"><svg width="18" height="21" viewBox="0 0 22 26" fill="currentColor" aria-hidden="true"><path d="M11 1 5 9h3l-5 7h4l-5 7h18l-5-7h4l-5-7h3z"/><rect x="10" y="23" width="2" height="3"/></svg><span>Silva Quieta</span></a>
+      <span class="foot-note"><span class="ru">Живые видео-обои для macOS · бесплатно</span><span class="en">Live video wallpapers for macOS · free</span> · v<span data-ver>1.3.0</span></span>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="index.html#features"><span class="ru">Возможности</span><span class="en">Features</span></a>
+        <a href="index.html#install"><span class="ru">Установка</span><span class="en">Install</span></a>
+        <a href="index.html#updates"><span class="ru">Обновления</span><span class="en">Updates</span></a>
+        <a href="index.html#faq"><span class="ru">Вопросы</span><span class="en">FAQ</span></a>
+        <a href="download.html"><span class="ru">Скачать</span><span class="en">Download</span></a>
+        <a href="changelog.html"><span class="ru">Изменения</span><span class="en">Changelog</span></a>
+        <a href="privacy.html"><span class="ru">Приватность</span><span class="en">Privacy</span></a>
+        <a href="https://github.com/matviukuzmenko-cloud/silva-quieta">GitHub</a>
+      </nav>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20261125"></script>
 </body>
 </html>
