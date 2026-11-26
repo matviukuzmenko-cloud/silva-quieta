@@ -8,6 +8,47 @@
   };
   const lang = () => (root.lang === 'en' ? 'en' : 'ru');
 
+  const STATS_URL = 'https://winter-truth-6043.ukrainman21012.workers.dev/';
+  const HIT_URL = 'https://winter-truth-6043.ukrainman21012.workers.dev/hit';
+  let stats = null;
+  const fmtNum = (n) => {
+    const v = Number(n);
+    if (!isFinite(v)) return '—';
+    try { return v.toLocaleString(lang() === 'en' ? 'en-US' : 'ru-RU'); } catch (e) { return String(v); }
+  };
+  function renderStats() {
+    if (!stats) return;
+    $$('.js-dl-total').forEach((el) => { el.textContent = fmtNum(stats.total); });
+    $$('.js-dl-today').forEach((el) => { el.textContent = fmtNum(stats.today); });
+  }
+  function loadStats() {
+    if (!window.fetch || !$('.js-dl-total, .js-dl-today')) return;
+    fetch(STATS_URL, { cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!d || d.total == null || d.today == null) return;
+        stats = { total: d.total, today: d.today };
+        renderStats();
+      })
+      .catch(() => {});
+  }
+  function sendHit() {
+    let sent = false;
+    try { if (navigator.sendBeacon) sent = navigator.sendBeacon(HIT_URL); } catch (e) {}
+    if (!sent && window.fetch) {
+      try { fetch(HIT_URL, { method: 'POST', keepalive: true }).catch(() => {}); } catch (e) {}
+    }
+    setTimeout(loadStats, 1200);
+  }
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented || e.button) return;
+    const a = e.target.closest('a[data-dl], a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href') || '';
+    if (!a.hasAttribute('data-dl') && !/\.dmg(?:[?#].*)?$/i.test(href)) return;
+    sendHit();
+  });
+
   const labels = {
     ru: { lang: 'Сменить язык', theme: 'Сменить тему', menu: 'Меню', close: 'Закрыть' },
     en: { lang: 'Switch language', theme: 'Toggle theme', menu: 'Menu', close: 'Close' }
@@ -27,6 +68,7 @@
     setLabel('#theme-btn', t.theme);
     setLabel('#menu-btn', t.menu);
     setLabel('#lb-close', t.close);
+    renderStats();
   }
   applyLang(lang());
   const langBtn = $('#lang-btn');
@@ -417,6 +459,8 @@
   };
   checkSite();
   window.addEventListener('pageshow', (e) => { if (e.persisted) checkSite(); });
+
+  loadStats();
 
   fetch('update.json?t=' + Date.now(), { cache: 'no-store' })
     .then((r) => (r.ok ? r.json() : null))
