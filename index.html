@@ -43,7 +43,7 @@ if(l!=='ru'&&l!=='en'){l=/^en/i.test(navigator.language||'')?'en':'ru'}
 if(t!=='dark'&&t!=='light'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
 d.lang=l;d.setAttribute('data-theme',t);d.classList.add('js');
 var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))document.title=el.getAttribute('data-'+l);})();</script>
-  <link rel="stylesheet" href="style.css?v=1.3.3">
+  <link rel="stylesheet" href="style.css?v=1.3.4">
 </head>
 <body>
   <header class="topbar">
@@ -110,59 +110,40 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
       </div>
       <div class="grid-3 reveal">
         <article class="feature">
-          <div class="ui" data-ui="cpu">
-            <div class="ui-head">
-              <span>Media Engine</span>
-              <div class="seg" role="group" aria-label="Media Engine / CPU"><button type="button" class="on" data-mode="cpu">CPU</button><button type="button" data-mode="me">Media Engine</button></div>
-            </div>
-            <div class="ui-read" data-m="cpu"><b class="ui-big">&lt; 2<small>%</small></b><span class="ui-cap"><span class="ru">процессора при воспроизведении</span><span class="en">CPU during playback</span></span></div>
-            <div class="ui-read" data-m="me" hidden><b class="ui-big">M1–M5</b><span class="ui-cap"><span class="ru">Media Engine декодирует кадры</span><span class="en">Media Engine decodes the frames</span></span></div>
-            <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          </div>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span>
           <h3><span class="ru">Аппаратное декодирование</span><span class="en">Hardware decoding</span></h3>
           <p class="ru">Ролик играет через <code>AVPlayerLooper</code>, на стыке нет паузы. Кадры декодирует Media Engine чипов M1–M5, а не процессор.</p>
           <p class="en">The clip plays through <code>AVPlayerLooper</code> with no gap at the join. Frames are decoded by the M1–M5 Media Engine, not by the CPU.</p>
         </article>
         <article class="feature">
-          <div class="ui" data-ui="pause">
-            <div class="ui-head">
-              <span><span class="ru">Автопауза</span><span class="en">Auto-pause</span></span>
-              <span class="state"><span class="st-play"><span class="ru">Играет</span><span class="en">Playing</span></span><span class="st-pause" hidden><span class="ru">Пауза</span><span class="en">Paused</span></span></span>
-            </div>
-            <div class="opts">
-              <button type="button" class="opt" aria-pressed="false"><span><span class="ru">Окно на весь экран</span><span class="en">Full-screen app</span></span><i class="sw"></i></button>
-              <button type="button" class="opt" aria-pressed="false"><span><span class="ru">Работа от батареи</span><span class="en">On battery</span></span><i class="sw"></i></button>
-              <button type="button" class="opt" aria-pressed="false"><span><span class="ru">Заставка или блокировка</span><span class="en">Screensaver or lock</span></span><i class="sw"></i></button>
-            </div>
-          </div>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2.5"/><path d="M22 11v2M7.5 10.5v3M11.5 10.5v3"/></svg></span>
           <h3><span class="ru">Пауза и заряд</span><span class="en">Pause and battery</span></h3>
           <p class="ru">Видео и звук останавливаются, если приложение открыто на весь экран, Mac работает от батареи или в режиме энергосбережения, включилась заставка или экран заблокирован.</p>
           <p class="en">Video and audio stop when an app goes full screen, the Mac runs on battery or in Low Power Mode, the screensaver starts, or the screen is locked.</p>
         </article>
         <article class="feature">
-          <div class="ui" data-ui="fx">
-            <div class="scene" aria-hidden="true"><i class="l l1"></i><i class="l l2"></i><i class="l l3"></i><div class="parts"></div></div>
-            <div class="seg" role="group" aria-label="Particles"><button type="button" class="on" data-fx="fireflies"><span class="ru">Светлячки</span><span class="en">Fireflies</span></button><button type="button" data-fx="snow"><span class="ru">Снег</span><span class="en">Snow</span></button><button type="button" data-fx="stars"><span class="ru">Звёзды</span><span class="en">Stars</span></button></div>
-            <label class="range"><span class="ru">2.5D</span><span class="en">2.5D</span><input type="range" min="0" max="100" value="60" aria-label="2.5D"></label>
-          </div>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 16 9 5 9-5"/></svg></span>
           <h3><span class="ru">Каталог, 2.5D и частицы</span><span class="en">Catalog, 2.5D and particles</span></h3>
           <p class="ru">Сцены 4K и FullHD скачиваются в один клик. Любое фото становится 2.5D-обоями, а поверх можно добавить GPU-частицы, следующие за курсором.</p>
           <p class="en">4K and FullHD scenes download in one click. Any photo becomes a 2.5D wallpaper, with GPU particles following the cursor on top.</p>
         </article>
         <article class="feature">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
           <h3><span class="ru">Мониторы и Spaces</span><span class="en">Displays and Spaces</span></h3>
           <p class="ru">Для каждого монитора и каждого рабочего стола Spaces можно выбрать свои обои.</p>
-<p class="en">Every display and every Spaces desktop can have its own wallpaper.</p>
+          <p class="en">Every display and every Spaces desktop can have its own wallpaper.</p>
         </article>
         <article class="feature">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a9 9 0 0 1 0 12"/></svg></span>
           <h3><span class="ru">Звук</span><span class="en">Sound</span></h3>
           <p class="ru">Дорожка из самих обоев или свой файл: MP3, WAV, M4A, AIFF. Громкость задаётся в настройках.</p>
-<p class="en">The track baked into a wallpaper or your own MP3, WAV, M4A or AIFF file. Volume is set in preferences.</p>
+          <p class="en">The track baked into a wallpaper or your own MP3, WAV, M4A or AIFF file. Volume is set in preferences.</p>
         </article>
         <article class="feature">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></span>
           <h3><span class="ru">Затемнение и скорость</span><span class="en">Dimming and speed</span></h3>
           <p class="ru">Затемнение до 75% помогает иконкам и виджетам читаться на яркой сцене. Скорость можно снизить до 0.25×.</p>
-<p class="en">Dimming up to 75% keeps icons and widgets readable over a bright scene. Playback speed goes down to 0.25×.</p>
+          <p class="en">Dimming up to 75% keeps icons and widgets readable over a bright scene. Playback speed goes down to 0.25×.</p>
         </article>
       </div>
     </section>
@@ -295,6 +276,6 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     </div>
   </footer>
 
-  <script src="script.js?v=1.3.3"></script>
+  <script src="script.js?v=1.3.4"></script>
 </body>
 </html>
