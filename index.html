@@ -43,7 +43,7 @@ if(l!=='ru'&&l!=='en'){l=/^en/i.test(navigator.language||'')?'en':'ru'}
 if(t!=='dark'&&t!=='light'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
 d.lang=l;d.setAttribute('data-theme',t);d.classList.add('js');
 var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))document.title=el.getAttribute('data-'+l);})();</script>
-  <link rel="stylesheet" href="style.css?v=1.3.1">
+  <link rel="stylesheet" href="style.css?v=1.3.2">
 </head>
 <body>
   <header class="topbar">
@@ -108,17 +108,71 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
         <p class="ru">Silva Quieta живёт в строке меню. Значка в Dock нет: всё открывается из меню или горячими клавишами.</p>
 <p class="en">Silva Quieta lives in the menu bar. There is no Dock icon; everything opens from the menu or with shortcuts.</p>
       </div>
+      <div class="feat-split">
+        <div class="feat-text">
+          <h2><span class="ru">Аппаратное декодирование</span><span class="en">Hardware decoding</span></h2>
+          <p class="ru">Ролик играет через <code>AVPlayerLooper</code>, <strong>на стыке нет паузы</strong>.</p>
+          <p class="ru">Кадры декодирует <strong>Media Engine чипов M1–M5</strong>, а не процессор.</p>
+          <p class="en">The clip plays through <code>AVPlayerLooper</code> with <strong>no gap at the join</strong>.</p>
+          <p class="en">Frames are decoded by the <strong>M1–M5 Media Engine</strong>, not by the CPU.</p>
+          
+        </div>
+        <div class="mock">
+          <div class="mock-inner" data-par>
+            <div class="win">
+              <div class="win-bar"><i></i><i></i><i></i><span>Silva Quieta</span></div>
+              <div class="win-body">
+                <video muted loop playsinline preload="metadata" poster="media/anime.jpg"><source src="media/anime.mp4" type="video/mp4"></video>
+                <span class="pill"><span class="ru">Media Engine</span><span class="en">Media Engine</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feat-split rev">
+        <div class="feat-text">
+          <h2><span class="ru">Пауза и заряд</span><span class="en">Pause and battery</span></h2>
+          <p class="ru">Видео и звук останавливаются, если приложение открыто <strong>на весь экран</strong>, включилась заставка или экран заблокирован.</p>
+          <p class="ru">Так же они останавливаются, когда Mac работает <strong>от батареи</strong> или в режиме энергосбережения.</p>
+          <p class="en">Video and audio stop when an app goes <strong>full screen</strong>, the screensaver starts, or the screen is locked.</p>
+          <p class="en">They also stop when the Mac runs <strong>on battery</strong> or in Low Power Mode.</p>
+          
+        </div>
+        <div class="mock">
+          <div class="mock-inner" data-par>
+            <div class="win">
+              <div class="win-bar"><i></i><i></i><i></i><span>Silva Quieta</span></div>
+              <div class="win-body">
+                <video muted loop playsinline preload="metadata" poster="media/sunset.jpg"><source src="media/sunset.mp4" type="video/mp4"></video>
+                <span class="pill"><span class="ru">Пауза</span><span class="en">Paused</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feat-split">
+        <div class="feat-text">
+          <h2><span class="ru">Каталог, 2.5D и частицы</span><span class="en">Catalog, 2.5D and particles</span></h2>
+          <p class="ru">Сцены <strong>4K и FullHD</strong> скачиваются в один клик.</p>
+          <p class="ru">Любое фото становится <strong>2.5D-обоями</strong>, а поверх можно добавить <strong>GPU-частицы</strong>, следующие за курсором.</p>
+          <p class="en"><strong>4K and FullHD</strong> scenes download in one click.</p>
+          <p class="en">Any photo becomes a <strong>2.5D wallpaper</strong>, with <strong>GPU particles</strong> following the cursor on top.</p>
+          
+        </div>
+        <div class="mock">
+          <div class="mock-inner" data-par>
+            <div class="win">
+              <div class="win-bar"><i></i><i></i><i></i><span>Silva Quieta</span></div>
+              <div class="win-body">
+                <video muted loop playsinline preload="metadata" poster="media/space.jpg"><source src="media/space.mp4" type="video/mp4"></video>
+                <span class="pill"><span class="ru">Каталог</span><span class="en">Catalog</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cards-wrap">
       <div class="grid-3 reveal">
-        <article class="feature">
-          <h3><span class="ru">Аппаратное декодирование</span><span class="en">Hardware decoding</span></h3>
-          <p class="ru">Ролик играет через <code>AVPlayerLooper</code>, на стыке нет паузы. Кадры декодирует Media Engine чипов M1–M5, а не процессор.</p>
-<p class="en">The clip plays through <code>AVPlayerLooper</code> with no gap at the join. Frames are decoded by the M1–M5 Media Engine, not by the CPU.</p>
-        </article>
-        <article class="feature">
-          <h3><span class="ru">Пауза и заряд</span><span class="en">Pause and battery</span></h3>
-          <p class="ru">Видео и звук останавливаются, если приложение открыто на весь экран, Mac работает от батареи или в режиме энергосбережения, включилась заставка или экран заблокирован.</p>
-<p class="en">Video and audio stop when an app goes full screen, the Mac runs on battery or in Low Power Mode, the screensaver starts, or the screen is locked.</p>
-        </article>
         <article class="feature">
           <h3><span class="ru">Мониторы и Spaces</span><span class="en">Displays and Spaces</span></h3>
           <p class="ru">Для каждого монитора и каждого рабочего стола Spaces можно выбрать свои обои.</p>
@@ -134,11 +188,7 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
           <p class="ru">Затемнение до 75% помогает иконкам и виджетам читаться на яркой сцене. Скорость можно снизить до 0.25×.</p>
 <p class="en">Dimming up to 75% keeps icons and widgets readable over a bright scene. Playback speed goes down to 0.25×.</p>
         </article>
-        <article class="feature">
-          <h3><span class="ru">Каталог, 2.5D и частицы</span><span class="en">Catalog, 2.5D and particles</span></h3>
-          <p class="ru">Сцены 4K и FullHD скачиваются в один клик. Любое фото становится 2.5D-обоями, а поверх можно добавить GPU-частицы, следующие за курсором.</p>
-<p class="en">4K and FullHD scenes download in one click. Any photo becomes a 2.5D wallpaper, with GPU particles following the cursor on top.</p>
-        </article>
+      </div>
       </div>
     </section>
 
@@ -261,6 +311,6 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     </div>
   </footer>
 
-  <script src="script.js?v=1.3.1"></script>
+  <script src="script.js?v=1.3.2"></script>
 </body>
 </html>

@@ -151,7 +151,7 @@
   if (heroTitle) heroTitle.classList.add('split');
 
   const split = {
-    '.grid-3': '.feature > *',
+    '.grid-3': ':scope > .feature',
     '.steps': '.step',
     '.faq-list': 'details',
     '.facts': ':scope > div',
@@ -165,12 +165,16 @@
     });
   }
 
+  $$('.feat-split').forEach((el) => {
+    $$(':scope > .feat-text > *, :scope > .mock', el).forEach((k) => k.classList.add('reveal'));
+  });
+
   if (!$('.reveal')) $$('main.prose > *:not(.back)').forEach((el) => el.classList.add('reveal'));
   const reveals = $$('.reveal');
   const finish = (el, delay) => setTimeout(() => {
     el.classList.remove('reveal', 'in');
     el.style.transitionDelay = '';
-  }, delay + 1700);
+  }, delay + 1300);
   let io = null;
   let firstBatch = true;
   const showAll = () => {
@@ -210,9 +214,9 @@
   }
 
   const reel = $('#reel');
+  const allVideos = $$('main video');
   if (reel) {
     const clips = $$('.clip', reel);
-    const clipVideos = $$('video', reel);
     const pick = (clip) => clips.forEach((c) => c.classList.toggle('on', c === clip));
     clips.forEach((c) => {
       c.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') pick(c); });
@@ -229,9 +233,9 @@
             else en.target.pause();
           });
         }, { threshold: 0.15 });
-        clipVideos.forEach((v) => vio.observe(v));
+        allVideos.forEach((v) => vio.observe(v));
       } else {
-        clipVideos.forEach(play);
+        allVideos.forEach(play);
       }
     }
   }
@@ -239,20 +243,20 @@
   const topbar = $('.topbar');
   const fadeEls = reveals.concat(heroTitle ? [heroTitle] : []);
   const reelClips = reel ? $$('.clip', reel) : [];
-  const shotBox = $('.shot');
-  const shotImg = $('.shot img');
+  const parEls = $$('[data-par]').concat($$('.shot img'));
   let ticking = false;
   const frame = () => {
     ticking = false;
     const y = window.scrollY;
     if (topbar) topbar.classList.toggle('scrolled', y > 8);
-    if (shotImg && shotBox && !shotBox.hidden && !reduced) {
-      const r = shotBox.getBoundingClientRect();
-      if (r.bottom > 0 && r.top < window.innerHeight) {
-        const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight));
-        const s = 1 + (1 - Math.abs(p)) * 0.018;
-        shotImg.style.transform = 'translate3d(0,' + (p * -30).toFixed(1) + 'px,0) scale(' + s.toFixed(4) + ')';
-      }
+    if (!reduced) {
+      const vh = window.innerHeight;
+      parEls.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -60 || r.top > vh + 60) return;
+        const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh));
+        el.style.translate = '0 ' + (p * -18).toFixed(1) + 'px';
+      });
     }
     if (!reduced) {
       const rects = fadeEls.map((el) => el.getBoundingClientRect());
@@ -270,7 +274,7 @@
       if (reelClips.length === 3 && window.innerWidth > 760) {
         const rr = reel.getBoundingClientRect();
         const q = Math.max(-1, Math.min(1, (rr.top + rr.height / 2 - window.innerHeight / 2) / window.innerHeight));
-        const shift = '0 ' + (q * 36).toFixed(1) + 'px';
+        const shift = '0 ' + (q * 18).toFixed(1) + 'px';
         reelClips[0].style.translate = shift;
         reelClips[2].style.translate = shift;
       }
@@ -323,16 +327,16 @@
     Array.from(dt.childNodes).filter((n) => n.nodeType === 3 && /\d/.test(n.nodeValue)).forEach((node) => {
       const tpl = node.nodeValue;
       const nums = (tpl.match(/\d+/g) || []).map(Number);
-      const t0 = performance.now();
+      let t0 = performance.now();
       const tick = (now) => {
-        const p = Math.min(1, (now - t0) / 1800);
+        const p = Math.min(1, (now - t0) / 1200);
         const k = 1 - Math.pow(1 - p, 4);
         let i = 0;
         node.nodeValue = tpl.replace(/\d+/g, () => Math.round(nums[i++] * k));
         if (p < 1) requestAnimationFrame(tick);
       };
       node.nodeValue = tpl.replace(/\d+/g, '0');
-      requestAnimationFrame(tick);
+      setTimeout(() => requestAnimationFrame((n) => { t0 = n; tick(n); }), 350);
     });
   };
   if (!reduced && 'IntersectionObserver' in window) {
