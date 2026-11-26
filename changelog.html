@@ -24,7 +24,7 @@ if(l!=='ru'&&l!=='en'){l=/^en/i.test(navigator.language||'')?'en':'ru'}
 if(t!=='dark'&&t!=='light'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
 d.lang=l;d.setAttribute('data-theme',t);d.classList.add('js');
 var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))document.title=el.getAttribute('data-'+l);})();</script>
-  <link rel="stylesheet" href="style.css?v=1.3.5">
+  <link rel="stylesheet" href="style.css?v=1.3.6">
 </head>
 <body>
   <header class="topbar">
@@ -50,20 +50,20 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     <h1><span class="ru">Обновления</span><span class="en">Changelog</span></h1>
     <p class="ru sub-lead">Что менялось от версии к версии.</p>
 <p class="en sub-lead">What changed from version to version.</p>
-    <h2>Silva Quieta 1.3.0<time>2026-11-24</time></h2>
-    <ul>
+    <h2>Silva Quieta 1.3.0<time datetime="2026-11-24"><span class="ru">24 ноября 2026</span><span class="en">November 24, 2026</span></time></h2>
+    <ol class="plain">
       <li><span class="ru">Онлайн-каталог 4K и FullHD сцен, загрузка в один клик</span><span class="en">Online catalog of 4K and FullHD scenes, one-click download</span></li>
       <li><span class="ru">2.5D-обои из любого фото или скриншота в Retina-разрешении</span><span class="en">2.5D wallpapers from any photo or screenshot in Retina resolution</span></li>
       <li><span class="ru">GPU-частицы «Светлячки», «Снег» и «Звёзды», реагирующие на курсор</span><span class="en">GPU particles (Fireflies, Snow, Stars) that react to the cursor</span></li>
       <li><span class="ru">Воспроизведение стало ровнее, эффекты в фоне ставятся на паузу</span><span class="en">Smoother playback; effects pause in the background</span></li>
-    </ul>
-    <h2>Silva Quieta 1.2.0</h2>
-    <ul>
+    </ol>
+    <h2>Silva Quieta 1.2.0<time datetime="2026-11-24"><span class="ru">24 ноября 2026</span><span class="en">November 24, 2026</span></time></h2>
+    <ol class="plain">
       <li><span class="ru">Проверка обновлений и окно со списком изменений</span><span class="en">Update check and release notes window</span></li>
       <li><span class="ru">Кэш видео и миниатюр под MacBook Air M1 (8 ГБ)</span><span class="en">Video and thumbnail cache tuned for MacBook Air M1 (8 GB)</span></li>
       <li><span class="ru">Фоновый звук и свои аудиодорожки</span><span class="en">Ambient audio and custom tracks</span></li>
       <li><span class="ru">Галерея и настройки открываются на активном Spaces</span><span class="en">Gallery and preferences open on the active Space</span></li>
-    </ul>
+    </ol>
   </main>
 
   <footer class="site-footer">
@@ -84,6 +84,6 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     </div>
   </footer>
 
-  <script src="script.js?v=1.3.5"></script>
+  <script src="script.js?v=1.3.6"></script>
 </body>
 </html>

@@ -43,7 +43,7 @@ if(l!=='ru'&&l!=='en'){l=/^en/i.test(navigator.language||'')?'en':'ru'}
 if(t!=='dark'&&t!=='light'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
 d.lang=l;d.setAttribute('data-theme',t);d.classList.add('js');
 var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))document.title=el.getAttribute('data-'+l);})();</script>
-  <link rel="stylesheet" href="style.css?v=1.3.5">
+  <link rel="stylesheet" href="style.css?v=1.3.6">
 </head>
 <body>
   <header class="topbar">
@@ -105,8 +105,6 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     <section id="features" class="section wrap">
       <div class="section-head reveal">
         <h2><span class="ru">Как это устроено</span><span class="en">How it works</span></h2>
-        <p class="ru">Silva Quieta живёт в строке меню. Значка в Dock нет: всё открывается из меню или горячими клавишами.</p>
-<p class="en">Silva Quieta lives in the menu bar. There is no Dock icon; everything opens from the menu or with shortcuts.</p>
       </div>
       <div class="f-list">
         <article class="f-row">
@@ -157,8 +155,6 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     <section id="install" class="section wrap">
       <div class="section-head reveal">
         <h2><span class="ru">Установка</span><span class="en">Install</span></h2>
-        <p class="ru">Программа раздаётся с этого сайта и не нотаризована Apple, поэтому macOS может остановить первый запуск. Ниже по шагам, что делать.</p>
-<p class="en">The app is distributed from this site and is not notarized by Apple, so macOS may stop the first launch. Steps below.</p>
       </div>
       <div class="steps reveal">
         <div class="step">
@@ -199,20 +195,16 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     <section id="updates" class="section wrap">
       <div class="section-head reveal">
         <h2><span class="ru">Обновления</span><span class="en">Updates</span></h2>
-        <p class="ru">Программа сама проверяет версию при запуске и по пункту «Проверить обновления…» в строке меню.</p>
-<p class="en">The app checks for a new version at launch and through Check for Updates… in the menu bar.</p>
       </div>
       <div class="steps reveal">
-        <div class="step"><h3>1.3.0<time>2026-11-24</time></h3><ul class="plain"><li><span class="ru">Онлайн-каталог 4K и FullHD сцен, загрузка в один клик</span><span class="en">Online catalog of 4K and FullHD scenes, one-click download</span></li><li><span class="ru">2.5D-обои из любого фото или скриншота в Retina-разрешении</span><span class="en">2.5D wallpapers from any photo or screenshot in Retina resolution</span></li><li><span class="ru">GPU-частицы «Светлячки», «Снег» и «Звёзды», реагирующие на курсор</span><span class="en">GPU particles (Fireflies, Snow, Stars) that react to the cursor</span></li><li><span class="ru">Воспроизведение стало ровнее, эффекты в фоне ставятся на паузу</span><span class="en">Smoother playback; effects pause in the background</span></li></ul></div>
-        <div class="step"><h3>1.2.0</h3><ul class="plain"><li><span class="ru">Проверка обновлений и окно со списком изменений</span><span class="en">Update check and release notes window</span></li><li><span class="ru">Кэш видео и миниатюр под MacBook Air M1 (8 ГБ)</span><span class="en">Video and thumbnail cache tuned for MacBook Air M1 (8 GB)</span></li><li><span class="ru">Фоновый звук и свои аудиодорожки</span><span class="en">Ambient audio and custom tracks</span></li><li><span class="ru">Галерея и настройки открываются на активном Spaces</span><span class="en">Gallery and preferences open on the active Space</span></li></ul></div>
+        <div class="step"><h3>1.3.0<time datetime="2026-11-24"><span class="ru">24 ноября 2026</span><span class="en">November 24, 2026</span></time></h3><ol class="plain"><li><span class="ru">Онлайн-каталог 4K и FullHD сцен, загрузка в один клик</span><span class="en">Online catalog of 4K and FullHD scenes, one-click download</span></li><li><span class="ru">2.5D-обои из любого фото или скриншота в Retina-разрешении</span><span class="en">2.5D wallpapers from any photo or screenshot in Retina resolution</span></li><li><span class="ru">GPU-частицы «Светлячки», «Снег» и «Звёзды», реагирующие на курсор</span><span class="en">GPU particles (Fireflies, Snow, Stars) that react to the cursor</span></li><li><span class="ru">Воспроизведение стало ровнее, эффекты в фоне ставятся на паузу</span><span class="en">Smoother playback; effects pause in the background</span></li></ol></div>
+        <div class="step"><h3>1.2.0<time datetime="2026-11-24"><span class="ru">24 ноября 2026</span><span class="en">November 24, 2026</span></time></h3><ol class="plain"><li><span class="ru">Проверка обновлений и окно со списком изменений</span><span class="en">Update check and release notes window</span></li><li><span class="ru">Кэш видео и миниатюр под MacBook Air M1 (8 ГБ)</span><span class="en">Video and thumbnail cache tuned for MacBook Air M1 (8 GB)</span></li><li><span class="ru">Фоновый звук и свои аудиодорожки</span><span class="en">Ambient audio and custom tracks</span></li><li><span class="ru">Галерея и настройки открываются на активном Spaces</span><span class="en">Gallery and preferences open on the active Space</span></li></ol></div>
       </div>
     </section>
 
     <section id="details" class="section wrap">
       <div class="section-head reveal">
         <h2><span class="ru">Управление и совместимость</span><span class="en">Controls and compatibility</span></h2>
-        <p class="ru">Горячие клавиши, системные требования и приватность.</p>
-        <p class="en">Shortcuts, system requirements and privacy.</p>
       </div>
       <div class="two-col reveal">
         <div>
@@ -240,8 +232,6 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     <section id="faq" class="section wrap">
       <div class="section-head reveal">
         <h2><span class="ru">Вопросы</span><span class="en">FAQ</span></h2>
-        <p class="ru">Коротко о батарее, памяти, обновлениях и форматах.</p>
-        <p class="en">Short answers on battery, memory, updates and formats.</p>
       </div>
       <div class="faq-list reveal">
         <details><summary><span class="ru">Приложение сажает батарею?</span><span class="en">Does it drain the battery?</span></summary><p class="ru">Видео декодируется аппаратно, и энергии на это уходит немного. К тому же по умолчанию включена пауза при работе от аккумулятора и при окнах на весь экран.</p>
@@ -282,6 +272,6 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     </div>
   </footer>
 
-  <script src="script.js?v=1.3.5"></script>
+  <script src="script.js?v=1.3.6"></script>
 </body>
 </html>
