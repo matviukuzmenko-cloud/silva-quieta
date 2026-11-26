@@ -279,8 +279,33 @@ code, kbd { font-family: var(--mono); }
 }
 .dl-stat + .note { margin-top: 6px; }
 .hero .dl-stat { text-align: center; }
-.dl-stat-foot { padding-top: 24px; padding-bottom: 56px; text-align: center; }
-.dl-stat-foot .dl-stat { margin-top: 0; }
+.stats { padding-top: 72px; padding-bottom: 72px; }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+.stat-num {
+  font-size: clamp(36px, 4.5vw, 54px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+.stat-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.stat-label svg { flex: none; }
 
 .shot {
   margin: 64px auto 0;
@@ -648,6 +673,11 @@ details p { padding: 0 0 28px; max-width: 62ch; }
   .row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .row > span:last-child { text-align: left; }
   .cta-row .btn, .cta-row .btn-ghost { width: 100%; }
+}
+
+@media (max-width: 560px) {
+  .stats { padding-top: 48px; padding-bottom: 48px; }
+  .stats-grid { grid-template-columns: 1fr; gap: 28px; }
 }
 
 @media (max-width: 760px) {

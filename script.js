@@ -11,15 +11,39 @@
   const STATS_URL = 'https://winter-truth-6043.ukrainman21012.workers.dev/';
   const HIT_URL = 'https://winter-truth-6043.ukrainman21012.workers.dev/hit';
   let stats = null;
+  let stars = null;
   const fmtNum = (n) => {
     const v = Number(n);
     if (!isFinite(v)) return '—';
     try { return v.toLocaleString(lang() === 'en' ? 'en-US' : 'ru-RU'); } catch (e) { return String(v); }
   };
   function renderStats() {
-    if (!stats) return;
-    $$('.js-dl-total').forEach((el) => { el.textContent = fmtNum(stats.total); });
-    $$('.js-dl-today').forEach((el) => { el.textContent = fmtNum(stats.today); });
+    if (stats) {
+      $$('.js-dl-total').forEach((el) => { el.textContent = fmtNum(stats.total); });
+      $$('.js-dl-today').forEach((el) => { el.textContent = fmtNum(stats.today); });
+    }
+    if (stars != null) $$('.js-gh-stars').forEach((el) => { el.textContent = fmtNum(stars); });
+  }
+  function loadStars() {
+    if (!window.fetch || !$('.js-gh-stars')) return;
+    const key = 'sq-gh-stars';
+    try {
+      const c = JSON.parse(store.get(key) || 'null');
+      if (c && typeof c.n === 'number') {
+        stars = c.n;
+        renderStats();
+        if (Date.now() - c.t < 600000) return;
+      }
+    } catch (e) {}
+    fetch('https://api.github.com/repos/matviukuzmenko-cloud/silva-quieta')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!d || typeof d.stargazers_count !== 'number') return;
+        stars = d.stargazers_count;
+        store.set(key, JSON.stringify({ n: stars, t: Date.now() }));
+        renderStats();
+      })
+      .catch(() => {});
   }
   function loadStats() {
     if (!window.fetch || !$('.js-dl-total, .js-dl-today')) return;
@@ -196,7 +220,8 @@
     '.steps': '.step',
     '.faq-list': 'details',
     '.facts': ':scope > div',
-    '.two-col': ':scope > *'
+    '.two-col': ':scope > *',
+    '.stats-grid': ':scope > div'
   };
   for (const box in split) {
     const kids = split[box];
@@ -461,6 +486,7 @@
   window.addEventListener('pageshow', (e) => { if (e.persisted) checkSite(); });
 
   loadStats();
+  loadStars();
 
   fetch('update.json?t=' + Date.now(), { cache: 'no-store' })
     .then((r) => (r.ok ? r.json() : null))
