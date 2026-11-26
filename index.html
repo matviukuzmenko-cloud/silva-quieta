@@ -43,7 +43,7 @@ if(l!=='ru'&&l!=='en'){l=/^en/i.test(navigator.language||'')?'en':'ru'}
 if(t!=='dark'&&t!=='light'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
 d.lang=l;d.setAttribute('data-theme',t);d.classList.add('js');
 var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))document.title=el.getAttribute('data-'+l);})();</script>
-  <link rel="stylesheet" href="style.css?v=1.3.2">
+  <link rel="stylesheet" href="style.css?v=1.3.3">
 </head>
 <body>
   <header class="topbar">
@@ -108,71 +108,47 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
         <p class="ru">Silva Quieta живёт в строке меню. Значка в Dock нет: всё открывается из меню или горячими клавишами.</p>
 <p class="en">Silva Quieta lives in the menu bar. There is no Dock icon; everything opens from the menu or with shortcuts.</p>
       </div>
-      <div class="feat-split">
-        <div class="feat-text">
-          <h2><span class="ru">Аппаратное декодирование</span><span class="en">Hardware decoding</span></h2>
-          <p class="ru">Ролик играет через <code>AVPlayerLooper</code>, <strong>на стыке нет паузы</strong>.</p>
-          <p class="ru">Кадры декодирует <strong>Media Engine чипов M1–M5</strong>, а не процессор.</p>
-          <p class="en">The clip plays through <code>AVPlayerLooper</code> with <strong>no gap at the join</strong>.</p>
-          <p class="en">Frames are decoded by the <strong>M1–M5 Media Engine</strong>, not by the CPU.</p>
-          
-        </div>
-        <div class="mock">
-          <div class="mock-inner" data-par>
-            <div class="win">
-              <div class="win-bar"><i></i><i></i><i></i><span>Silva Quieta</span></div>
-              <div class="win-body">
-                <video muted loop playsinline preload="metadata" poster="media/anime.jpg"><source src="media/anime.mp4" type="video/mp4"></video>
-                <span class="pill"><span class="ru">Media Engine</span><span class="en">Media Engine</span></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="feat-split rev">
-        <div class="feat-text">
-          <h2><span class="ru">Пауза и заряд</span><span class="en">Pause and battery</span></h2>
-          <p class="ru">Видео и звук останавливаются, если приложение открыто <strong>на весь экран</strong>, включилась заставка или экран заблокирован.</p>
-          <p class="ru">Так же они останавливаются, когда Mac работает <strong>от батареи</strong> или в режиме энергосбережения.</p>
-          <p class="en">Video and audio stop when an app goes <strong>full screen</strong>, the screensaver starts, or the screen is locked.</p>
-          <p class="en">They also stop when the Mac runs <strong>on battery</strong> or in Low Power Mode.</p>
-          
-        </div>
-        <div class="mock">
-          <div class="mock-inner" data-par>
-            <div class="win">
-              <div class="win-bar"><i></i><i></i><i></i><span>Silva Quieta</span></div>
-              <div class="win-body">
-                <video muted loop playsinline preload="metadata" poster="media/sunset.jpg"><source src="media/sunset.mp4" type="video/mp4"></video>
-                <span class="pill"><span class="ru">Пауза</span><span class="en">Paused</span></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="feat-split">
-        <div class="feat-text">
-          <h2><span class="ru">Каталог, 2.5D и частицы</span><span class="en">Catalog, 2.5D and particles</span></h2>
-          <p class="ru">Сцены <strong>4K и FullHD</strong> скачиваются в один клик.</p>
-          <p class="ru">Любое фото становится <strong>2.5D-обоями</strong>, а поверх можно добавить <strong>GPU-частицы</strong>, следующие за курсором.</p>
-          <p class="en"><strong>4K and FullHD</strong> scenes download in one click.</p>
-          <p class="en">Any photo becomes a <strong>2.5D wallpaper</strong>, with <strong>GPU particles</strong> following the cursor on top.</p>
-          
-        </div>
-        <div class="mock">
-          <div class="mock-inner" data-par>
-            <div class="win">
-              <div class="win-bar"><i></i><i></i><i></i><span>Silva Quieta</span></div>
-              <div class="win-body">
-                <video muted loop playsinline preload="metadata" poster="media/space.jpg"><source src="media/space.mp4" type="video/mp4"></video>
-                <span class="pill"><span class="ru">Каталог</span><span class="en">Catalog</span></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="cards-wrap">
       <div class="grid-3 reveal">
+        <article class="feature">
+          <div class="ui" data-ui="cpu">
+            <div class="ui-head">
+              <span>Media Engine</span>
+              <div class="seg" role="group" aria-label="Media Engine / CPU"><button type="button" class="on" data-mode="cpu">CPU</button><button type="button" data-mode="me">Media Engine</button></div>
+            </div>
+            <div class="ui-read" data-m="cpu"><b class="ui-big">&lt; 2<small>%</small></b><span class="ui-cap"><span class="ru">процессора при воспроизведении</span><span class="en">CPU during playback</span></span></div>
+            <div class="ui-read" data-m="me" hidden><b class="ui-big">M1–M5</b><span class="ui-cap"><span class="ru">Media Engine декодирует кадры</span><span class="en">Media Engine decodes the frames</span></span></div>
+            <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <h3><span class="ru">Аппаратное декодирование</span><span class="en">Hardware decoding</span></h3>
+          <p class="ru">Ролик играет через <code>AVPlayerLooper</code>, на стыке нет паузы. Кадры декодирует Media Engine чипов M1–M5, а не процессор.</p>
+          <p class="en">The clip plays through <code>AVPlayerLooper</code> with no gap at the join. Frames are decoded by the M1–M5 Media Engine, not by the CPU.</p>
+        </article>
+        <article class="feature">
+          <div class="ui" data-ui="pause">
+            <div class="ui-head">
+              <span><span class="ru">Автопауза</span><span class="en">Auto-pause</span></span>
+              <span class="state"><span class="st-play"><span class="ru">Играет</span><span class="en">Playing</span></span><span class="st-pause" hidden><span class="ru">Пауза</span><span class="en">Paused</span></span></span>
+            </div>
+            <div class="opts">
+              <button type="button" class="opt" aria-pressed="false"><span><span class="ru">Окно на весь экран</span><span class="en">Full-screen app</span></span><i class="sw"></i></button>
+              <button type="button" class="opt" aria-pressed="false"><span><span class="ru">Работа от батареи</span><span class="en">On battery</span></span><i class="sw"></i></button>
+              <button type="button" class="opt" aria-pressed="false"><span><span class="ru">Заставка или блокировка</span><span class="en">Screensaver or lock</span></span><i class="sw"></i></button>
+            </div>
+          </div>
+          <h3><span class="ru">Пауза и заряд</span><span class="en">Pause and battery</span></h3>
+          <p class="ru">Видео и звук останавливаются, если приложение открыто на весь экран, Mac работает от батареи или в режиме энергосбережения, включилась заставка или экран заблокирован.</p>
+          <p class="en">Video and audio stop when an app goes full screen, the Mac runs on battery or in Low Power Mode, the screensaver starts, or the screen is locked.</p>
+        </article>
+        <article class="feature">
+          <div class="ui" data-ui="fx">
+            <div class="scene" aria-hidden="true"><i class="l l1"></i><i class="l l2"></i><i class="l l3"></i><div class="parts"></div></div>
+            <div class="seg" role="group" aria-label="Particles"><button type="button" class="on" data-fx="fireflies"><span class="ru">Светлячки</span><span class="en">Fireflies</span></button><button type="button" data-fx="snow"><span class="ru">Снег</span><span class="en">Snow</span></button><button type="button" data-fx="stars"><span class="ru">Звёзды</span><span class="en">Stars</span></button></div>
+            <label class="range"><span class="ru">2.5D</span><span class="en">2.5D</span><input type="range" min="0" max="100" value="60" aria-label="2.5D"></label>
+          </div>
+          <h3><span class="ru">Каталог, 2.5D и частицы</span><span class="en">Catalog, 2.5D and particles</span></h3>
+          <p class="ru">Сцены 4K и FullHD скачиваются в один клик. Любое фото становится 2.5D-обоями, а поверх можно добавить GPU-частицы, следующие за курсором.</p>
+          <p class="en">4K and FullHD scenes download in one click. Any photo becomes a 2.5D wallpaper, with GPU particles following the cursor on top.</p>
+        </article>
         <article class="feature">
           <h3><span class="ru">Мониторы и Spaces</span><span class="en">Displays and Spaces</span></h3>
           <p class="ru">Для каждого монитора и каждого рабочего стола Spaces можно выбрать свои обои.</p>
@@ -189,14 +165,13 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
 <p class="en">Dimming up to 75% keeps icons and widgets readable over a bright scene. Playback speed goes down to 0.25×.</p>
         </article>
       </div>
-      </div>
     </section>
 
     <section id="install" class="section wrap">
       <div class="section-head reveal">
-        <h2><span class="ru">Скачать и установить</span><span class="en">Download and install</span></h2>
-        <p class="ru">Программа раздаётся с этого сайта, в App Store её нет. Платной нотаризации Apple у неё тоже нет, поэтому macOS может остановить первый запуск. Ниже по шагам, что делать.</p>
-<p class="en">The app is distributed from this site, not the App Store. It has no paid Apple notarization, so macOS may stop the first launch. Steps below.</p>
+        <h2><span class="ru">Установка</span><span class="en">Install</span></h2>
+        <p class="ru">Программа раздаётся с этого сайта и не нотаризована Apple, поэтому macOS может остановить первый запуск. Ниже по шагам, что делать.</p>
+<p class="en">The app is distributed from this site and is not notarized by Apple, so macOS may stop the first launch. Steps below.</p>
       </div>
       <div class="steps reveal">
         <div class="step">
@@ -247,6 +222,11 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     </section>
 
     <section id="details" class="section wrap">
+      <div class="section-head reveal">
+        <h2><span class="ru">Управление и совместимость</span><span class="en">Controls and compatibility</span></h2>
+        <p class="ru">Горячие клавиши, системные требования и приватность.</p>
+        <p class="en">Shortcuts, system requirements and privacy.</p>
+      </div>
       <div class="two-col reveal">
         <div>
           <h3><span class="ru">Горячие клавиши</span><span class="en">Shortcuts</span></h3>
@@ -271,7 +251,11 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     </section>
 
     <section id="faq" class="section wrap">
-      <div class="section-head reveal"><h2><span class="ru">Вопросы</span><span class="en">FAQ</span></h2></div>
+      <div class="section-head reveal">
+        <h2><span class="ru">Вопросы</span><span class="en">FAQ</span></h2>
+        <p class="ru">Коротко о батарее, памяти, обновлениях и форматах.</p>
+        <p class="en">Short answers on battery, memory, updates and formats.</p>
+      </div>
       <div class="faq-list reveal">
         <details><summary><span class="ru">Приложение сажает батарею?</span><span class="en">Does it drain the battery?</span></summary><p class="ru">Видео декодируется аппаратно, и энергии на это уходит немного. К тому же по умолчанию включена пауза при работе от аккумулятора и при окнах на весь экран.</p>
 <p class="en">Decoding is done in hardware, which costs little energy. On top of that, pausing on battery power and behind full-screen windows is on by default.</p></details>
@@ -297,7 +281,7 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     <div class="wrap foot">
       <div class="foot-brand">
         <a href="index.html" class="logo"><svg width="18" height="26" viewBox="0 0 385.00 562.25" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M309.50 418.00 283.25 376.00 282.25 375.75 241.00 408.50 228.75 417.50 228.50 418.50 309.25 418.50ZM193.00 0.00 191.75 0.50 164.25 45.25 69.75 195.25 70.00 196.25 115.75 196.00 116.50 197.25 30.50 331.75 30.75 332.25 79.25 332.25 79.75 333.50 0.00 459.25 0.25 460.00 26.75 459.75 36.25 458.25 51.25 453.00 70.00 443.00 139.75 400.00 195.50 363.25 233.00 336.75 273.50 305.50 273.50 304.75 200.50 264.75 193.25 261.00 192.00 261.00 96.50 312.75 94.50 313.50 65.50 313.50 65.00 312.75 191.75 115.25 192.75 115.00 193.75 116.00 227.25 168.50 228.75 168.25 243.25 159.50 194.25 81.50 192.25 79.50 130.50 175.75 128.75 177.50 104.75 177.50 104.00 177.00 107.25 170.75 175.00 64.00 191.50 37.25 193.00 36.50 281.25 177.00 280.50 177.50 255.25 177.50 252.25 178.75 194.50 213.50 169.50 227.25 169.25 226.50 193.00 190.50 207.50 180.75 207.25 179.00 203.25 173.75 192.50 156.75 191.75 157.00 126.75 257.75 114.25 278.25 126.75 272.00 188.00 238.25 193.00 236.50 195.75 237.25 254.50 270.00 271.00 278.50 230.25 214.25 230.25 213.50 232.75 211.50 248.75 202.00 253.50 208.25 265.75 228.25 275.50 242.75 319.25 311.75 319.50 313.00 319.00 313.50 299.75 313.75 295.25 314.75 289.50 317.75 242.50 355.00 219.25 372.50 191.75 395.00 181.50 405.25 171.75 418.00 165.50 429.25 161.75 438.25 158.50 449.00 156.50 460.75 155.75 472.50 156.00 562.25 228.75 562.00 229.00 464.25 229.75 462.00 232.25 460.00 384.50 460.00 385.00 459.50 305.00 333.25 305.50 332.25 354.00 332.25 354.00 331.25 268.25 197.00 269.25 196.00 315.00 196.25 315.25 195.50 221.25 46.00ZM288.75 343.25 350.50 439.75 350.50 440.75 350.00 441.25 231.00 441.25 227.75 441.75 222.25 443.75 218.25 446.50 214.75 450.25 211.75 455.75 210.50 460.75 210.25 543.00 209.00 543.75 175.25 543.50 174.50 542.75 174.75 466.75 176.25 456.00 178.25 448.25 181.25 440.25 185.25 432.00 191.25 422.75 196.50 416.50 209.75 404.00 288.00 343.00ZM238.50 307.50 238.50 308.50 233.75 312.75 209.75 330.50 149.25 371.50 148.25 370.50 155.25 328.25 122.25 345.75 119.75 348.25 75.50 417.00 68.00 422.50 54.75 430.50 38.75 438.50 35.50 439.00 40.25 430.50 104.50 330.00 106.50 328.25 192.00 282.25 193.50 282.50Z"/></svg><span>Silva Quieta</span></a>
-        <span class="foot-note"><span class="ru">Живые видео-обои для macOS</span><span class="en">Live video wallpapers for macOS</span> · v<span data-ver>1.3.0</span></span>
+        <span class="foot-note">· <span class="ru">Живые видео-обои для macOS</span><span class="en">Live video wallpapers for macOS</span> v<span data-ver>1.3.0</span></span>
       </div>
       <nav class="foot-links" aria-label="Footer">
         <a href="index.html#features"><span class="ru">Возможности</span><span class="en">Features</span></a>
@@ -311,6 +295,6 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     </div>
   </footer>
 
-  <script src="script.js?v=1.3.2"></script>
+  <script src="script.js?v=1.3.3"></script>
 </body>
 </html>
