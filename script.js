@@ -237,22 +237,15 @@
   }
 
   const topbar = $('.topbar');
-  let progress = null;
-  if (topbar) {
-    progress = document.createElement('div');
-    progress.className = 'progress';
-    progress.setAttribute('aria-hidden', 'true');
-    topbar.appendChild(progress);
-  }
+  const fadeEls = reveals.concat(heroTitle ? [heroTitle] : []);
+  const reelClips = reel ? $$('.clip', reel) : [];
   const shotBox = $('.shot');
   const shotImg = $('.shot img');
   let ticking = false;
   const frame = () => {
     ticking = false;
     const y = window.scrollY;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
     if (topbar) topbar.classList.toggle('scrolled', y > 8);
-    if (progress) progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
     if (shotImg && shotBox && !shotBox.hidden && !reduced) {
       const r = shotBox.getBoundingClientRect();
       if (r.bottom > 0 && r.top < window.innerHeight) {
@@ -261,35 +254,32 @@
         shotImg.style.transform = 'translate3d(0,' + (p * -30).toFixed(1) + 'px,0) scale(' + s.toFixed(4) + ')';
       }
     }
+    if (!reduced) {
+      const rects = fadeEls.map((el) => el.getBoundingClientRect());
+      fadeEls.forEach((el, i) => {
+        if (el.classList.contains('reveal')) return;
+        const e = Math.max(0, Math.min(1, 1 - (rects[i].bottom - 56) / 170));
+        if (e > 0.002) {
+          el.classList.add('fade-out');
+          el.style.setProperty('--e', e.toFixed(3));
+        } else if (el.classList.contains('fade-out')) {
+          el.classList.remove('fade-out');
+          el.style.removeProperty('--e');
+        }
+      });
+      if (reelClips.length === 3 && window.innerWidth > 760) {
+        const rr = reel.getBoundingClientRect();
+        const q = Math.max(-1, Math.min(1, (rr.top + rr.height / 2 - window.innerHeight / 2) / window.innerHeight));
+        const shift = '0 ' + (q * 36).toFixed(1) + 'px';
+        reelClips[0].style.translate = shift;
+        reelClips[2].style.translate = shift;
+      }
+    }
   };
   const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   frame();
-
-  const heroBox = $('.hero');
-  if (heroBox && !reduced) {
-    const mist = { tx: 0, ty: 0, x: 0, y: 0, raf: 0 };
-    const mistStep = () => {
-      mist.x += (mist.tx - mist.x) * 0.045;
-      mist.y += (mist.ty - mist.y) * 0.045;
-
-      heroBox.style.setProperty('--gx1', (mist.x * 170).toFixed(1) + 'px');
-      heroBox.style.setProperty('--gy1', (mist.y * 110).toFixed(1) + 'px');
-      heroBox.style.setProperty('--gx2', (mist.x * -120).toFixed(1) + 'px');
-      heroBox.style.setProperty('--gy2', (mist.y * -80).toFixed(1) + 'px');
-      const moving = Math.abs(mist.tx - mist.x) > 0.002 || Math.abs(mist.ty - mist.y) > 0.002;
-      mist.raf = moving ? requestAnimationFrame(mistStep) : 0;
-    };
-    const wake = () => { if (!mist.raf) mist.raf = requestAnimationFrame(mistStep); };
-    window.addEventListener('pointermove', (e) => {
-      if (heroBox.getBoundingClientRect().bottom < 0) return;
-      mist.tx = (e.clientX / window.innerWidth - 0.5) * 2;
-      mist.ty = (e.clientY / window.innerHeight - 0.5) * 2;
-      wake();
-    }, { passive: true });
-    document.documentElement.addEventListener('mouseleave', () => { mist.tx = 0; mist.ty = 0; wake(); });
-  }
 
   if (window.matchMedia && matchMedia('(hover: hover)').matches) {
     $$('.feature').forEach((card) => {
