@@ -1,40 +1,43 @@
-/* Общие функции сайта: язык, тема, меню, копирование, версия. */
 (() => {
   const root = document.documentElement;
   const $ = (s, r = document) => r.querySelector(s);
-  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   };
   const lang = () => (root.lang === 'en' ? 'en' : 'ru');
 
-  /* ---------- Язык ---------- */
-  const LABELS = {
+  const labels = {
     ru: { lang: 'Сменить язык', theme: 'Сменить тему', menu: 'Меню', close: 'Закрыть' },
     en: { lang: 'Switch language', theme: 'Toggle theme', menu: 'Menu', close: 'Close' }
   };
+  function setLabel(sel, text) {
+    const el = $(sel);
+    if (el) el.setAttribute('aria-label', text);
+  }
   function applyLang(l) {
     root.lang = l;
     const title = $('title');
     if (title && title.dataset[l]) document.title = title.dataset[l];
     const meta = $('meta[name="description"]');
     if (meta && meta.dataset[l]) meta.content = meta.dataset[l];
-    const t = LABELS[l];
-    $('#lang-btn')?.setAttribute('aria-label', t.lang);
-    $('#theme-btn')?.setAttribute('aria-label', t.theme);
-    $('#menu-btn')?.setAttribute('aria-label', t.menu);
-    $('#lb-close')?.setAttribute('aria-label', t.close);
+    const t = labels[l];
+    setLabel('#lang-btn', t.lang);
+    setLabel('#theme-btn', t.theme);
+    setLabel('#menu-btn', t.menu);
+    setLabel('#lb-close', t.close);
   }
   applyLang(lang());
-  $('#lang-btn')?.addEventListener('click', () => {
+  const langBtn = $('#lang-btn');
+  if (langBtn) langBtn.addEventListener('click', () => {
     const next = lang() === 'ru' ? 'en' : 'ru';
     store.set('sq-lang', next);
     applyLang(next);
   });
 
-  /* ---------- Тема (круговое раскрытие из кнопки) ---------- */
-  $('#theme-btn')?.addEventListener('click', (e) => {
+  const themeBtn = $('#theme-btn');
+  if (themeBtn) themeBtn.addEventListener('click', (e) => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     const apply = () => { root.dataset.theme = next; store.set('sq-theme', next); };
     const calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -48,28 +51,28 @@
     const r = e.currentTarget.getBoundingClientRect();
     const x = r.left + r.width / 2;
     const y = r.top + r.height / 2;
-    const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const dx = Math.max(x, innerWidth - x);
+    const dy = Math.max(y, innerHeight - y);
+    const end = Math.sqrt(dx * dx + dy * dy);
     const vt = document.startViewTransition(apply);
     vt.ready.then(() => {
       root.animate(
-        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${end}px at ${x}px ${y}px)`] },
+        { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + end + 'px at ' + x + 'px ' + y + 'px)'] },
         { duration: 900, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', pseudoElement: '::view-transition-new(root)' }
       );
     }).catch(() => {});
   });
 
-  /* ---------- Мобильное меню ---------- */
   const menu = $('#menu');
   const burger = $('#menu-btn');
   const setMenu = (open) => {
-    menu?.classList.toggle('open', open);
-    burger?.setAttribute('aria-expanded', String(open));
+    if (menu) menu.classList.toggle('open', open);
+    if (burger) burger.setAttribute('aria-expanded', String(open));
   };
-  burger?.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
-  menu?.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+  if (burger) burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  if (menu) menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 
-  /* ---------- Плавная прокрутка по якорям ---------- */
   const reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   const samePage = (u) => {
     const clean = (p) => p.replace(/index\.html$/, '').replace(/\/+$/, '');
@@ -121,13 +124,12 @@
     try { history.pushState(null, '', u.hash); } catch (err) {}
   });
 
-  /* ---------- Заголовок hero: слова выезжают из-под маски ---------- */
   const heroTitle = $('.hero h1');
   if (heroTitle && !reduced) {
     $$('.ru, .en', heroTitle).forEach((span) => {
       let idx = 0;
       const frag = document.createDocumentFragment();
-      [...span.childNodes].forEach((n) => {
+      Array.from(span.childNodes).forEach((n) => {
         if (n.nodeType !== 3) { frag.appendChild(n.cloneNode(true)); return; }
         n.nodeValue.split(/(\s+)/).forEach((tok) => {
           if (!tok) return;
@@ -146,24 +148,23 @@
       span.appendChild(frag);
     });
   }
-  heroTitle?.classList.add('split');
+  if (heroTitle) heroTitle.classList.add('split');
 
-  /* ---------- Появление блоков ---------- */
-  /* Крупные контейнеры не двигаем целиком: каскадом появляются их части. */
-  const SPLIT = {
+  const split = {
     '.grid-3': '.feature > *',
     '.steps': '.step',
     '.faq-list': 'details',
     '.facts': ':scope > div',
     '.two-col': ':scope > *'
   };
-  Object.entries(SPLIT).forEach(([box, kids]) => {
+  for (const box in split) {
+    const kids = split[box];
     $$(box + '.reveal').forEach((el) => {
       el.classList.remove('reveal');
       $$(kids, el).forEach((k) => k.classList.add('reveal'));
     });
-  });
-  /* На внутренних страницах помечаем элементы статьи автоматически. */
+  }
+
   if (!$('.reveal')) $$('main.prose > *:not(.back)').forEach((el) => el.classList.add('reveal'));
   const reveals = $$('.reveal');
   const finish = (el, delay) => setTimeout(() => {
@@ -175,15 +176,14 @@
   const showAll = () => {
     reveals.forEach((el) => {
       if (!el.classList.contains('reveal') || el.classList.contains('in')) return;
-      io?.unobserve(el);
+      if (io) io.unobserve(el);
       el.classList.add('in');
       finish(el, 0);
     });
   };
   if ('IntersectionObserver' in window && !reduced) {
     io = new IntersectionObserver((entries) => {
-      /* соседние блоки, появившиеся одновременно, всплывают каскадом */
-      const base = firstBatch ? 300 : 0; /* на первом экране ждём слова заголовка */
+      const base = firstBatch ? 300 : 0;
       const vis = entries
         .filter((en) => en.isIntersecting)
         .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left);
@@ -198,7 +198,7 @@
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach((el) => io.observe(el));
-    /* низ страницы: блоки, до которых порог уже не дотянуться, не остаются невидимыми */
+
     const edge = () => {
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) showAll();
     };
@@ -209,7 +209,33 @@
     showAll();
   }
 
-  /* ---------- Шапка, прогресс чтения, параллакс скриншота ---------- */
+  const reel = $('#reel');
+  if (reel) {
+    const clips = $$('.clip', reel);
+    const clipVideos = $$('video', reel);
+    const pick = (clip) => clips.forEach((c) => c.classList.toggle('on', c === clip));
+    clips.forEach((c) => {
+      c.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') pick(c); });
+      c.addEventListener('click', () => pick(c));
+      c.addEventListener('focus', () => pick(c));
+    });
+    reel.addEventListener('pointerleave', () => pick(clips[1]));
+    if (!reduced) {
+      const play = (v) => { const p = v.play(); if (p) p.catch(() => {}); };
+      if ('IntersectionObserver' in window) {
+        const vio = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) play(en.target);
+            else en.target.pause();
+          });
+        }, { threshold: 0.15 });
+        clipVideos.forEach((v) => vio.observe(v));
+      } else {
+        clipVideos.forEach(play);
+      }
+    }
+  }
+
   const topbar = $('.topbar');
   let progress = null;
   if (topbar) {
@@ -225,7 +251,7 @@
     ticking = false;
     const y = window.scrollY;
     const max = document.documentElement.scrollHeight - window.innerHeight;
-    topbar?.classList.toggle('scrolled', y > 8);
+    if (topbar) topbar.classList.toggle('scrolled', y > 8);
     if (progress) progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
     if (shotImg && shotBox && !shotBox.hidden && !reduced) {
       const r = shotBox.getBoundingClientRect();
@@ -241,14 +267,13 @@
   window.addEventListener('resize', onScroll);
   frame();
 
-  /* ---------- Туманности hero следуют за курсором ---------- */
   const heroBox = $('.hero');
   if (heroBox && !reduced) {
     const mist = { tx: 0, ty: 0, x: 0, y: 0, raf: 0 };
     const mistStep = () => {
-      mist.x += (mist.tx - mist.x) * 0.045; /* чем меньше коэффициент, тем «тягучее» движение */
+      mist.x += (mist.tx - mist.x) * 0.045;
       mist.y += (mist.ty - mist.y) * 0.045;
-      /* первое пятно идёт за курсором, второе — навстречу: получается глубина */
+
       heroBox.style.setProperty('--gx1', (mist.x * 170).toFixed(1) + 'px');
       heroBox.style.setProperty('--gy1', (mist.y * 110).toFixed(1) + 'px');
       heroBox.style.setProperty('--gx2', (mist.x * -120).toFixed(1) + 'px');
@@ -258,7 +283,7 @@
     };
     const wake = () => { if (!mist.raf) mist.raf = requestAnimationFrame(mistStep); };
     window.addEventListener('pointermove', (e) => {
-      if (heroBox.getBoundingClientRect().bottom < 0) return; /* hero уже прокручен */
+      if (heroBox.getBoundingClientRect().bottom < 0) return;
       mist.tx = (e.clientX / window.innerWidth - 0.5) * 2;
       mist.ty = (e.clientY / window.innerHeight - 0.5) * 2;
       wake();
@@ -266,7 +291,6 @@
     document.documentElement.addEventListener('mouseleave', () => { mist.tx = 0; mist.ty = 0; wake(); });
   }
 
-  /* ---------- Подсветка карточек за курсором ---------- */
   if (window.matchMedia && matchMedia('(hover: hover)').matches) {
     $$('.feature').forEach((card) => {
       card.addEventListener('pointermove', (e) => {
@@ -277,7 +301,6 @@
     });
   }
 
-  /* ---------- Плавное раскрытие вопросов (FAQ) ---------- */
   $$('details').forEach((d) => {
     const sum = d.querySelector('summary');
     if (!sum || !d.animate) return;
@@ -285,7 +308,7 @@
       if (reduced) return;
       e.preventDefault();
       const from = d.getBoundingClientRect().height;
-      d._anim?.cancel();
+      if (d._anim) d._anim.cancel();
       const opening = !d.open || d._closing;
       d._closing = !opening;
       if (opening) d.open = true;
@@ -306,9 +329,8 @@
     });
   });
 
-  /* ---------- Счётчики в блоке фактов ---------- */
   const countUp = (dt) => {
-    [...dt.childNodes].filter((n) => n.nodeType === 3 && /\d/.test(n.nodeValue)).forEach((node) => {
+    Array.from(dt.childNodes).filter((n) => n.nodeType === 3 && /\d/.test(n.nodeValue)).forEach((node) => {
       const tpl = node.nodeValue;
       const nums = (tpl.match(/\d+/g) || []).map(Number);
       const t0 = performance.now();
@@ -334,7 +356,6 @@
     $$('.facts dt').forEach((dt) => cio.observe(dt));
   }
 
-  /* ---------- Мягкий уход со страницы при переходе по ссылке ---------- */
   document.addEventListener('click', (e) => {
     if (e.defaultPrevented || reduced || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
     const a = e.target.closest('a[href]');
@@ -350,24 +371,25 @@
     root.classList.add('leaving');
     setTimeout(() => { location.href = u.href; }, 260);
   });
-  /* возврат кнопкой «назад» (bfcache) не должен оставлять страницу прозрачной */
+
   window.addEventListener('pageshow', () => root.classList.remove('leaving'));
 
-  /* ---------- Подсветка пункта меню по разделу ---------- */
   const spyLinks = $$('.menu a[href^="#"]');
   if (spyLinks.length && 'IntersectionObserver' in window) {
-    const byId = new Map(spyLinks.map((a) => [a.getAttribute('href').slice(1), a]));
     const spy = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
         if (!en.isIntersecting) return;
-        spyLinks.forEach((a) => a.classList.remove('active'));
-        byId.get(en.target.id)?.classList.add('active');
+        spyLinks.forEach((a) => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id);
+        });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    byId.forEach((_, id) => { const s = document.getElementById(id); if (s) spy.observe(s); });
+    spyLinks.forEach((a) => {
+      const sec = document.getElementById(a.getAttribute('href').slice(1));
+      if (sec) spy.observe(sec);
+    });
   }
 
-  /* ---------- Копирование команд ---------- */
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-copy]');
     if (!btn) return;
@@ -380,8 +402,7 @@
     });
   });
 
-  /* ---------- Автообновление при выходе новой версии сайта ---------- */
-  const SITE_KEY = 'sq-site-version';
+  const siteKey = 'sq-site-version';
   const checkSite = () => {
     if (!window.fetch) return;
     fetch('/version.json?t=' + Date.now(), { cache: 'no-store' })
@@ -389,10 +410,9 @@
       .then((d) => {
         const v = d && (d.site || d.version);
         if (!v) return;
-        const saved = store.get(SITE_KEY);
-        store.set(SITE_KEY, String(v)); /* сохраняем до перезагрузки: цикла не будет */
+        const saved = store.get(siteKey);
+        store.set(siteKey, String(v));
         if (saved && saved !== String(v)) {
-          /* обновляем кеш самой страницы и перезагружаем один раз */
           fetch(location.href, { cache: 'reload' }).catch(() => {}).then(() => location.reload());
         }
       })
@@ -401,7 +421,6 @@
   checkSite();
   window.addEventListener('pageshow', (e) => { if (e.persisted) checkSite(); });
 
-  /* ---------- Версия и ссылка на скачивание из update.json ---------- */
   fetch('update.json?t=' + Date.now(), { cache: 'no-store' })
     .then((r) => (r.ok ? r.json() : null))
     .then((d) => {

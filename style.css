@@ -1,5 +1,3 @@
-/* Silva Quieta — единая таблица стилей */
-
 :root {
   color-scheme: light;
   --bg: #fbfbfd;
@@ -31,13 +29,11 @@
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px -12px rgba(0, 0, 0, 0.6);
 }
 
-/* ---------- Язык: строгое правило, один язык на странице ---------- */
 html:not([lang="en"]) .en,
 html[lang="en"] .ru {
   display: none !important;
 }
 
-/* ---------- База ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; padding: 0; }
 
@@ -82,7 +78,6 @@ code, kbd { font-family: var(--mono); }
   padding: 0 24px;
 }
 
-/* ---------- Шапка ---------- */
 .topbar {
   position: sticky;
   top: 0;
@@ -150,7 +145,6 @@ code, kbd { font-family: var(--mono); }
   margin-left: auto;
 }
 
-/* ---------- Кнопки ---------- */
 .btn,
 .btn-ghost,
 .chip,
@@ -181,7 +175,10 @@ code, kbd { font-family: var(--mono); }
 .btn::after {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: linear-gradient(110deg, transparent 30%, color-mix(in srgb, var(--bg) 38%, transparent) 50%, transparent 70%);
   transform: translateX(-130%);
   pointer-events: none;
@@ -230,7 +227,6 @@ code, kbd { font-family: var(--mono); }
 
 .burger { display: none; }
 
-/* ---------- Hero ---------- */
 .hero {
   position: relative;
   isolation: isolate;
@@ -250,7 +246,7 @@ code, kbd { font-family: var(--mono); }
   width: min(560px, 80vw); height: 340px;
   left: 50%; top: -30px; margin-left: -360px;
   background: color-mix(in srgb, var(--accent) 26%, transparent);
-  translate: var(--gx1, 0px) var(--gy1, 0px); /* смещение от курсора, отдельно от анимации */
+  translate: var(--gx1, 0px) var(--gy1, 0px);
   animation: sq-drift-a 22s ease-in-out infinite alternate;
 }
 .hero::after {
@@ -357,7 +353,6 @@ code, kbd { font-family: var(--mono); }
 .facts dt small { font-size: 15px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
 .facts dd { margin-top: 6px; font-size: 13px; color: var(--muted); }
 
-/* ---------- Секции ---------- */
 .section {
   padding: 56px 0;
   border-top: 1px solid var(--border);
@@ -373,7 +368,70 @@ code, kbd { font-family: var(--mono); }
 }
 .section-head p { font-size: 17px; color: var(--muted); line-height: 1.55; }
 
-/* ---------- Возможности ---------- */
+.reel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 360px;
+}
+.clip {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 84%;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  cursor: pointer;
+  outline: none;
+  transition: flex-grow 0.8s cubic-bezier(0.16, 1, 0.3, 1), height 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s var(--ease);
+}
+.clip.on {
+  flex-grow: 2.4;
+  height: 100%;
+  box-shadow: var(--shadow);
+}
+.clip video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  filter: brightness(0.62) saturate(0.85);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s var(--ease);
+}
+.clip.on video {
+  transform: scale(1);
+  filter: none;
+}
+.clip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 38%);
+  pointer-events: none;
+}
+.clip figcaption {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  z-index: 1;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.clip:focus-visible { border-color: var(--accent); }
+
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -387,7 +445,10 @@ code, kbd { font-family: var(--mono); }
 .feature::before {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: -1;
   background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%);
   opacity: 0;
@@ -410,7 +471,6 @@ code, kbd { font-family: var(--mono); }
   color: var(--text);
 }
 
-/* ---------- Шаги и релизы ---------- */
 .steps { border-top: 1px solid var(--border); }
 .step {
   display: grid;
@@ -429,7 +489,6 @@ code, kbd { font-family: var(--mono); }
 .plain li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 4px; height: 4px; border-radius: 50%; background: var(--muted); }
 .faq-list { max-width: 760px; }
 
-/* ---------- Детали: клавиши и требования ---------- */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
 .two-col h3 {
   font-size: 13px;
@@ -467,9 +526,6 @@ kbd {
   color: var(--text);
 }
 
-/* ---------- Финальный блок ---------- */
-
-/* ---------- Подстраницы ---------- */
 .prose { max-width: 720px; padding-top: 72px; padding-bottom: 96px; }
 .back {
   display: inline-block;
@@ -545,7 +601,6 @@ details p { padding: 0 0 22px; max-width: 62ch; }
 .release { padding: 8px 0 8px; }
 .release time { font-size: 13px; color: var(--muted); margin-left: 8px; font-weight: 400; }
 
-/* ---------- Футер ---------- */
 .site-footer { margin-top: 32px; border-top: 1px solid var(--border); padding: 22px 0 calc(22px + env(safe-area-inset-bottom, 0px)); font-size: 13px; color: var(--muted); }
 .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 14px 40px; }
 .foot-brand { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; }
@@ -555,7 +610,6 @@ details p { padding: 0 0 22px; max-width: 62ch; }
 .foot-links a { color: var(--muted); text-decoration: none; transition: color 0.2s var(--ease); }
 .foot-links a:hover { color: var(--text); }
 
-/* ---------- Появление ---------- */
 .js .reveal {
   opacity: 0;
   transform: translateY(28px) scale(0.985);
@@ -565,7 +619,6 @@ details p { padding: 0 0 22px; max-width: 62ch; }
 }
 .js .reveal.in { opacity: 1; transform: none; filter: none; }
 
-/* уход со страницы и смена темы */
 .leaving main, .leaving .site-footer { opacity: 0; transform: translateY(-8px); transition: opacity 0.26s ease, transform 0.26s ease; }
 .theme-fade, .theme-fade *, .theme-fade *::before, .theme-fade *::after {
   transition: background-color 0.5s var(--ease), color 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease) !important;
@@ -580,10 +633,10 @@ details p { padding: 0 0 22px; max-width: 62ch; }
   .hero::before, .hero::after { animation: none; }
   .hero h1 .wi { animation: none; }
   .btn::after { display: none; }
+  .clip, .clip video { transition: none; }
   .leaving main, .leaving .site-footer { opacity: 1; transform: none; }
 }
 
-/* ---------- Адаптив ---------- */
 @media (max-width: 900px) {
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .step { grid-template-columns: minmax(0, 1fr); gap: 14px; }
@@ -631,10 +684,15 @@ details p { padding: 0 0 22px; max-width: 62ch; }
   .foot-links { justify-content: flex-start; gap: 8px 20px; }
 }
 
-/* горизонтальные поля секций на экранах уже контейнера (иначе текст прилипает к краю) */
 @media (max-width: 1080px) {
   .section { padding-left: 24px; padding-right: 24px; }
 }
 @media (max-width: 640px) {
   .section { padding-left: 16px; padding-right: 16px; }
+}
+
+@media (max-width: 760px) {
+  .reel { flex-direction: column; height: auto; }
+  .clip, .clip.on { flex: none; width: 100%; height: auto; aspect-ratio: 16 / 9; box-shadow: none; }
+  .clip video, .clip.on video { transform: none; filter: none; }
 }

@@ -86,6 +86,27 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
       </dl>
     </section>
 
+    <section id="scenes" class="section wrap" aria-label="Сцены">
+      <div class="section-head reveal">
+        <p class="ru">Вот как это выглядит на самом деле, без скриншотов. Три ролика крутятся по кругу, как и на рабочем столе. Наведите курсор на любой, и он выйдет вперёд. Остальные сцены лежат в каталоге внутри приложения.</p>
+        <p class="en">This is what it actually looks like, no screenshots. Three clips on a loop, the same as on your desktop. Hover any of them and it steps forward. The rest of the scenes are in the catalog inside the app.</p>
+      </div>
+      <div class="reel reveal" id="reel">
+        <figure class="clip" tabindex="0">
+          <video muted loop playsinline preload="metadata" poster="media/sunset.jpg"><source src="media/sunset.mp4" type="video/mp4"></video>
+          <figcaption><span class="ru">Закат</span><span class="en">Sunset</span></figcaption>
+        </figure>
+        <figure class="clip on" tabindex="0">
+          <video muted loop playsinline preload="metadata" poster="media/anime.jpg"><source src="media/anime.mp4" type="video/mp4"></video>
+          <figcaption><span class="ru">Японский вечер</span><span class="en">Evening in Japan</span></figcaption>
+        </figure>
+        <figure class="clip" tabindex="0">
+          <video muted loop playsinline preload="metadata" poster="media/water.jpg"><source src="media/water.mp4" type="video/mp4"></video>
+          <figcaption><span class="ru">Дым и чернила</span><span class="en">Smoke and ink</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section id="features" class="section wrap">
       <div class="section-head reveal">
         <h2><span class="ru">Как это устроено</span><span class="en">How it works</span></h2>
