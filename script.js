@@ -151,7 +151,6 @@
   if (heroTitle) heroTitle.classList.add('split');
 
   const split = {
-    '.grid-3': ':scope > .feature',
     '.steps': '.step',
     '.faq-list': 'details',
     '.facts': ':scope > div',
@@ -239,12 +238,30 @@
   const topbar = $('.topbar');
   const fadeEls = reveals.concat(heroTitle ? [heroTitle] : []);
   const reelClips = reel ? $$('.clip', reel) : [];
+  const focusRows = $$('.f-row');
+  let focused = null;
   const parEls = $$('[data-par]').concat($$('.shot img'));
   let ticking = false;
   const frame = () => {
     ticking = false;
     const y = window.scrollY;
     if (topbar) topbar.classList.toggle('scrolled', y > 8);
+    if (focusRows.length) {
+      const vh = window.innerHeight;
+      let best = null;
+      let bestD = Infinity;
+      focusRows.forEach((r) => {
+        const b = r.getBoundingClientRect();
+        const d = Math.abs(b.top + b.height / 2 - vh / 2);
+        if (d < bestD) { bestD = d; best = r; }
+      });
+      if (bestD > vh * 0.75) best = null;
+      if (best !== focused) {
+        if (focused) focused.classList.remove('is-focus');
+        if (best) best.classList.add('is-focus');
+        focused = best;
+      }
+    }
     if (!reduced) {
       const vh = window.innerHeight;
       parEls.forEach((el) => {
@@ -280,16 +297,6 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   frame();
-
-  if (window.matchMedia && matchMedia('(hover: hover)').matches) {
-    $$('.feature').forEach((card) => {
-      card.addEventListener('pointermove', (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      });
-    });
-  }
 
   $$('details').forEach((d) => {
     const sum = d.querySelector('summary');

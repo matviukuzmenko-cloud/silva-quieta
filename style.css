@@ -384,49 +384,32 @@ code, kbd { font-family: var(--mono); }
 }
 .clip:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-.grid-3 {
+/* Full-width typographic rows with scroll focus */
+.f-list { max-width: 1120px; }
+.f-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.4fr);
+  gap: 48px;
+  padding: 44px 0;
 }
-.feature {
-  position: relative;
-  isolation: isolate;
-  display: flex;
-  flex-direction: column;
-  background: var(--card);
-  border-radius: 24px;
-  padding: 36px;
-}
-.feature::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%);
-  opacity: 0;
-  transition: opacity 0.6s var(--ease);
-  pointer-events: none;
-}
-.feature:hover::before { opacity: 1; }
-.feature h3 {
-  font-size: 20px;
+.f-row h3 {
+  font-size: clamp(26px, 3vw, 38px);
   font-weight: 700;
-  letter-spacing: -0.025em;
-  margin-bottom: 12px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
-.feature p { font-size: 15.5px; line-height: 1.65; color: var(--muted); }
-.feature code {
-  font-size: 12.5px;
-  padding: 1px 5px;
-  border-radius: 5px;
-  background: var(--bg);
-  color: var(--text);
+.f-body p { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: var(--muted); }
+.f-body strong { color: var(--text); font-weight: 650; }
+.f-body code { font-size: 0.82em; padding: 2px 7px; border-radius: 7px; background: var(--surface-2); color: var(--text); }
+.js .f-row {
+  opacity: 0.22;
+  filter: blur(3px);
+  transform: translateY(14px) scale(0.99);
+  transform-origin: 0 50%;
+  transition: opacity 0.35s ease-out, filter 0.35s ease-out, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, filter, transform;
 }
+.js .f-row.is-focus { opacity: 1; filter: blur(0px); transform: translateY(0) scale(1); }
 
 .steps { display: grid; gap: 20px; }
 .step {
@@ -592,6 +575,7 @@ details p { padding: 0 0 28px; max-width: 62ch; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .js .f-row { opacity: 1; filter: none; transform: none; transition: none; }
   .js .reveal { opacity: 1; transform: none; filter: none; transition: none; }
   .hero h1 .wi { animation: none; }
   .btn::after { display: none; }
@@ -600,13 +584,13 @@ details p { padding: 0 0 28px; max-width: 62ch; }
 }
 
 @media (max-width: 900px) {
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .step { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .step > div { min-width: 0; }
   .two-col { grid-template-columns: 1fr; gap: 40px; }
 }
 
 @media (max-width: 760px) {
+  .f-row { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 32px 0; }
   .burger { display: inline-flex; }
   .menu {
     display: none;
@@ -632,9 +616,8 @@ details p { padding: 0 0 28px; max-width: 62ch; }
   .hero .lead { font-size: 16.5px; }
   .section { padding-top: 56px; padding-bottom: 56px; }
   .section-head { margin-bottom: 28px; }
-  .feature, .step { padding: 28px; border-radius: 20px; }
+  .step { padding: 28px; border-radius: 20px; }
   details { padding: 0 22px; border-radius: 20px; }
-  .grid-3 { grid-template-columns: 1fr; }
   .facts { grid-template-columns: 1fr; margin-top: 40px; }
   .facts > div { padding: 16px 0; }
   .row { flex-direction: column; align-items: flex-start; gap: 6px; }
@@ -653,8 +636,3 @@ details p { padding: 0 0 28px; max-width: 62ch; }
   .clip, .clip.on { flex: none; width: 100%; height: auto; aspect-ratio: 16 / 9; box-shadow: none; }
   .clip video, .clip.on video { transform: none; filter: none; }
 }
-
-/* Feature cards: icon + title + text */
-.grid-3 { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.feature .ico { display: block; width: 22px; height: 22px; margin-bottom: 20px; color: var(--text); }
-.feature .ico svg { display: block; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }

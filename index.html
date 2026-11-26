@@ -43,7 +43,7 @@ if(l!=='ru'&&l!=='en'){l=/^en/i.test(navigator.language||'')?'en':'ru'}
 if(t!=='dark'&&t!=='light'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
 d.lang=l;d.setAttribute('data-theme',t);d.classList.add('js');
 var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))document.title=el.getAttribute('data-'+l);})();</script>
-  <link rel="stylesheet" href="style.css?v=1.3.4">
+  <link rel="stylesheet" href="style.css?v=1.3.5">
 </head>
 <body>
   <header class="topbar">
@@ -108,42 +108,48 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
         <p class="ru">Silva Quieta живёт в строке меню. Значка в Dock нет: всё открывается из меню или горячими клавишами.</p>
 <p class="en">Silva Quieta lives in the menu bar. There is no Dock icon; everything opens from the menu or with shortcuts.</p>
       </div>
-      <div class="grid-3 reveal">
-        <article class="feature">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span>
+      <div class="f-list">
+        <article class="f-row">
           <h3><span class="ru">Аппаратное декодирование</span><span class="en">Hardware decoding</span></h3>
-          <p class="ru">Ролик играет через <code>AVPlayerLooper</code>, на стыке нет паузы. Кадры декодирует Media Engine чипов M1–M5, а не процессор.</p>
-          <p class="en">The clip plays through <code>AVPlayerLooper</code> with no gap at the join. Frames are decoded by the M1–M5 Media Engine, not by the CPU.</p>
+          <div class="f-body">
+            <p class="ru">Ролик играет через <code>AVPlayerLooper</code>, <strong>на стыке нет паузы</strong>. Кадры декодирует <strong>Media Engine чипов M1–M5</strong>, а не процессор.</p>
+            <p class="en">The clip plays through <code>AVPlayerLooper</code> with <strong>no gap at the join</strong>. Frames are decoded by the <strong>M1–M5 Media Engine</strong>, not by the CPU.</p>
+          </div>
         </article>
-        <article class="feature">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2.5"/><path d="M22 11v2M7.5 10.5v3M11.5 10.5v3"/></svg></span>
+        <article class="f-row">
           <h3><span class="ru">Пауза и заряд</span><span class="en">Pause and battery</span></h3>
-          <p class="ru">Видео и звук останавливаются, если приложение открыто на весь экран, Mac работает от батареи или в режиме энергосбережения, включилась заставка или экран заблокирован.</p>
-          <p class="en">Video and audio stop when an app goes full screen, the Mac runs on battery or in Low Power Mode, the screensaver starts, or the screen is locked.</p>
+          <div class="f-body">
+            <p class="ru">Видео и звук останавливаются, если приложение открыто <strong>на весь экран</strong>, Mac работает <strong>от батареи</strong> или в <strong>режиме энергосбережения</strong>, включилась <strong>заставка</strong> или <strong>экран заблокирован</strong>.</p>
+            <p class="en">Video and audio stop when an app goes <strong>full screen</strong>, the Mac runs <strong>on battery</strong> or in <strong>Low Power Mode</strong>, the <strong>screensaver</strong> starts, or the <strong>screen is locked</strong>.</p>
+          </div>
         </article>
-        <article class="feature">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 16 9 5 9-5"/></svg></span>
+        <article class="f-row">
           <h3><span class="ru">Каталог, 2.5D и частицы</span><span class="en">Catalog, 2.5D and particles</span></h3>
-          <p class="ru">Сцены 4K и FullHD скачиваются в один клик. Любое фото становится 2.5D-обоями, а поверх можно добавить GPU-частицы, следующие за курсором.</p>
-          <p class="en">4K and FullHD scenes download in one click. Any photo becomes a 2.5D wallpaper, with GPU particles following the cursor on top.</p>
+          <div class="f-body">
+            <p class="ru">Сцены <strong>4K и FullHD</strong> скачиваются в один клик. Любое фото становится <strong>2.5D-обоями</strong>, а поверх можно добавить <strong>GPU-частицы</strong>, следующие за курсором.</p>
+            <p class="en"><strong>4K and FullHD</strong> scenes download in one click. Any photo becomes a <strong>2.5D wallpaper</strong>, with <strong>GPU particles</strong> following the cursor on top.</p>
+          </div>
         </article>
-        <article class="feature">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+        <article class="f-row">
           <h3><span class="ru">Мониторы и Spaces</span><span class="en">Displays and Spaces</span></h3>
-          <p class="ru">Для каждого монитора и каждого рабочего стола Spaces можно выбрать свои обои.</p>
-          <p class="en">Every display and every Spaces desktop can have its own wallpaper.</p>
+          <div class="f-body">
+            <p class="ru">Для каждого <strong>монитора</strong> и каждого рабочего стола <strong>Spaces</strong> можно выбрать свои обои.</p>
+            <p class="en">Every <strong>display</strong> and every <strong>Spaces</strong> desktop can have its own wallpaper.</p>
+          </div>
         </article>
-        <article class="feature">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a9 9 0 0 1 0 12"/></svg></span>
+        <article class="f-row">
           <h3><span class="ru">Звук</span><span class="en">Sound</span></h3>
-          <p class="ru">Дорожка из самих обоев или свой файл: MP3, WAV, M4A, AIFF. Громкость задаётся в настройках.</p>
-          <p class="en">The track baked into a wallpaper or your own MP3, WAV, M4A or AIFF file. Volume is set in preferences.</p>
+          <div class="f-body">
+            <p class="ru">Дорожка из самих обоев или свой файл: <strong>MP3, WAV, M4A, AIFF</strong>. Громкость задаётся в настройках.</p>
+            <p class="en">The track baked into a wallpaper or your own <strong>MP3, WAV, M4A or AIFF</strong> file. Volume is set in preferences.</p>
+          </div>
         </article>
-        <article class="feature">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></span>
+        <article class="f-row">
           <h3><span class="ru">Затемнение и скорость</span><span class="en">Dimming and speed</span></h3>
-          <p class="ru">Затемнение до 75% помогает иконкам и виджетам читаться на яркой сцене. Скорость можно снизить до 0.25×.</p>
-          <p class="en">Dimming up to 75% keeps icons and widgets readable over a bright scene. Playback speed goes down to 0.25×.</p>
+          <div class="f-body">
+            <p class="ru">Затемнение <strong>до 75%</strong> помогает иконкам и виджетам читаться на яркой сцене. Скорость можно снизить <strong>до 0.25×</strong>.</p>
+            <p class="en">Dimming <strong>up to 75%</strong> keeps icons and widgets readable over a bright scene. Playback speed goes down to <strong>0.25×</strong>.</p>
+          </div>
         </article>
       </div>
     </section>
@@ -276,6 +282,6 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     </div>
   </footer>
 
-  <script src="script.js?v=1.3.4"></script>
+  <script src="script.js?v=1.3.5"></script>
 </body>
 </html>
