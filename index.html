@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="dark light">
   <title data-ru="Silva Quieta — живые видео-обои для macOS" data-en="Silva Quieta — live video wallpapers for macOS">Silva Quieta — живые видео-обои для macOS</title>
-  <meta name="description" content="Живые 4K видео-обои для macOS. Apple Silicon (M1–M5) и Intel, каталог сцен, 2.5D из фотографий, частицы и пауза на батарее. Бесплатно, без аккаунта." data-ru="Живые 4K видео-обои для macOS. Apple Silicon (M1–M5) и Intel, каталог сцен, 2.5D из фотографий, частицы и пауза на батарее. Бесплатно, без аккаунта." data-en="Live 4K video wallpapers for macOS. Apple Silicon (M1–M5) and Intel, scene catalog, 2.5D from photos, particles and battery-aware pause. Free, no account.">
+  <meta name="description" content="Живые 4K видео-обои для macOS. Apple Silicon (M1–M5) и Intel, каталог сцен, плейлисты с автосменой, 2.5D из фотографий, частицы и пауза на батарее. Интерфейс на русском и английском. Бесплатно, без аккаунта." data-ru="Живые 4K видео-обои для macOS. Apple Silicon (M1–M5) и Intel, каталог сцен, плейлисты с автосменой, 2.5D из фотографий, частицы и пауза на батарее. Интерфейс на русском и английском. Бесплатно, без аккаунта." data-en="Live 4K video wallpapers for macOS. Apple Silicon (M1–M5) and Intel, scene catalog, playlists with auto-switching, 2.5D from photos, particles and battery-aware pause. Russian and English interface. Free, no account.">
   <link rel="canonical" href="https://silvaquieta.com/">
   <link rel="icon" href="favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
@@ -17,7 +17,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://silvaquieta.com/">
   <meta property="og:title" content="Silva Quieta — живые видео-обои для macOS">
-  <meta property="og:description" content="Живые 4K видео-обои для macOS. Apple Silicon (M1–M5) и Intel, каталог сцен, 2.5D из фотографий, частицы и пауза на батарее. Бесплатно, без аккаунта.">
+  <meta property="og:description" content="Живые 4K видео-обои для macOS. Apple Silicon (M1–M5) и Intel, каталог сцен, плейлисты с автосменой, 2.5D из фотографий, частицы и пауза на батарее. Интерфейс на русском и английском. Бесплатно, без аккаунта.">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -28,9 +28,9 @@
         "name": "Silva Quieta",
         "operatingSystem": "macOS 13.0 or later",
         "applicationCategory": "DesktopEnhancementApplication",
-        "softwareVersion": "1.3.0",
+        "softwareVersion": "1.4.0",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "downloadUrl": "https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg"
+        "downloadUrl": "https://github.com/matviukuzmenko-cloud/silva-quieta/releases/latest/download/Silva.Quieta.dmg"
       }
     ]
   }
@@ -43,13 +43,14 @@ if(l!=='ru'&&l!=='en'){l=/^en/i.test(navigator.language||'')?'en':'ru'}
 if(t!=='dark'&&t!=='light'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
 d.lang=l;d.setAttribute('data-theme',t);d.classList.add('js');
 var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))document.title=el.getAttribute('data-'+l);})();</script>
-  <link rel="stylesheet" href="style.css?v=1.3.11">
+  <link rel="stylesheet" href="style.css?v=1.4.0">
 </head>
 <body>
   <header class="topbar">
     <div class="wrap bar">
       <a href="#top" class="logo"><svg width="18" height="26" viewBox="0 0 385.00 562.25" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M309.50 418.00 283.25 376.00 282.25 375.75 241.00 408.50 228.75 417.50 228.50 418.50 309.25 418.50ZM193.00 0.00 191.75 0.50 164.25 45.25 69.75 195.25 70.00 196.25 115.75 196.00 116.50 197.25 30.50 331.75 30.75 332.25 79.25 332.25 79.75 333.50 0.00 459.25 0.25 460.00 26.75 459.75 36.25 458.25 51.25 453.00 70.00 443.00 139.75 400.00 195.50 363.25 233.00 336.75 273.50 305.50 273.50 304.75 200.50 264.75 193.25 261.00 192.00 261.00 96.50 312.75 94.50 313.50 65.50 313.50 65.00 312.75 191.75 115.25 192.75 115.00 193.75 116.00 227.25 168.50 228.75 168.25 243.25 159.50 194.25 81.50 192.25 79.50 130.50 175.75 128.75 177.50 104.75 177.50 104.00 177.00 107.25 170.75 175.00 64.00 191.50 37.25 193.00 36.50 281.25 177.00 280.50 177.50 255.25 177.50 252.25 178.75 194.50 213.50 169.50 227.25 169.25 226.50 193.00 190.50 207.50 180.75 207.25 179.00 203.25 173.75 192.50 156.75 191.75 157.00 126.75 257.75 114.25 278.25 126.75 272.00 188.00 238.25 193.00 236.50 195.75 237.25 254.50 270.00 271.00 278.50 230.25 214.25 230.25 213.50 232.75 211.50 248.75 202.00 253.50 208.25 265.75 228.25 275.50 242.75 319.25 311.75 319.50 313.00 319.00 313.50 299.75 313.75 295.25 314.75 289.50 317.75 242.50 355.00 219.25 372.50 191.75 395.00 181.50 405.25 171.75 418.00 165.50 429.25 161.75 438.25 158.50 449.00 156.50 460.75 155.75 472.50 156.00 562.25 228.75 562.00 229.00 464.25 229.75 462.00 232.25 460.00 384.50 460.00 385.00 459.50 305.00 333.25 305.50 332.25 354.00 332.25 354.00 331.25 268.25 197.00 269.25 196.00 315.00 196.25 315.25 195.50 221.25 46.00ZM288.75 343.25 350.50 439.75 350.50 440.75 350.00 441.25 231.00 441.25 227.75 441.75 222.25 443.75 218.25 446.50 214.75 450.25 211.75 455.75 210.50 460.75 210.25 543.00 209.00 543.75 175.25 543.50 174.50 542.75 174.75 466.75 176.25 456.00 178.25 448.25 181.25 440.25 185.25 432.00 191.25 422.75 196.50 416.50 209.75 404.00 288.00 343.00ZM238.50 307.50 238.50 308.50 233.75 312.75 209.75 330.50 149.25 371.50 148.25 370.50 155.25 328.25 122.25 345.75 119.75 348.25 75.50 417.00 68.00 422.50 54.75 430.50 38.75 438.50 35.50 439.00 40.25 430.50 104.50 330.00 106.50 328.25 192.00 282.25 193.50 282.50Z"/></svg><span>Silva Quieta</span></a>
       <nav class="menu" id="menu" aria-label="Main">
+        <a href="#whats-new"><span class="ru">Что нового</span><span class="en">What’s new</span></a>
         <a href="#features"><span class="ru">Возможности</span><span class="en">Features</span></a>
         <a href="#install"><span class="ru">Установка</span><span class="en">Install</span></a>
         <a href="#updates"><span class="ru">Обновления</span><span class="en">Updates</span></a>
@@ -58,7 +59,7 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
       <div class="controls">
         <button id="lang-btn" class="icon-btn text" type="button" aria-label="Language"><span class="ru">EN</span><span class="en">RU</span></button>
         <button id="theme-btn" class="icon-btn" type="button" aria-label="Theme"><svg class="i-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
-        <a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg" class="btn sm" data-dl><span class="ru">Скачать</span><span class="en">Download</span></a>
+        <a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/latest/download/Silva.Quieta.dmg" class="btn sm" data-dl><span class="ru">Скачать</span><span class="en">Download</span></a>
         <button id="menu-btn" class="icon-btn burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
     </div>
@@ -71,7 +72,7 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
       <p class="ru lead reveal">Видео-обои на Swift и AVFoundation. Без аккаунта, подписки и серверов. Ролик декодирует Media Engine, поэтому процессор почти свободен, а MacBook дольше держит заряд.</p>
 <p class="en lead reveal">Video wallpapers written in Swift and AVFoundation. No account, no subscription, no servers. The Media Engine decodes the clip, so the CPU stays almost idle and your MacBook keeps its charge longer.</p>
       <div class="cta-row reveal">
-        <a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg" class="btn" data-dl><span class="ru">Скачать для macOS</span><span class="en">Download for macOS</span></a>
+        <a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/latest/download/Silva.Quieta.dmg" class="btn" data-dl><span class="ru">Скачать для macOS</span><span class="en">Download for macOS</span></a>
         <a href="#install" class="btn-ghost"><span class="ru">Как установить</span><span class="en">How to install</span></a>
       </div>
 
@@ -80,7 +81,7 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
       <dl class="facts reveal">
         <div><dt>45–90 <small><span class="ru">МБ</span><span class="en">MB</span></small></dt><dd><span class="ru">памяти на Apple Silicon</span><span class="en">of memory on Apple Silicon</span></dd></div>
         <div><dt>&lt; 2<small>%</small></dt><dd><span class="ru">процессора при воспроизведении</span><span class="en">CPU during playback</span></dd></div>
-        <div><dt>3 <small><span class="ru">сцены</span><span class="en">scenes</span></small></dt><dd><span class="ru">в кэше на Mac с 8 ГБ памяти</span><span class="en">cached on an 8 GB Mac</span></dd></div>
+        <div><dt>2 <small><span class="ru">плеера</span><span class="en">players</span></small></dt><dd><span class="ru">максимум в кэше, остальное выгружается</span><span class="en">at most in cache, the rest is released</span></dd></div>
       </dl>
     </section>
 
@@ -100,6 +101,49 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
         </figure>
       </div>
     </div>
+
+    <section id="whats-new" class="section wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">v1.4.0 · <span class="ru">27 ноября 2026</span><span class="en">November 27, 2026</span></p>
+        <h2><span class="ru">Что нового в v1.4.0</span><span class="en">What’s new in v1.4.0</span></h2>
+        <p class="ru">Плейлисты, два языка и заметно меньше памяти. Всё остальное осталось таким же спокойным.</p>
+        <p class="en">Playlists, two languages and noticeably less memory. Everything else stays just as calm.</p>
+      </div>
+      <div class="new-grid">
+        <article class="new-card reveal">
+          <h3><span class="ru">Плейлисты и автосмена обоев</span><span class="en">Playlists and scheduled switching</span></h3>
+          <p class="ru">Добавляйте любые сцены из библиотеки в плейлист звёздочкой на карточке. Обои меняются с плавным <code>crossfade</code> по таймеру или по времени суток, в том числе прямо из строки меню.</p>
+          <p class="en">Add any scene from your library to a playlist with the star on its card. Wallpapers switch with a smooth <code>crossfade</code> on a timer or by time of day, including straight from the menu bar.</p>
+          <ul class="tags">
+            <li><span class="ru">15 мин</span><span class="en">15 min</span></li>
+            <li><span class="ru">30 мин</span><span class="en">30 min</span></li>
+            <li><span class="ru">1 час</span><span class="en">1 hour</span></li>
+            <li><span class="ru">3 часа</span><span class="en">3 hours</span></li>
+          </ul>
+          <ul class="tags">
+            <li><span class="ru">Утро 06:00–12:00</span><span class="en">Morning 06:00–12:00</span></li>
+            <li><span class="ru">День 12:00–18:00</span><span class="en">Day 12:00–18:00</span></li>
+            <li><span class="ru">Вечер 18:00–23:00</span><span class="en">Evening 18:00–23:00</span></li>
+            <li><span class="ru">Ночь 23:00–06:00</span><span class="en">Night 23:00–06:00</span></li>
+          </ul>
+        </article>
+        <article class="new-card reveal">
+          <h3><span class="ru">Русский и English</span><span class="en">Russian and English</span></h3>
+          <p class="ru">Язык выбирается при первом запуске, а если не выбирать, приложение берёт язык macOS. Переведены весь интерфейс, пользовательское соглашение (EULA) и приветственный гайд.</p>
+          <p class="en">Choose a language on first launch, or let the app follow macOS. The whole interface, the EULA and the welcome guide are translated.</p>
+        </article>
+        <article class="new-card reveal">
+          <h3><span class="ru">Глубокая оптимизация памяти</span><span class="en">Deep memory optimization</span></h3>
+          <p class="ru">В кэше удерживается не более <strong>2 видеоплееров</strong> (<code>preferredForwardBufferDuration = 2.0</code>), превью галереи сжимаются под размер карточки. Когда окно галереи сворачивается или закрывается, кэш миниатюр и неактивных плееров полностью выгружается из памяти.</p>
+          <p class="en">The cache holds at most <strong>2 video players</strong> (<code>preferredForwardBufferDuration = 2.0</code>), and gallery previews are scaled down to the card size. When the gallery window is minimized or closed, the thumbnail cache and inactive players are fully released from memory.</p>
+        </article>
+        <article class="new-card reveal">
+          <h3><span class="ru">Спокойный интерфейс и гайд</span><span class="en">A calmer interface and guide</span></h3>
+          <p class="ru">Обновлено окно «О Silva Quieta», добавлен спокойный приветственный гайд из 5 шагов, а в каталоге появились плавные анимации при наведении. Без визуального шума.</p>
+          <p class="en">The About Silva Quieta window is refreshed, there is a calm 5-step welcome guide, and the catalog has smooth hover animations. No visual noise.</p>
+        </article>
+      </div>
+    </section>
 
     <section id="features" class="section wrap">
       <div class="section-head reveal">
@@ -128,6 +172,13 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
           </div>
         </article>
         <article class="f-row">
+          <h3><span class="ru">Плейлисты и расписание</span><span class="en">Playlists and schedule</span></h3>
+          <div class="f-body">
+            <p class="ru">Сцены из плейлиста сменяют друг друга с плавным <strong>crossfade</strong>: <strong>по таймеру</strong> (15 мин, 30 мин, 1 час, 3 часа) или <strong>по времени суток</strong> (утро, день, вечер, ночь). Переключать можно и из <strong>строки меню</strong>.</p>
+            <p class="en">Playlist scenes trade places with a smooth <strong>crossfade</strong>: <strong>on a timer</strong> (15 min, 30 min, 1 hour, 3 hours) or <strong>by time of day</strong> (morning, day, evening, night). You can also switch from the <strong>menu bar</strong>.</p>
+          </div>
+        </article>
+        <article class="f-row">
           <h3><span class="ru">Мониторы и Spaces</span><span class="en">Displays and Spaces</span></h3>
           <div class="f-body">
             <p class="ru">Для каждого <strong>монитора</strong> и каждого рабочего стола <strong>Spaces</strong> можно выбрать свои обои.</p>
@@ -148,6 +199,27 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
             <p class="en">Dimming <strong>up to 75%</strong> keeps icons and widgets readable over a bright scene. Playback speed goes down to <strong>0.25×</strong>.</p>
           </div>
         </article>
+        <article class="f-row">
+          <h3><span class="ru">Русский и English</span><span class="en">Russian and English</span></h3>
+          <div class="f-body">
+            <p class="ru">Язык выбирается <strong>при первом запуске</strong> или определяется по <strong>настройкам macOS</strong>. Переведены интерфейс, <strong>EULA</strong> и приветственный гайд.</p>
+            <p class="en">The language is chosen <strong>on first launch</strong> or detected from <strong>macOS settings</strong>. The interface, the <strong>EULA</strong> and the welcome guide are translated.</p>
+          </div>
+        </article>
+        <article class="f-row">
+          <h3><span class="ru">Экономная память</span><span class="en">Lean memory</span></h3>
+          <div class="f-body">
+            <p class="ru">Не более <strong>двух плееров</strong> в кэше, сжатые превью, а после закрытия или сворачивания галереи <strong>кэш выгружается полностью</strong>.</p>
+            <p class="en">No more than <strong>two players</strong> in the cache, compact previews, and once the gallery is closed or minimized the <strong>cache is released completely</strong>.</p>
+          </div>
+        </article>
+        <article class="f-row">
+          <h3><span class="ru">Спокойный гайд</span><span class="en">A calm guide</span></h3>
+          <div class="f-body">
+            <p class="ru">Первый запуск проводит через <strong>5 коротких шагов</strong>. Окно «О Silva Quieta» стало чище, а карточки каталога плавно реагируют на наведение.</p>
+            <p class="en">The first launch walks you through <strong>5 short steps</strong>. The About window is cleaner, and catalog cards respond smoothly to hover.</p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -159,9 +231,9 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
         <div class="step">
           <h3><span class="ru">1. Установка</span><span class="en">1. Install</span></h3>
           <div>
-            <p class="ru">Скачайте <strong>Silva_Quieta_Installer.dmg</strong>, откройте его и перетащите <strong>Silva Quieta</strong> в папку <strong>Программы</strong>. Запускайте оттуда или через Spotlight.</p>
-<p class="en">Download <strong>Silva_Quieta_Installer.dmg</strong>, open it and drag <strong>Silva Quieta</strong> into <strong>Applications</strong>. Launch it from there or through Spotlight.</p>
-            <div class="cta-row"><a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/download/1.3.0/Silva_Quieta_Installer.dmg" class="btn sm" data-dl><span class="ru">Скачать .dmg</span><span class="en">Download .dmg</span></a></div>
+            <p class="ru">Скачайте <strong>Silva.Quieta.dmg</strong>, откройте его и перетащите <strong>Silva Quieta</strong> в папку <strong>Программы</strong>. Запускайте оттуда или через Spotlight.</p>
+<p class="en">Download <strong>Silva.Quieta.dmg</strong>, open it and drag <strong>Silva Quieta</strong> into <strong>Applications</strong>. Launch it from there or through Spotlight.</p>
+            <div class="cta-row"><a href="https://github.com/matviukuzmenko-cloud/silva-quieta/releases/latest/download/Silva.Quieta.dmg" class="btn sm" data-dl><span class="ru">Скачать .dmg</span><span class="en">Download .dmg</span></a></div>
           </div>
         </div>
         <div class="step">
@@ -196,6 +268,7 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
         <h2><span class="ru">Обновления</span><span class="en">Updates</span></h2>
       </div>
       <div class="steps reveal">
+        <div class="step"><h3>1.4.0<time datetime="2026-11-27"><span class="ru">27 ноября 2026</span><span class="en">November 27, 2026</span></time></h3><ol class="plain"><li><span class="ru">Полная локализация на русский и английский: выбор языка при первом запуске, автоопределение языка macOS, перевод EULA, гайда и интерфейса</span><span class="en">Full Russian and English localization: language choice on first launch, macOS language detection, translated EULA, guide and interface</span></li><li><span class="ru">Плейлисты и автосмена обоев с плавным crossfade: по таймеру (15 мин, 30 мин, 1 час, 3 часа) или по времени суток, в том числе из строки меню</span><span class="en">Playlists and automatic wallpaper switching with a smooth crossfade: on a timer (15 min, 30 min, 1 hour, 3 hours) or by time of day, including from the menu bar</span></li><li><span class="ru">Глубокая оптимизация ОЗУ: не более 2 плееров в кэше, сжатые превью, полная выгрузка кэша при сворачивании или закрытии галереи</span><span class="en">Deep RAM optimization: at most 2 players cached, compact previews, full cache release when the gallery is minimized or closed</span></li><li><span class="ru">Обновлённое окно «О Silva Quieta», спокойный 5-шаговый гайд и плавные анимации наведения в каталоге</span><span class="en">Refreshed About window, a calm 5-step guide and smooth hover animations in the catalog</span></li></ol></div>
         <div class="step"><h3>1.3.0<time datetime="2026-11-24"><span class="ru">24 ноября 2026</span><span class="en">November 24, 2026</span></time></h3><ol class="plain"><li><span class="ru">Онлайн-каталог 4K и FullHD сцен, загрузка в один клик</span><span class="en">Online catalog of 4K and FullHD scenes, one-click download</span></li><li><span class="ru">2.5D-обои из любого фото или скриншота в Retina-разрешении</span><span class="en">2.5D wallpapers from any photo or screenshot in Retina resolution</span></li><li><span class="ru">GPU-частицы «Светлячки», «Снег» и «Звёзды», реагирующие на курсор</span><span class="en">GPU particles (Fireflies, Snow, Stars) that react to the cursor</span></li><li><span class="ru">Воспроизведение стало ровнее, эффекты в фоне ставятся на паузу</span><span class="en">Smoother playback; effects pause in the background</span></li></ol></div>
         <div class="step"><h3>1.2.0<time datetime="2026-11-24"><span class="ru">24 ноября 2026</span><span class="en">November 24, 2026</span></time></h3><ol class="plain"><li><span class="ru">Проверка обновлений и окно со списком изменений</span><span class="en">Update check and release notes window</span></li><li><span class="ru">Кэш видео и миниатюр под MacBook Air M1 (8 ГБ)</span><span class="en">Video and thumbnail cache tuned for MacBook Air M1 (8 GB)</span></li><li><span class="ru">Фоновый звук и свои аудиодорожки</span><span class="en">Ambient audio and custom tracks</span></li><li><span class="ru">Галерея и настройки открываются на активном Spaces</span><span class="en">Gallery and preferences open on the active Space</span></li></ol></div>
       </div>
@@ -235,8 +308,12 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
       <div class="faq-list reveal">
         <details><summary><span class="ru">Приложение сажает батарею?</span><span class="en">Does it drain the battery?</span></summary><p class="ru">Видео декодируется аппаратно, и энергии на это уходит немного. К тому же по умолчанию включена пауза при работе от аккумулятора и при окнах на весь экран.</p>
 <p class="en">Decoding is done in hardware, which costs little energy. On top of that, pausing on battery power and behind full-screen windows is on by default.</p></details>
-        <details><summary><span class="ru">Сколько памяти занимает приложение?</span><span class="en">How much memory does it use?</span></summary><p class="ru">На Apple Silicon 45–90 МБ, в зависимости от сцены и разрешения. На Mac с 8 ГБ в кэше держатся три сцены.</p>
-<p class="en">On Apple Silicon, 45–90 MB depending on the scene and resolution. On a Mac with 8 GB, three scenes stay cached.</p></details>
+        <details><summary><span class="ru">Сколько памяти занимает приложение?</span><span class="en">How much memory does it use?</span></summary><p class="ru">На Apple Silicon 45–90 МБ, в зависимости от сцены и разрешения. В кэше удерживается не более двух плееров, а при закрытии или сворачивании галереи кэш миниатюр и неактивных плееров полностью выгружается.</p>
+<p class="en">On Apple Silicon, 45–90 MB depending on the scene and resolution. The cache holds at most two players, and when the gallery is closed or minimized, the thumbnail cache and inactive players are fully released.</p></details>
+        <details><summary><span class="ru">Как работают плейлисты?</span><span class="en">How do playlists work?</span></summary><p class="ru">Нажмите звёздочку на карточке сцены, и она попадёт в плейлист. Смена идёт по таймеру (15 мин, 30 мин, 1 час, 3 часа) или по времени суток: утро 06:00–12:00, день 12:00–18:00, вечер 18:00–23:00, ночь 23:00–06:00. Включать и выключать её можно из строки меню.</p>
+<p class="en">Tap the star on a scene card to add it to the playlist. Switching runs on a timer (15 min, 30 min, 1 hour, 3 hours) or by time of day: morning 06:00–12:00, day 12:00–18:00, evening 18:00–23:00, night 23:00–06:00. You can turn it on and off from the menu bar.</p></details>
+        <details><summary><span class="ru">Как выбрать язык приложения?</span><span class="en">How do I choose the app language?</span></summary><p class="ru">Язык предлагается при первом запуске. Если ничего не выбирать, приложение использует язык macOS. Доступны русский и английский.</p>
+<p class="en">The language is offered on first launch. If you skip it, the app uses the macOS language. Russian and English are available.</p></details>
         <details><summary><span class="ru">Где лежат добавленные видео?</span><span class="en">Where are my imported videos stored?</span></summary><p class="ru">В папке Application Support. Открыть её можно кнопкой «Открыть папку» в окне галереи или из меню в строке меню.</p>
 <p class="en">In the Application Support folder. Open it with the Open Folder button in the gallery window or from the menu bar menu.</p></details>
         <details><summary><span class="ru">Как приходят обновления?</span><span class="en">How do updates work?</span></summary><p class="ru">При запуске и по пункту «Проверить обновления…» программа сверяет версию с silvaquieta.com. Если есть новая, откроется окно со списком изменений и кнопкой загрузки.</p>
@@ -264,7 +341,7 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     <div class="wrap foot">
       <div class="foot-brand">
         <a href="index.html" class="logo"><svg width="18" height="26" viewBox="0 0 385.00 562.25" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M309.50 418.00 283.25 376.00 282.25 375.75 241.00 408.50 228.75 417.50 228.50 418.50 309.25 418.50ZM193.00 0.00 191.75 0.50 164.25 45.25 69.75 195.25 70.00 196.25 115.75 196.00 116.50 197.25 30.50 331.75 30.75 332.25 79.25 332.25 79.75 333.50 0.00 459.25 0.25 460.00 26.75 459.75 36.25 458.25 51.25 453.00 70.00 443.00 139.75 400.00 195.50 363.25 233.00 336.75 273.50 305.50 273.50 304.75 200.50 264.75 193.25 261.00 192.00 261.00 96.50 312.75 94.50 313.50 65.50 313.50 65.00 312.75 191.75 115.25 192.75 115.00 193.75 116.00 227.25 168.50 228.75 168.25 243.25 159.50 194.25 81.50 192.25 79.50 130.50 175.75 128.75 177.50 104.75 177.50 104.00 177.00 107.25 170.75 175.00 64.00 191.50 37.25 193.00 36.50 281.25 177.00 280.50 177.50 255.25 177.50 252.25 178.75 194.50 213.50 169.50 227.25 169.25 226.50 193.00 190.50 207.50 180.75 207.25 179.00 203.25 173.75 192.50 156.75 191.75 157.00 126.75 257.75 114.25 278.25 126.75 272.00 188.00 238.25 193.00 236.50 195.75 237.25 254.50 270.00 271.00 278.50 230.25 214.25 230.25 213.50 232.75 211.50 248.75 202.00 253.50 208.25 265.75 228.25 275.50 242.75 319.25 311.75 319.50 313.00 319.00 313.50 299.75 313.75 295.25 314.75 289.50 317.75 242.50 355.00 219.25 372.50 191.75 395.00 181.50 405.25 171.75 418.00 165.50 429.25 161.75 438.25 158.50 449.00 156.50 460.75 155.75 472.50 156.00 562.25 228.75 562.00 229.00 464.25 229.75 462.00 232.25 460.00 384.50 460.00 385.00 459.50 305.00 333.25 305.50 332.25 354.00 332.25 354.00 331.25 268.25 197.00 269.25 196.00 315.00 196.25 315.25 195.50 221.25 46.00ZM288.75 343.25 350.50 439.75 350.50 440.75 350.00 441.25 231.00 441.25 227.75 441.75 222.25 443.75 218.25 446.50 214.75 450.25 211.75 455.75 210.50 460.75 210.25 543.00 209.00 543.75 175.25 543.50 174.50 542.75 174.75 466.75 176.25 456.00 178.25 448.25 181.25 440.25 185.25 432.00 191.25 422.75 196.50 416.50 209.75 404.00 288.00 343.00ZM238.50 307.50 238.50 308.50 233.75 312.75 209.75 330.50 149.25 371.50 148.25 370.50 155.25 328.25 122.25 345.75 119.75 348.25 75.50 417.00 68.00 422.50 54.75 430.50 38.75 438.50 35.50 439.00 40.25 430.50 104.50 330.00 106.50 328.25 192.00 282.25 193.50 282.50Z"/></svg><span>Silva Quieta</span></a>
-        <span class="foot-note">· <span class="ru">Живые видео-обои для macOS</span><span class="en">Live video wallpapers for macOS</span> v<span data-ver>1.3.0</span></span>
+        <span class="foot-note">· <span class="ru">Живые видео-обои для macOS</span><span class="en">Live video wallpapers for macOS</span> v<span data-ver>1.4.0</span></span>
       </div>
       <nav class="foot-links" aria-label="Footer">
         <a href="index.html#features"><span class="ru">Возможности</span><span class="en">Features</span></a>
@@ -278,6 +355,6 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     </div>
   </footer>
 
-  <script src="script.js?v=1.3.11"></script>
+  <script src="script.js?v=1.4.0"></script>
 </body>
 </html>
