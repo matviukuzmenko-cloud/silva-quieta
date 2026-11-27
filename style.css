@@ -103,6 +103,7 @@ p, li { text-wrap: pretty; }
   gap: 24px;
 }
 
+.logo {
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -112,6 +113,7 @@ p, li { text-wrap: pretty; }
   text-decoration: none;
   flex: none;
 }
+.logo svg { display: block; color: var(--accent); }
 
 .menu {
   flex: 1;
@@ -599,7 +601,8 @@ details p { padding: 0 0 28px; max-width: 62ch; }
 }
 .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px 48px; }
 .foot-brand { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; }
-.foot-brand .foot-note { white-space: nowrap; }
+.foot-brand .logo { color: var(--text); }
+.foot-note { white-space: nowrap; }
 .foot-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px 28px; }
 .foot-links a { color: var(--muted); text-decoration: none; transition: color 0.2s var(--ease); }
 .foot-links a:hover { color: var(--text); }

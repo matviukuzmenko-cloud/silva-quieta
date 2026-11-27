@@ -8,8 +8,9 @@
   };
   const lang = () => (root.lang === 'en' ? 'en' : 'ru');
 
-  const STATS_URL = 'https://winter-truth-6043.ukrainman21012.workers.dev/';
-  const HIT_URL = 'https://winter-truth-6043.ukrainman21012.workers.dev/hit';
+  const GH_REPO = 'matviukuzmenko-cloud/silva-quieta';
+  const GH_API = 'https://api.github.com/repos/' + GH_REPO;
+  const CACHE_KEY = 'sq-gh-stats';
   let stats = null;
   const fmtNum = (n) => {
     const v = Number(n);
@@ -17,54 +18,37 @@
     try { return v.toLocaleString(lang() === 'en' ? 'en-US' : 'ru-RU'); } catch (e) { return String(v); }
   };
   function renderStats() {
-    if (stats) {
-      $$('.js-dl-total').forEach((el) => { el.textContent = fmtNum(stats.total); });
-      $$('.js-dl-today').forEach((el) => { el.textContent = fmtNum(stats.today); });
-    }
+    if (!stats) return;
+    $$('.js-dl-total').forEach((el) => { el.textContent = fmtNum(stats.total); });
+    $$('.js-stars').forEach((el) => { el.textContent = fmtNum(stats.stars); });
+  }
+  function readCache() {
+    try {
+      const d = JSON.parse(store.get(CACHE_KEY) || 'null');
+      if (d && isFinite(d.total) && isFinite(d.stars)) return d;
+    } catch (e) {}
+    return null;
   }
   function loadStats() {
-    if (!window.fetch || !$('.js-dl-total, .js-dl-today')) return;
-    fetch(STATS_URL, { cache: 'no-store' })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((d) => {
-        if (!d || d.total == null || d.today == null) return;
-        stats = { total: d.total, today: d.today };
+    if (!window.fetch || !$('.js-dl-total, .js-stars')) return;
+    stats = readCache();
+    renderStats();
+    const get = (url) => fetch(url, { headers: { Accept: 'application/vnd.github+json' } })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))));
+    Promise.all([get(GH_API + '/releases?per_page=100'), get(GH_API)])
+      .then(([releases, repo]) => {
+        if (!Array.isArray(releases) || !repo) return;
+        const dmg = (rel) => (rel.assets || [])
+          .filter((a) => /\.dmg$/i.test(a.name || ''))
+          .reduce((sum, a) => sum + (Number(a.download_count) || 0), 0);
+        const total = releases.reduce((sum, rel) => sum + dmg(rel), 0);
+        const latest = releases.length ? dmg(releases[0]) : 0;
+        stats = { total, latest, stars: Number(repo.stargazers_count) || 0 };
+        store.set(CACHE_KEY, JSON.stringify(stats));
         renderStats();
       })
       .catch(() => {});
   }
-  function sendHit() {
-    let sent = false;
-    try { if (navigator.sendBeacon) sent = navigator.sendBeacon(HIT_URL); } catch (e) {}
-    if (!sent && window.fetch) {
-      try { fetch(HIT_URL, { method: 'POST', keepalive: true }).catch(() => {}); } catch (e) {}
-    }
-    setTimeout(loadStats, 1200);
-  }
-  let lastHit = 0;
-  function sendHit() {
-    const now = Date.now();
-    if (now - lastHit < 1500) return;
-    lastHit = now;
-    let sent = false;
-    try { if (navigator.sendBeacon) sent = navigator.sendBeacon(HIT_URL); } catch (e) {}
-    if (!sent && window.fetch) {
-      try { fetch(HIT_URL, { method: 'POST', keepalive: true, mode: 'no-cors' }).catch(() => {}); } catch (e) {}
-    }
-    setTimeout(loadStats, 1500);
-    setTimeout(loadStats, 4000);
-  }
-  function onDlClick(e) {
-    if (e.type === 'click' && e.button) return;
-    if (e.type === 'auxclick' && e.button !== 1) return;
-    const a = e.target.closest && e.target.closest('a[href]');
-    if (!a) return;
-    const href = a.getAttribute('href') || '';
-    if (!a.hasAttribute('data-dl') && !/\.dmg(?:[?#].*)?$/i.test(href)) return;
-    sendHit();
-  }
-  document.addEventListener('click', onDlClick, true);
-  document.addEventListener('auxclick', onDlClick, true);
 
   const labels = {
     ru: { lang: 'Сменить язык', theme: 'Сменить тему', menu: 'Меню', close: 'Закрыть' },
