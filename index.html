@@ -103,44 +103,30 @@ var el=document.querySelector('title');if(el&&el.getAttribute('data-'+l))documen
     </div>
 
     <section id="whats-new" class="section wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">v1.4.0 · <span class="ru">27 ноября 2026</span><span class="en">November 27, 2026</span></p>
-        <h2><span class="ru">Что нового в v1.4.0</span><span class="en">What’s new in v1.4.0</span></h2>
-        <p class="ru">Плейлисты, два языка и заметно меньше памяти. Всё остальное осталось таким же спокойным.</p>
-        <p class="en">Playlists, two languages and noticeably less memory. Everything else stays just as calm.</p>
-      </div>
-      <div class="new-grid">
-        <article class="new-card reveal">
-          <h3><span class="ru">Плейлисты и автосмена обоев</span><span class="en">Playlists and scheduled switching</span></h3>
-          <p class="ru">Добавляйте любые сцены из библиотеки в плейлист звёздочкой на карточке. Обои меняются с плавным <code>crossfade</code> по таймеру или по времени суток, в том числе прямо из строки меню.</p>
-          <p class="en">Add any scene from your library to a playlist with the star on its card. Wallpapers switch with a smooth <code>crossfade</code> on a timer or by time of day, including straight from the menu bar.</p>
-          <ul class="tags">
-            <li><span class="ru">15 мин</span><span class="en">15 min</span></li>
-            <li><span class="ru">30 мин</span><span class="en">30 min</span></li>
-            <li><span class="ru">1 час</span><span class="en">1 hour</span></li>
-            <li><span class="ru">3 часа</span><span class="en">3 hours</span></li>
-          </ul>
-          <ul class="tags">
-            <li><span class="ru">Утро 06:00–12:00</span><span class="en">Morning 06:00–12:00</span></li>
-            <li><span class="ru">День 12:00–18:00</span><span class="en">Day 12:00–18:00</span></li>
-            <li><span class="ru">Вечер 18:00–23:00</span><span class="en">Evening 18:00–23:00</span></li>
-            <li><span class="ru">Ночь 23:00–06:00</span><span class="en">Night 23:00–06:00</span></li>
-          </ul>
+      <div class="log">
+        <div class="section-head reveal">
+          <p class="eyebrow">v1.4.0 · <span class="ru">27 ноября 2026</span><span class="en">November 27, 2026</span></p>
+          <h2><span class="ru">Что нового в v1.4.0</span><span class="en">What’s new in v1.4.0</span></h2>
+        </div>
+        <article class="log-row reveal">
+          <h3><span class="ru">Плейлисты и автосмена обоев</span><span class="en">Playlists and automatic switching</span></h3>
+          <p class="ru">Добавляйте любимые сцены в плейлист звёздочкой на карточке. Обои могут плавно меняться сами по таймеру (каждые 15, 30 минут, 1 или 3 часа) или подстраиваться под время суток — утро, день, вечер и ночь.</p>
+          <p class="en">Star your favorite scenes to build a playlist. Wallpapers can smoothly transition on a timer (every 15, 30 min, 1 or 3 hours) or adapt automatically to the time of day — morning, day, evening, and night.</p>
         </article>
-        <article class="new-card reveal">
-          <h3><span class="ru">Русский и English</span><span class="en">Russian and English</span></h3>
-          <p class="ru">Язык выбирается при первом запуске, а если не выбирать, приложение берёт язык macOS. Переведены весь интерфейс, пользовательское соглашение (EULA) и приветственный гайд.</p>
-          <p class="en">Choose a language on first launch, or let the app follow macOS. The whole interface, the EULA and the welcome guide are translated.</p>
+        <article class="log-row reveal">
+          <h3><span class="ru">Русский и английский интерфейс</span><span class="en">Russian and English interface</span></h3>
+          <p class="ru">Приложение теперь полностью переведено на английский язык. Язык можно выбрать при первом запуске или доверить системе — интерфейс, приветственный гайд и меню автоматически подстроятся под macOS.</p>
+          <p class="en">The app is now fully available in both English and Russian. Pick your preferred language on first launch or let it match your macOS system settings automatically.</p>
         </article>
-        <article class="new-card reveal">
-          <h3><span class="ru">Глубокая оптимизация памяти</span><span class="en">Deep memory optimization</span></h3>
-          <p class="ru">В кэше удерживается не более <strong>2 видеоплееров</strong> (<code>preferredForwardBufferDuration = 2.0</code>), превью галереи сжимаются под размер карточки. Когда окно галереи сворачивается или закрывается, кэш миниатюр и неактивных плееров полностью выгружается из памяти.</p>
-          <p class="en">The cache holds at most <strong>2 video players</strong> (<code>preferredForwardBufferDuration = 2.0</code>), and gallery previews are scaled down to the card size. When the gallery window is minimized or closed, the thumbnail cache and inactive players are fully released from memory.</p>
+        <article class="log-row reveal">
+          <h3><span class="ru">Ещё меньше нагрузки на память</span><span class="en">Even lighter on memory</span></h3>
+          <p class="ru">Оптимизировали работу с видео и предпросмотрами: когда окно галереи закрыто или свёрнуто, лишние данные сразу выгружаются из оперативной памяти, а приложение работает максимально легко в фоне.</p>
+          <p class="en">Optimized video buffering and gallery previews: when the gallery window is closed or minimized, unused assets are immediately cleared from RAM so the app stays whisper-light in the background.</p>
         </article>
-        <article class="new-card reveal">
-          <h3><span class="ru">Спокойный интерфейс и гайд</span><span class="en">A calmer interface and guide</span></h3>
-          <p class="ru">Обновлено окно «О Silva Quieta», добавлен спокойный приветственный гайд из 5 шагов, а в каталоге появились плавные анимации при наведении. Без визуального шума.</p>
-          <p class="en">The About Silva Quieta window is refreshed, there is a calm 5-step welcome guide, and the catalog has smooth hover animations. No visual noise.</p>
+        <article class="log-row reveal">
+          <h3><span class="ru">Обновлённый интерфейс и гайд</span><span class="en">A refreshed interface and guide</span></h3>
+          <p class="ru">Сделали интерфейс ещё спокойнее: обновили приветственный гайд из 5 шагов, добавили окно «О Silva Quieta» и мягкие анимации карточек без лишнего визуального шума.</p>
+          <p class="en">Refined the interface to feel even calmer: added a clean 5-step welcome guide, an About window, and subtle card hover transitions without visual clutter.</p>
         </article>
       </div>
     </section>
