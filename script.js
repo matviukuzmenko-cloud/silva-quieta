@@ -41,14 +41,30 @@
     }
     setTimeout(loadStats, 1200);
   }
-  document.addEventListener('click', (e) => {
-    if (e.defaultPrevented || e.button) return;
-    const a = e.target.closest('a[data-dl], a[href]');
+  let lastHit = 0;
+  function sendHit() {
+    const now = Date.now();
+    if (now - lastHit < 1500) return;
+    lastHit = now;
+    let sent = false;
+    try { if (navigator.sendBeacon) sent = navigator.sendBeacon(HIT_URL); } catch (e) {}
+    if (!sent && window.fetch) {
+      try { fetch(HIT_URL, { method: 'POST', keepalive: true, mode: 'no-cors' }).catch(() => {}); } catch (e) {}
+    }
+    setTimeout(loadStats, 1500);
+    setTimeout(loadStats, 4000);
+  }
+  function onDlClick(e) {
+    if (e.type === 'click' && e.button) return;
+    if (e.type === 'auxclick' && e.button !== 1) return;
+    const a = e.target.closest && e.target.closest('a[href]');
     if (!a) return;
     const href = a.getAttribute('href') || '';
     if (!a.hasAttribute('data-dl') && !/\.dmg(?:[?#].*)?$/i.test(href)) return;
     sendHit();
-  });
+  }
+  document.addEventListener('click', onDlClick, true);
+  document.addEventListener('auxclick', onDlClick, true);
 
   const labels = {
     ru: { lang: 'Сменить язык', theme: 'Сменить тему', menu: 'Меню', close: 'Закрыть' },
@@ -472,4 +488,36 @@
       if (d.downloadURL) $$('[data-dl]').forEach((el) => { el.href = d.downloadURL; });
     })
     .catch(() => {});
+})();
+
+/* Автообновление кэша: если на сервере изменились страница, CSS или JS,
+   браузер сам обновляет закэшированные копии и один раз перезагружает страницу. */
+(() => {
+  if (!window.fetch || location.protocol === 'file:') return;
+  try {
+    const css = document.querySelector('link[rel="stylesheet"][href*="style.css"]');
+    const js = document.querySelector('script[src*="script.js"]');
+    const urls = [location.origin + location.pathname];
+    if (css) urls.push(css.href);
+    if (js) urls.push(js.src);
+    const sigOf = (u) =>
+      fetch(u, { method: 'HEAD', cache: 'no-store' }).then((r) =>
+        r.ok ? r.headers.get('etag') || r.headers.get('last-modified') || '' : ''
+      );
+    Promise.all(urls.map(sigOf))
+      .then((parts) => {
+        if (parts.some((p) => !p)) return;
+        const sig = parts.join('|');
+        const key = 'sq-sig:' + location.pathname;
+        const prev = localStorage.getItem(key);
+        localStorage.setItem(key, sig);
+        if (!prev || prev === sig) return;
+        if (sessionStorage.getItem(key) === sig) return;
+        sessionStorage.setItem(key, sig);
+        return Promise.all(urls.map((u) => fetch(u, { cache: 'reload' }).catch(() => {}))).then(() => {
+          location.reload();
+        });
+      })
+      .catch(() => {});
+  } catch (e) {}
 })();
