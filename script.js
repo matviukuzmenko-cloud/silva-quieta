@@ -39,11 +39,16 @@
       .then(([releases, repo]) => {
         if (!Array.isArray(releases) || !repo) return;
         const dmg = (rel) => (rel.assets || [])
-          .filter((a) => /\.dmg$/i.test(a.name || ''))
+          .filter((a) => /\.(dmg|zip)$/i.test(a.name || ''))
           .reduce((sum, a) => sum + (Number(a.download_count) || 0), 0);
         const total = releases.reduce((sum, rel) => sum + dmg(rel), 0);
         const latest = releases.length ? dmg(releases[0]) : 0;
-        stats = { total, latest, stars: Number(repo.stargazers_count) || 0 };
+        const saved = readCache();
+        stats = {
+          total: Math.max(total, saved ? saved.total : 0),
+          latest,
+          stars: Number(repo.stargazers_count) || 0
+        };
         store.set(CACHE_KEY, JSON.stringify(stats));
         renderStats();
       })
