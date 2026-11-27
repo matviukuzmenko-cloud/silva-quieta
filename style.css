@@ -701,3 +701,16 @@ details p { padding: 0 0 28px; max-width: 62ch; }
 @media (prefers-reduced-motion: reduce) {
   .step, details { transition: none; }
 }
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 650;
+  font-size: 15px;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+  flex: none;
+}
+.logo svg { display: block; color: var(--accent); }
+.foot-brand .logo { color: var(--text); }
+.foot-note { white-space: nowrap; }
